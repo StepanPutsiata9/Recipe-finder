@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Index() {
+export default function Registration() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>RecipeFinder</Text>
+      <Text style={styles.text}>Registration Screen</Text>
     </View>
   );
 }
