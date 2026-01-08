@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 function AppNavigationStack() {
   return (
     <>
-      <StatusBar style="light" />
+      <StatusBar style="dark" />
       <Stack
         screenOptions={{
           headerShown: false,
@@ -15,7 +15,7 @@ function AppNavigationStack() {
         <Stack.Protected guard={!!true}>
           <Stack.Screen name="(root)" />
         </Stack.Protected>
-        <Stack.Protected guard={!false}>
+        <Stack.Protected guard={!!false}>
           <Stack.Screen name="(auth)" />
         </Stack.Protected>
       </Stack>
