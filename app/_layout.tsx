@@ -8,7 +8,7 @@ function AppNavigationStack() {
       <Stack
         screenOptions={{
           headerShown: false,
-          animation: 'fade',
+          animation: 'slide_from_left',
         }}
       >
         <Stack.Protected guard={!!true}>
