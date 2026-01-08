@@ -1,6 +1,7 @@
+import { store } from '@/store/';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-
+import { Provider } from 'react-redux';
 function AppNavigationStack() {
   return (
     <>
@@ -23,5 +24,9 @@ function AppNavigationStack() {
 }
 
 export default function RootLayout() {
-  return <AppNavigationStack />;
+  return (
+    <Provider store={store}>
+      <AppNavigationStack />;
+    </Provider>
+  );
 }
