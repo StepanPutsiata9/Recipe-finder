@@ -30,6 +30,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: 52,
+    width: '90%',
+    alignSelf: 'center',
   },
   content: {
     flexDirection: 'row',

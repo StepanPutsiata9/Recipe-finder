@@ -1,1 +1,1 @@
-export { PrimaryButton } from './components';
+export { LoadingModal, PrimaryButton } from './components';
