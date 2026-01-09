@@ -1,6 +1,7 @@
 import { LoadingModal } from '@/features/shared';
 import { useFonts } from 'expo-font';
-import { SplashScreen, Stack } from 'expo-router';
+import { Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 
@@ -14,13 +15,13 @@ function AppNavigationStack() {
       <Stack
         screenOptions={{
           headerShown: false,
-          animation: 'slide_from_left',
+          animation: 'fade',
         }}
       >
-        <Stack.Protected guard={false}>
+        <Stack.Protected guard={true}>
           <Stack.Screen name="(root)" />
         </Stack.Protected>
-        <Stack.Protected guard={true}>
+        <Stack.Protected guard={false}>
           <Stack.Screen name="(auth)" />
         </Stack.Protected>
       </Stack>
