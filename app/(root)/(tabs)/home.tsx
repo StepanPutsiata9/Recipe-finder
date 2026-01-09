@@ -18,5 +18,6 @@ const styles = StyleSheet.create({
   text: {
     color: 'black',
     fontSize: 20,
+    fontFamily: 'Montserrat',
   },
 });
