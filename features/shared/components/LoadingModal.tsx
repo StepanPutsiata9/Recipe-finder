@@ -3,7 +3,7 @@ export function LoadingModal({ visible }: { visible: boolean }) {
   return (
     <Modal visible={visible} transparent={true} animationType="fade" statusBarTranslucent={true}>
       <View style={styles.modalContainer}>
-        <ActivityIndicator size={'small'} />
+        <ActivityIndicator size={'large'} color={'#FF6E41'} />
       </View>
     </Modal>
   );
