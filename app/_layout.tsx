@@ -1,10 +1,10 @@
-import { store } from '@/store/';
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
-import { Provider } from 'react-redux';
+
 SplashScreen.preventAutoHideAsync();
+
 function AppNavigationStack() {
   return (
     <>
@@ -15,10 +15,10 @@ function AppNavigationStack() {
           animation: 'slide_from_left',
         }}
       >
-        <Stack.Protected guard={!!true}>
+        <Stack.Protected guard={true}>
           <Stack.Screen name="(root)" />
         </Stack.Protected>
-        <Stack.Protected guard={!!false}>
+        <Stack.Protected guard={false}>
           <Stack.Screen name="(auth)" />
         </Stack.Protected>
       </Stack>
@@ -43,8 +43,8 @@ export default function RootLayout() {
     return null;
   }
   return (
-    <Provider store={store}>
-      <AppNavigationStack />;
-    </Provider>
+    // <Provider store={store}>
+    <AppNavigationStack />
+    // </Provider>
   );
 }
