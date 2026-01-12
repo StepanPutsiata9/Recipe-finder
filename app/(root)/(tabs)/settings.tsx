@@ -1,23 +1,34 @@
+import { LogoutButton } from '@/features/auth';
+import { SwitchThemeButton } from '@/features/theme';
 import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Settings() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Settings Screen</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.text}>Settings</Text>
+      <View style={styles.buttonsContainer}>
+        <SwitchThemeButton onPress={() => {}} />
+        <LogoutButton onPress={() => {}} />
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: 'white',
+    paddingHorizontal: 16,
   },
   text: {
     color: 'black',
     fontSize: 20,
-    fontFamily: 'Montserrat',
+    fontFamily: 'MontserratBold',
+    letterSpacing: 0.5,
+    marginBottom: 20,
+  },
+  buttonsContainer: {
+    gap: 12,
   },
 });
