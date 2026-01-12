@@ -20,7 +20,6 @@ export const Input = ({
   placeholder,
   onChangeText,
   isSecure = false,
-  containerStyle,
   keyboardType = 'default',
   autoCapitalize = 'none',
   returnKeyType = 'next',

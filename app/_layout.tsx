@@ -4,7 +4,7 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
-
+import { KeyboardProvider } from 'react-native-keyboard-controller';
 SplashScreen.preventAutoHideAsync();
 
 function AppNavigationStack() {
@@ -18,10 +18,10 @@ function AppNavigationStack() {
           animation: 'fade',
         }}
       >
-        <Stack.Protected guard={true}>
+        <Stack.Protected guard={false}>
           <Stack.Screen name="(root)" />
         </Stack.Protected>
-        <Stack.Protected guard={false}>
+        <Stack.Protected guard={true}>
           <Stack.Screen name="(auth)" />
         </Stack.Protected>
       </Stack>
@@ -47,7 +47,9 @@ export default function RootLayout() {
   }
   return (
     // <Provider store={store}>
-    <AppNavigationStack />
+    <KeyboardProvider>
+      <AppNavigationStack />
+    </KeyboardProvider>
     // </Provider>
   );
 }
