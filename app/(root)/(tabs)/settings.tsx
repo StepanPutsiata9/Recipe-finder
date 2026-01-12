@@ -1,7 +1,7 @@
 import { LogoutButton } from '@/features/auth';
 import { SwitchThemeButton } from '@/features/theme';
 import { ChangeAvatarButton } from '@/features/userAvatar';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Settings() {
@@ -11,11 +11,7 @@ export default function Settings() {
       <View style={styles.buttonsContainer}>
         <SwitchThemeButton onPress={() => {}} />
         <ChangeAvatarButton />
-        <LogoutButton
-          onPress={() => {
-            Alert.alert('dsd');
-          }}
-        />
+        <LogoutButton onPress={() => {}} />
       </View>
     </SafeAreaView>
   );
