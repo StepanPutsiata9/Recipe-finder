@@ -1,7 +1,7 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
 import { Portal } from '@gorhom/portal';
-import React, { useCallback, useMemo, useRef } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -12,15 +12,22 @@ interface IChangeAvatarButtonProps {
 export const ChangeAvatarButton = ({ currentAvatar }: IChangeAvatarButtonProps) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const insets = useSafeAreaInsets();
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const snapPoints = useMemo(() => ['65%'], []);
 
   const handleOpenSheet = useCallback(() => {
-    bottomSheetRef.current?.expand();
+    setIsSheetOpen(true);
+    setTimeout(() => {
+      bottomSheetRef.current?.expand();
+    }, 100);
   }, []);
 
   const handleCloseSheet = useCallback(() => {
     bottomSheetRef.current?.close();
+    setTimeout(() => {
+      setIsSheetOpen(false);
+    }, 100);
   }, []);
 
   const pickImageFromGallery = async () => {
@@ -44,53 +51,60 @@ export const ChangeAvatarButton = ({ currentAvatar }: IChangeAvatarButtonProps) 
         <Text style={styles.buttonText}>Change Avatar</Text>
         <MaterialIcons name="arrow-forward" size={24} color={'#FF6E41'} />
       </TouchableOpacity>
-      <Portal>
-        <BottomSheet
-          ref={bottomSheetRef}
-          index={-1}
-          snapPoints={snapPoints}
-          enablePanDownToClose={true}
-          backdropComponent={renderBackdrop}
-          handleIndicatorStyle={styles.handleIndicator}
-          backgroundStyle={styles.bottomSheetBackground}
-        >
-          <BottomSheetView style={[styles.contentContainer, { paddingBottom: insets.bottom + 20 }]}>
-            <Text style={styles.modalTitle}>Change Avatar</Text>
 
-            <View style={styles.avatarContainer}>
-              {currentAvatar ? (
-                <Image source={{ uri: currentAvatar }} style={styles.avatar} />
-              ) : (
-                <View style={styles.avatarPlaceholder}>
-                  <MaterialIcons name="person" size={60} color="#FF6E41" />
-                </View>
-              )}
-            </View>
-
-            <TouchableOpacity style={styles.modalOption} onPress={pickImageFromGallery}>
-              <MaterialIcons name="photo-library" size={24} color="#FF6E41" />
-              <Text style={styles.modalOptionText}>Choose from Gallery</Text>
-              <MaterialIcons name="arrow-forward" size={20} color="#FF6E41" />
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.modalOption} onPress={takePhoto}>
-              <MaterialIcons name="photo-camera" size={24} color="#FF6E41" />
-              <Text style={styles.modalOptionText}>Take Photo</Text>
-              <MaterialIcons name="arrow-forward" size={20} color="#FF6E41" />
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={[styles.modalOption, styles.cancelOption]}
-              onPress={handleCloseSheet}
+      {isSheetOpen && (
+        <Portal>
+          <BottomSheet
+            ref={bottomSheetRef}
+            index={-1}
+            snapPoints={snapPoints}
+            enablePanDownToClose={true}
+            backdropComponent={renderBackdrop}
+            handleIndicatorStyle={styles.handleIndicator}
+            backgroundStyle={styles.bottomSheetBackground}
+            onClose={handleCloseSheet}
+          >
+            <BottomSheetView
+              style={[styles.contentContainer, { paddingBottom: insets.bottom + 20 }]}
             >
-              <Text style={styles.cancelText}>Cancel</Text>
-            </TouchableOpacity>
-          </BottomSheetView>
-        </BottomSheet>
-      </Portal>
+              <Text style={styles.modalTitle}>Change Avatar</Text>
+
+              <View style={styles.avatarContainer}>
+                {currentAvatar ? (
+                  <Image source={{ uri: currentAvatar }} style={styles.avatar} />
+                ) : (
+                  <View style={styles.avatarPlaceholder}>
+                    <MaterialIcons name="person" size={60} color="#FF6E41" />
+                  </View>
+                )}
+              </View>
+
+              <TouchableOpacity style={styles.modalOption} onPress={pickImageFromGallery}>
+                <MaterialIcons name="photo-library" size={24} color="#FF6E41" />
+                <Text style={styles.modalOptionText}>Choose from Gallery</Text>
+                <MaterialIcons name="arrow-forward" size={20} color="#FF6E41" />
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.modalOption} onPress={takePhoto}>
+                <MaterialIcons name="photo-camera" size={24} color="#FF6E41" />
+                <Text style={styles.modalOptionText}>Take Photo</Text>
+                <MaterialIcons name="arrow-forward" size={20} color="#FF6E41" />
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={[styles.modalOption, styles.cancelOption]}
+                onPress={handleCloseSheet}
+              >
+                <Text style={styles.cancelText}>Cancel</Text>
+              </TouchableOpacity>
+            </BottomSheetView>
+          </BottomSheet>
+        </Portal>
+      )}
     </>
   );
 };
+
 const styles = StyleSheet.create({
   button: {
     paddingVertical: 16,

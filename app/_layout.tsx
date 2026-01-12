@@ -1,9 +1,12 @@
 import { LoadingModal } from '@/features/shared';
+import { PortalProvider } from '@gorhom/portal';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
+import { StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
 SplashScreen.preventAutoHideAsync();
 
@@ -47,9 +50,16 @@ export default function RootLayout() {
   }
   return (
     // <Provider store={store}>
-    <KeyboardProvider>
-      <AppNavigationStack />
-    </KeyboardProvider>
+    <GestureHandlerRootView style={styles.root}>
+      <PortalProvider>
+        <KeyboardProvider>
+          <AppNavigationStack />
+        </KeyboardProvider>
+      </PortalProvider>
+    </GestureHandlerRootView>
     // </Provider>
   );
 }
+const styles = StyleSheet.create({
+  root: { flex: 1 },
+});
