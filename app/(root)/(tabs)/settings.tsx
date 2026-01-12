@@ -1,5 +1,6 @@
 import { LogoutButton } from '@/features/auth';
 import { SwitchThemeButton } from '@/features/theme';
+import { ChangeAvatarButton } from '@/features/userAvatar';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -9,6 +10,7 @@ export default function Settings() {
       <Text style={styles.text}>Settings</Text>
       <View style={styles.buttonsContainer}>
         <SwitchThemeButton onPress={() => {}} />
+        <ChangeAvatarButton />
         <LogoutButton onPress={() => {}} />
       </View>
     </SafeAreaView>

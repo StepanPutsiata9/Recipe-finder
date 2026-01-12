@@ -1,0 +1,1 @@
+export { ChangeAvatarButton } from './ChangeAvatarButton';
