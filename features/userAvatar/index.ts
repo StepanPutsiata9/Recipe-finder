@@ -1,1 +1,2 @@
-export { ChangeAvatarButton } from './components';
+export { AvatarBottomSheet, ChangeAvatarButton } from './components';
+export { useBottomSheet } from './hooks';
