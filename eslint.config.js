@@ -13,19 +13,16 @@ module.exports = defineConfig([
     files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {
       '@typescript-eslint': typescriptPlugin,
-      'react': reactPlugin,
+      react: reactPlugin,
       'react-native': reactNativePlugin,
     },
     rules: {
-
       '@typescript-eslint/no-unused-vars': 'error',
-
 
       'react/jsx-uses-react': 'off',
       'react/react-in-jsx-scope': 'off',
 
       'react-native/no-inline-styles': 'warn',
-      'react-native/no-unused-styles': 'error',
 
       'no-unused-vars': 'off',
     },

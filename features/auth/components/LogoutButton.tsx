@@ -1,11 +1,14 @@
+import { IColorsTheme } from '@/features/theme';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 interface ILogoutButtonProps {
   onPress: () => void;
+  colors: IColorsTheme;
 }
-export const LogoutButton = ({ onPress }: ILogoutButtonProps) => {
+export const LogoutButton = ({ onPress, colors }: ILogoutButtonProps) => {
+  const styles = useStyles(colors);
   return (
     <TouchableOpacity style={styles.button} onPress={onPress} activeOpacity={0.9}>
       <Text style={styles.buttonText}>Sign Out</Text>
@@ -14,23 +17,22 @@ export const LogoutButton = ({ onPress }: ILogoutButtonProps) => {
   );
 };
 
-const styles = StyleSheet.create({
-  button: {
-    paddingVertical: 16,
-    backgroundColor: 'rgba(255, 110, 65, 0.05)',
-    borderRadius: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#FFE5DC',
-  },
-  buttonText: {
-    fontSize: 16,
-    fontFamily: 'MontserratBold',
-    color: '#FF6E41',
-    marginRight: 15,
-  },
-});
-
-export default LogoutButton;
+const useStyles = (colors: IColorsTheme) =>
+  StyleSheet.create({
+    button: {
+      paddingVertical: 16,
+      backgroundColor: colors.secondaryButtonBackground,
+      borderRadius: 20,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderWidth: 1,
+      borderColor: colors.secondaryButtonBorder,
+    },
+    buttonText: {
+      fontSize: 16,
+      fontFamily: 'MontserratBold',
+      color: colors.primary,
+      marginRight: 15,
+    },
+  });

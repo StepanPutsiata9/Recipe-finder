@@ -1,4 +1,6 @@
 import { LoadingModal } from '@/features/shared';
+import { useTheme } from '@/features/theme';
+import { store } from '@/store';
 import { PortalProvider } from '@gorhom/portal';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
@@ -8,9 +10,14 @@ import { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
+import { Provider } from 'react-redux';
 SplashScreen.preventAutoHideAsync();
 
 function AppNavigationStack() {
+  const { loadTheme } = useTheme();
+  useEffect(() => {
+    loadTheme();
+  }, [loadTheme]);
   return (
     <>
       <StatusBar style="dark" />
@@ -49,15 +56,15 @@ export default function RootLayout() {
     return null;
   }
   return (
-    // <Provider store={store}>
-    <GestureHandlerRootView style={styles.root}>
-      <PortalProvider>
-        <KeyboardProvider>
-          <AppNavigationStack />
-        </KeyboardProvider>
-      </PortalProvider>
-    </GestureHandlerRootView>
-    // </Provider>
+    <Provider store={store}>
+      <GestureHandlerRootView style={styles.root}>
+        <PortalProvider>
+          <KeyboardProvider>
+            <AppNavigationStack />
+          </KeyboardProvider>
+        </PortalProvider>
+      </GestureHandlerRootView>
+    </Provider>
   );
 }
 const styles = StyleSheet.create({
