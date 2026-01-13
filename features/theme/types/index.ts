@@ -23,8 +23,8 @@ export interface IColorsTheme {
   };
   placeholder: string;
 }
+export type ThemeMode = 'light' | 'dark';
 
 export interface IThemeState {
-  mode: 'light' | 'dark';
+  mode: ThemeMode;
 }
-export type ThemeMode = 'light' | 'dark';

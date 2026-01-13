@@ -1,4 +1,5 @@
 import { LoadingModal } from '@/features/shared';
+import { useTheme } from '@/features/theme';
 import { store } from '@/store';
 import { PortalProvider } from '@gorhom/portal';
 import { useFonts } from 'expo-font';
@@ -13,6 +14,10 @@ import { Provider } from 'react-redux';
 SplashScreen.preventAutoHideAsync();
 
 function AppNavigationStack() {
+  const { loadTheme } = useTheme();
+  useEffect(() => {
+    loadTheme();
+  }, [loadTheme]);
   return (
     <>
       <StatusBar style="dark" />

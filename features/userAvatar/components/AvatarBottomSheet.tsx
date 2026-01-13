@@ -1,4 +1,3 @@
-// components/AvatarBottomSheet.tsx
 import { IColorsTheme } from '@/features/theme';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
