@@ -4,11 +4,13 @@ export interface IColorsTheme {
     start: string;
     end: string;
   };
+  primaryButtonText: string;
   background: string;
   text: {
     primary: string;
     secondary: string;
   };
+
   inputBackground: string;
   error: string;
   tabbarBackground: string;

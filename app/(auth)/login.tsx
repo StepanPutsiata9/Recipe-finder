@@ -1,4 +1,5 @@
 import { AuthBanner, Input, PrimaryButton } from '@/features/shared';
+import { IColorsTheme, useTheme } from '@/features/theme';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -13,6 +14,8 @@ export default function Login() {
   const handleSignUpLink = () => {
     router.navigate('/(auth)/registration');
   };
+  const { colors } = useTheme();
+  const styles = useStyles(colors);
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAwareScrollView
@@ -53,46 +56,47 @@ export default function Login() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-  scrollContent: {
-    flexGrow: 1,
-  },
-  content: {
-    flex: 1,
-    paddingHorizontal: 16,
-    justifyContent: 'center',
-  },
+const useStyles = (colors: IColorsTheme) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    scrollContent: {
+      flexGrow: 1,
+    },
+    content: {
+      flex: 1,
+      paddingHorizontal: 16,
+      justifyContent: 'center',
+    },
 
-  text: {
-    color: 'black',
-    fontSize: 20,
-    textAlign: 'center',
-    fontFamily: 'Montserrat',
-    marginBottom: 24,
-  },
-  banner: {
-    alignItems: 'center',
-    marginBottom: 24,
-  },
-  inputsContainer: {
-    width: '100%',
-    marginBottom: 24,
-    gap: 12,
-  },
-  buttonContainer: {
-    marginBottom: 24,
-  },
-  link: {
-    fontFamily: 'Montserrat',
-    fontSize: 14,
-    textAlign: 'center',
-    color: '#A0A0A0',
-  },
-  signUpText: {
-    color: '#FF6E41',
-  },
-});
+    text: {
+      color: colors.text.primary,
+      fontSize: 20,
+      textAlign: 'center',
+      fontFamily: 'Montserrat',
+      marginBottom: 24,
+    },
+    banner: {
+      alignItems: 'center',
+      marginBottom: 24,
+    },
+    inputsContainer: {
+      width: '100%',
+      marginBottom: 24,
+      gap: 12,
+    },
+    buttonContainer: {
+      marginBottom: 24,
+    },
+    link: {
+      fontFamily: 'Montserrat',
+      fontSize: 14,
+      textAlign: 'center',
+      color: colors.text.secondary,
+    },
+    signUpText: {
+      color: colors.primary,
+    },
+  });

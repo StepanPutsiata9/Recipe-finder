@@ -6,10 +6,11 @@ export const darkTheme: IColorsTheme = {
     start: '#ff9900',
     end: '#FFB412',
   },
+  primaryButtonText: '#ffffff',
   background: '#090D19',
   text: {
     primary: '#fff',
-    secondary: '#121212',
+    secondary: '#E0E1E3',
   },
   inputBackground: '#090D19',
   error: '#FF1B44',
@@ -22,6 +23,7 @@ export const lightTheme: IColorsTheme = {
     start: '#FF6E41',
     end: '#FF602E',
   },
+  primaryButtonText: '#ffffff',
   background: '#ffffff',
   text: {
     primary: '#000000',

@@ -1,40 +1,34 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
-import React, { useState } from 'react';
+import React from 'react';
 import { Platform, StyleSheet, Switch, Text, View } from 'react-native';
+import { useTheme } from '../hooks';
+import { IColorsTheme } from '../types';
 
 interface ISwitchThemeButtonProps {
-  onPress: () => void;
-  isDarkMode?: boolean;
+  colors: IColorsTheme;
 }
 
-export const SwitchThemeButton = ({ onPress, isDarkMode = false }: ISwitchThemeButtonProps) => {
-  const [isEnabled, setIsEnabled] = useState(isDarkMode);
-
-  const handleToggle = () => {
-    const newValue = !isEnabled;
-    setIsEnabled(newValue);
-    onPress();
-  };
-
+export const SwitchThemeButton = ({ colors }: ISwitchThemeButtonProps) => {
+  const { isDark, handleToggleTheme } = useTheme();
   return (
-    <View style={[styles.container, isEnabled && styles.containerDark]}>
+    <View style={[styles.container, isDark && styles.containerDark]}>
       <View style={styles.iconTextContainer}>
         <AntDesign
-          name={isEnabled ? 'moon' : 'sun'}
+          name={isDark ? 'moon' : 'sun'}
           size={20}
-          color={isEnabled ? '#FFD6CC' : '#FF6E41'}
+          color={isDark ? '#FFD6CC' : '#FF6E41'}
         />
-        <Text style={[styles.text, isEnabled && styles.textDark]}>
-          {isEnabled ? 'Dark mode' : 'Light mode'}
+        <Text style={[styles.text, isDark && styles.textDark]}>
+          {isDark ? 'Dark mode' : 'Light mode'}
         </Text>
       </View>
 
       <View style={styles.switchWrapper}>
         <Switch
-          value={isEnabled}
-          onValueChange={handleToggle}
+          value={isDark}
+          onValueChange={handleToggleTheme}
           trackColor={{ false: '#E5E7EB', true: '#FF8C6B' }}
-          thumbColor={isEnabled ? '#FF6E41' : '#F9FAFB'}
+          thumbColor={isDark ? '#FF6E41' : '#F9FAFB'}
           ios_backgroundColor="#E5E7EB"
         />
       </View>
