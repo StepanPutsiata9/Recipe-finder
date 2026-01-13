@@ -1,17 +1,15 @@
-import { PrimaryButton } from '@/features/shared';
+import { Header } from '@/features/recipes';
 import { IColorsTheme, useTheme } from '@/features/theme';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Home() {
   const { colors } = useTheme();
   const styles = useStyles(colors);
   return (
-    <>
-      <View style={styles.container}>
-        <Text style={styles.text}>Home Screen</Text>
-        <PrimaryButton title="Войти" colors={colors} onPress={() => {}} />
-      </View>
-    </>
+    <SafeAreaView style={styles.container}>
+      <Header colors={colors} />
+    </SafeAreaView>
   );
 }
 
@@ -20,7 +18,6 @@ const useStyles = (colors: IColorsTheme) =>
     container: {
       flex: 1,
       paddingHorizontal: 16,
-      justifyContent: 'center',
       backgroundColor: colors.background,
     },
     text: {

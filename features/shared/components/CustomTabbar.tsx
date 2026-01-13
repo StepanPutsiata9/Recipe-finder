@@ -3,7 +3,7 @@ import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import Animated, { FadeIn, FadeOut, LinearTransition } from 'react-native-reanimated';
+import Animated, { FadeIn, LinearTransition } from 'react-native-reanimated';
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 
@@ -54,11 +54,7 @@ export const CustomTabBar: React.FC<BottomTabBarProps & ITabbarProps> = ({
           >
             {getIconByRouteName(route.name, isFocused ? colors.tabbarActiveText : colors.primary)}
             {isFocused && (
-              <Animated.Text
-                entering={FadeIn.duration(200)}
-                exiting={FadeOut.duration(200)}
-                style={styles.text}
-              >
+              <Animated.Text entering={FadeIn.duration(200)} style={styles.text}>
                 {label as string}
               </Animated.Text>
             )}
