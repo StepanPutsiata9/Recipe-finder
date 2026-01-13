@@ -10,17 +10,16 @@ interface ISwitchThemeButtonProps {
 
 export const SwitchThemeButton = ({ colors }: ISwitchThemeButtonProps) => {
   const { isDark, handleToggleTheme } = useTheme();
+  const styles = useStyles(colors);
   return (
-    <View style={[styles.container, isDark && styles.containerDark]}>
+    <View style={styles.container}>
       <View style={styles.iconTextContainer}>
         <AntDesign
           name={isDark ? 'moon' : 'sun'}
           size={20}
-          color={isDark ? '#FFD6CC' : '#FF6E41'}
+          color={isDark ? colors.secondaryButtonBorder : colors.primary}
         />
-        <Text style={[styles.text, isDark && styles.textDark]}>
-          {isDark ? 'Dark mode' : 'Light mode'}
-        </Text>
+        <Text style={styles.text}>{isDark ? 'Dark mode' : 'Light mode'}</Text>
       </View>
 
       <View style={styles.switchWrapper}>
@@ -28,49 +27,44 @@ export const SwitchThemeButton = ({ colors }: ISwitchThemeButtonProps) => {
           value={isDark}
           onValueChange={handleToggleTheme}
           trackColor={{ false: '#E5E7EB', true: '#FF8C6B' }}
-          thumbColor={isDark ? '#FF6E41' : '#F9FAFB'}
-          ios_backgroundColor="#E5E7EB"
+          thumbColor={colors.switchColors.thumbColor}
+          ios_backgroundColor={colors.switchColors.ios_backgroundColor}
         />
       </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    backgroundColor: '#FFF5F2',
-    borderRadius: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    borderWidth: 1,
-    borderColor: '#FFE5DC',
-  },
-  containerDark: {
-    backgroundColor: '#2A2A2A',
-    borderColor: '#444444',
-  },
-  iconTextContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-  },
-  text: {
-    fontSize: 16,
-    fontFamily: 'Montserrat',
-    color: '#1F2937',
-  },
-  textDark: {
-    color: '#F9FAFB',
-  },
-  switchWrapper: {
-    ...Platform.select({
-      android: {
-        marginVertical: -10,
-      },
-      ios: {},
-    }),
-  },
-});
+const useStyles = (colors: IColorsTheme) =>
+  StyleSheet.create({
+    container: {
+      paddingHorizontal: 16,
+      paddingVertical: 16,
+      backgroundColor: colors.secondaryButtonBackground,
+      borderRadius: 20,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      borderWidth: 1,
+      borderColor: colors.secondaryButtonBorder,
+    },
+    iconTextContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 12,
+    },
+    text: {
+      fontSize: 16,
+      fontFamily: 'MontserratBold',
+      color: colors.text.secondary,
+      letterSpacing: 1.2,
+    },
+    switchWrapper: {
+      ...Platform.select({
+        android: {
+          marginVertical: -10,
+        },
+        ios: {},
+      }),
+    },
+  });

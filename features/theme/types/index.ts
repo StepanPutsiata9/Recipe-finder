@@ -5,6 +5,8 @@ export interface IColorsTheme {
     end: string;
   };
   primaryButtonText: string;
+  secondaryButtonBackground: string;
+  secondaryButtonBorder: string;
   background: string;
   text: {
     primary: string;
@@ -14,6 +16,12 @@ export interface IColorsTheme {
   inputBackground: string;
   error: string;
   tabbarBackground: string;
+  tabbarActiveText: string;
+  switchColors: {
+    thumbColor: string;
+    ios_backgroundColor: string;
+  };
+  placeholder: string;
 }
 
 export interface IThemeState {

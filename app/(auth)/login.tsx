@@ -35,6 +35,7 @@ export default function Login() {
               placeholder="Enter login"
               error={null}
               isSecure={false}
+              colors={colors}
             />
             <Input
               value={passwordText}
@@ -42,10 +43,11 @@ export default function Login() {
               placeholder="Enter password"
               error={null}
               isSecure={true}
+              colors={colors}
             />
           </View>
           <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={() => {}} title="Sign In" />
+            <PrimaryButton onPress={() => {}} title="Sign In" colors={colors} />
           </View>
           <Text style={styles.link} onPress={handleSignUpLink}>
             Don&apos;t have an account? <Text style={styles.signUpText}>Sign Up</Text>

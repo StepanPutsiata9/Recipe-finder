@@ -1,4 +1,5 @@
 // components/AvatarBottomSheet.tsx
+import { IColorsTheme } from '@/features/theme';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
 import { Portal } from '@gorhom/portal';
@@ -14,6 +15,7 @@ interface IAvatarBottomSheetProps {
   onTakePhoto: () => void;
   bottomSheetRef: React.RefObject<any>;
   handleSheetChanges: (index: number) => void;
+  colors: IColorsTheme;
 }
 
 export const AvatarBottomSheet = ({
@@ -24,10 +26,11 @@ export const AvatarBottomSheet = ({
   onTakePhoto,
   bottomSheetRef,
   handleSheetChanges,
+  colors,
 }: IAvatarBottomSheetProps) => {
   const insets = useSafeAreaInsets();
   const snapPoints = useMemo(() => ['60%'], []);
-
+  const styles = useStyles(colors);
   const renderBackdrop = useCallback(
     (props: any) => (
       <BottomSheetBackdrop
@@ -64,21 +67,21 @@ export const AvatarBottomSheet = ({
               <Image source={{ uri: currentAvatar }} style={styles.avatar} />
             ) : (
               <View style={styles.avatarPlaceholder}>
-                <MaterialIcons name="person" size={60} color="#FF6E41" />
+                <MaterialIcons name="person" size={60} color={colors.primary} />
               </View>
             )}
           </View>
 
           <TouchableOpacity style={styles.modalOption} onPress={onPickFromGallery}>
-            <MaterialIcons name="photo-library" size={24} color="#FF6E41" />
+            <MaterialIcons name="photo-library" size={24} color={colors.primary} />
             <Text style={styles.modalOptionText}>Choose from Gallery</Text>
-            <MaterialIcons name="arrow-forward" size={20} color="#FF6E41" />
+            <MaterialIcons name="arrow-forward" size={20} color={colors.primary} />
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.modalOption} onPress={onTakePhoto}>
-            <MaterialIcons name="photo-camera" size={24} color="#FF6E41" />
+            <MaterialIcons name="photo-camera" size={24} color={colors.primary} />
             <Text style={styles.modalOptionText}>Take Photo</Text>
-            <MaterialIcons name="arrow-forward" size={20} color="#FF6E41" />
+            <MaterialIcons name="arrow-forward" size={20} color={colors.primary} />
           </TouchableOpacity>
 
           <TouchableOpacity style={[styles.modalOption, styles.cancelOption]} onPress={onClose}>
@@ -90,79 +93,80 @@ export const AvatarBottomSheet = ({
   );
 };
 
-const styles = StyleSheet.create({
-  contentContainer: {
-    flex: 1,
-    paddingHorizontal: 20,
-    paddingTop: 10,
-    zIndex: 9999,
-  },
-  handleIndicator: {
-    backgroundColor: '#E0E0E0',
-    width: 40,
-    height: 4,
-    borderRadius: 2,
-  },
-  bottomSheetBackground: {
-    backgroundColor: 'white',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-  },
-  modalTitle: {
-    fontSize: 20,
-    fontFamily: 'MontserratBold',
-    color: '#333',
-    textAlign: 'center',
-    marginBottom: 20,
-  },
-  avatarContainer: {
-    alignItems: 'center',
-    marginVertical: 20,
-  },
-  avatar: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    borderWidth: 3,
-    borderColor: '#FFE5DC',
-  },
-  avatarPlaceholder: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    backgroundColor: 'rgba(255, 110, 65, 0.1)',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 3,
-    borderColor: '#FFE5DC',
-  },
-  modalOption: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 18,
-    paddingHorizontal: 20,
-    borderRadius: 16,
-    marginBottom: 12,
-    backgroundColor: 'rgba(255, 110, 65, 0.05)',
-    borderWidth: 1,
-    borderColor: '#FFE5DC',
-  },
-  modalOptionText: {
-    fontSize: 16,
-    fontFamily: 'MontserratBold',
-    color: '#FF6E41',
-    flex: 1,
-    marginLeft: 15,
-  },
-  cancelOption: {
-    backgroundColor: 'transparent',
-    borderWidth: 0,
-    justifyContent: 'center',
-  },
-  cancelText: {
-    fontSize: 16,
-    fontFamily: 'MontserratBold',
-    color: '#666',
-    textAlign: 'center',
-  },
-});
+const useStyles = (colors: IColorsTheme) =>
+  StyleSheet.create({
+    contentContainer: {
+      flex: 1,
+      paddingHorizontal: 20,
+      paddingTop: 10,
+      zIndex: 9999,
+    },
+    handleIndicator: {
+      backgroundColor: colors.placeholder,
+      width: 40,
+      height: 4,
+      borderRadius: 2,
+    },
+    bottomSheetBackground: {
+      backgroundColor: colors.background,
+      borderTopLeftRadius: 20,
+      borderTopRightRadius: 20,
+    },
+    modalTitle: {
+      fontSize: 20,
+      fontFamily: 'MontserratBold',
+      color: colors.text.primary,
+      textAlign: 'center',
+      marginBottom: 20,
+    },
+    avatarContainer: {
+      alignItems: 'center',
+      marginVertical: 20,
+    },
+    avatar: {
+      width: 100,
+      height: 100,
+      borderRadius: 50,
+      borderWidth: 3,
+      borderColor: colors.secondaryButtonBorder,
+    },
+    avatarPlaceholder: {
+      width: 100,
+      height: 100,
+      borderRadius: 50,
+      backgroundColor: 'rgba(255, 110, 65, 0.1)',
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderWidth: 3,
+      borderColor: colors.secondaryButtonBorder,
+    },
+    modalOption: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingVertical: 18,
+      paddingHorizontal: 20,
+      borderRadius: 16,
+      marginBottom: 12,
+      backgroundColor: 'rgba(255, 110, 65, 0.05)',
+      borderWidth: 1,
+      borderColor: colors.secondaryButtonBorder,
+    },
+    modalOptionText: {
+      fontSize: 16,
+      fontFamily: 'MontserratBold',
+      color: colors.primary,
+      flex: 1,
+      marginLeft: 15,
+    },
+    cancelOption: {
+      backgroundColor: 'transparent',
+      borderWidth: 0,
+      justifyContent: 'center',
+    },
+    cancelText: {
+      fontSize: 16,
+      fontFamily: 'MontserratBold',
+      color: colors.placeholder,
+      textAlign: 'center',
+    },
+  });

@@ -35,6 +35,7 @@ export default function Registration() {
               placeholder="Enter login"
               error={null}
               isSecure={false}
+              colors={colors}
             />
             <Input
               value={passwordText}
@@ -42,6 +43,7 @@ export default function Registration() {
               placeholder="Enter password"
               error={null}
               isSecure={true}
+              colors={colors}
             />
             <Input
               value={repidPasswordText}
@@ -49,10 +51,11 @@ export default function Registration() {
               placeholder="Repid your password"
               error={null}
               isSecure={true}
+              colors={colors}
             />
           </View>
           <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={() => {}} title="Sign Up" />
+            <PrimaryButton onPress={() => {}} title="Sign Up" colors={colors} />
           </View>
           <Text style={styles.link} onPress={handleSignInLink}>
             Already have an account? <Text style={styles.signUpText}>Sign In</Text>

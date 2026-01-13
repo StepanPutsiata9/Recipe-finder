@@ -1,3 +1,4 @@
+import { IColorsTheme } from '@/features/theme';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
@@ -6,9 +7,16 @@ import Animated, { FadeIn, FadeOut, LinearTransition } from 'react-native-reanim
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 
-const PRIMARY_COLOR = '#FF6E41';
-const BG_COLOR = '#FFF5F2';
-export const CustomTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
+interface ITabbarProps {
+  colors: IColorsTheme;
+}
+export const CustomTabBar: React.FC<BottomTabBarProps & ITabbarProps> = ({
+  state,
+  descriptors,
+  navigation,
+  colors,
+}: BottomTabBarProps & ITabbarProps) => {
+  const styles = useStyles(colors);
   return (
     <View style={styles.container}>
       {state.routes.map((route, index) => {
@@ -44,7 +52,7 @@ export const CustomTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, 
             activeOpacity={1}
             style={[styles.tabItem, isFocused && styles.activeTabItem]}
           >
-            {getIconByRouteName(route.name, isFocused ? '#FFFFFF' : PRIMARY_COLOR)}
+            {getIconByRouteName(route.name, isFocused ? colors.tabbarActiveText : colors.primary)}
             {isFocused && (
               <Animated.Text
                 entering={FadeIn.duration(200)}
@@ -73,48 +81,49 @@ export const CustomTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, 
     }
   }
 };
-const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    backgroundColor: BG_COLOR,
-    width: '80%',
-    alignSelf: 'center',
-    bottom: 42,
-    borderRadius: 40,
-    paddingVertical: 12,
-    paddingHorizontal: 0,
-    shadowColor: PRIMARY_COLOR,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
-    borderWidth: 1,
-    borderColor: '#FFE5DC',
-  },
-  tabItem: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 45,
-    paddingHorizontal: 16,
-    borderRadius: 30,
-    minWidth: 60,
-  },
-  activeTabItem: {
-    backgroundColor: PRIMARY_COLOR,
-    shadowColor: PRIMARY_COLOR,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  text: {
-    color: '#FFFFFF',
-    fontSize: 14,
-    marginLeft: 8,
-    fontFamily: 'Montserrat',
-    fontWeight: '600',
-  },
-});
+const useStyles = (colors: IColorsTheme) =>
+  StyleSheet.create({
+    container: {
+      position: 'absolute',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      alignItems: 'center',
+      backgroundColor: colors.tabbarBackground,
+      width: '80%',
+      alignSelf: 'center',
+      bottom: 42,
+      borderRadius: 40,
+      paddingVertical: 12,
+      paddingHorizontal: 0,
+      shadowColor: colors.primary,
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.2,
+      shadowRadius: 8,
+      borderWidth: 1,
+      borderColor: colors.secondaryButtonBorder,
+    },
+    tabItem: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 45,
+      paddingHorizontal: 16,
+      borderRadius: 30,
+      minWidth: 60,
+    },
+    activeTabItem: {
+      backgroundColor: colors.primary,
+      shadowColor: colors.primary,
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.3,
+      shadowRadius: 4,
+      elevation: 3,
+    },
+    text: {
+      color: colors.tabbarActiveText,
+      fontSize: 14,
+      marginLeft: 8,
+      fontFamily: 'Montserrat',
+      fontWeight: '600',
+    },
+  });

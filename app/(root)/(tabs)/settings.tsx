@@ -24,8 +24,8 @@ export default function Settings() {
       <Text style={styles.text}>Settings</Text>
       <View style={styles.buttonsContainer}>
         <SwitchThemeButton colors={colors} />
-        <ChangeAvatarButton onPress={handleOpen} />
-        <LogoutButton onPress={() => {}} />
+        <ChangeAvatarButton onPress={handleOpen} colors={colors} />
+        <LogoutButton onPress={() => {}} colors={colors} />
       </View>
 
       <AvatarBottomSheet
@@ -36,6 +36,7 @@ export default function Settings() {
         onTakePhoto={handleTakePhoto}
         bottomSheetRef={bottomSheetRef}
         handleSheetChanges={handleSheetChanges}
+        colors={colors}
       />
     </SafeAreaView>
   );

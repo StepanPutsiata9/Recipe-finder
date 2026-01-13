@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <View style={styles.container}>
         <Text style={styles.text}>Home Screen</Text>
-        <PrimaryButton title="Войти" onPress={() => {}} />
+        <PrimaryButton title="Войти" colors={colors} onPress={() => {}} />
       </View>
     </>
   );

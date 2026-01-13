@@ -7,14 +7,22 @@ export const darkTheme: IColorsTheme = {
     end: '#FFB412',
   },
   primaryButtonText: '#ffffff',
+  secondaryButtonBackground: '#ff6e410d',
+  secondaryButtonBorder: '#FFE5DC',
   background: '#090D19',
   text: {
     primary: '#fff',
     secondary: '#E0E1E3',
   },
-  inputBackground: '#090D19',
+  inputBackground: '#161C2C',
   error: '#FF1B44',
-  tabbarBackground: '#2b2b2b',
+  tabbarBackground: '#080c16',
+  tabbarActiveText: '#fff',
+  switchColors: {
+    thumbColor: '#fff',
+    ios_backgroundColor: '#9CA3AF',
+  },
+  placeholder: '#BBBBBB',
 } as const;
 
 export const lightTheme: IColorsTheme = {
@@ -23,6 +31,9 @@ export const lightTheme: IColorsTheme = {
     start: '#FF6E41',
     end: '#FF602E',
   },
+  secondaryButtonBackground: '#FFF5F2',
+  secondaryButtonBorder: '#FFE5DC',
+
   primaryButtonText: '#ffffff',
   background: '#ffffff',
   text: {
@@ -31,5 +42,11 @@ export const lightTheme: IColorsTheme = {
   },
   inputBackground: '#F5F5F5',
   error: '#FF1B44',
-  tabbarBackground: '##FFF5F2',
+  tabbarBackground: '#FFF5F2',
+  tabbarActiveText: '#fff',
+  switchColors: {
+    thumbColor: '#FDE68A',
+    ios_backgroundColor: '#9CA3AF',
+  },
+  placeholder: '#BBBBBB',
 } as const;
