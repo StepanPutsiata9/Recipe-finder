@@ -1,1 +1,1 @@
-export { Header } from './components';
+export { Categories, Header } from './components';

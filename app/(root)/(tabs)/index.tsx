@@ -1,4 +1,4 @@
-import { Header } from '@/features/recipes';
+import { Categories, Header } from '@/features/recipes';
 import { IColorsTheme, useTheme } from '@/features/theme';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -9,6 +9,7 @@ export default function Home() {
   return (
     <SafeAreaView style={styles.container}>
       <Header colors={colors} />
+      <Categories colors={colors} />
     </SafeAreaView>
   );
 }
