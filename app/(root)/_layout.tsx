@@ -5,10 +5,12 @@ export default function MainLayout() {
     <Stack
       screenOptions={{
         headerShown: false,
-        animation: 'slide_from_left',
+        animation: 'slide_from_bottom',
       }}
     >
       <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="search" />
+      <Stack.Screen name="notifications" />
     </Stack>
   );
 }

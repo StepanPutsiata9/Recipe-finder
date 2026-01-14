@@ -6,10 +6,54 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export default function Home() {
   const { colors } = useTheme();
   const styles = useStyles(colors);
+  const categoriesData = [
+    {
+      strCategory: 'Beef',
+    },
+    {
+      strCategory: 'Breakfast',
+    },
+    {
+      strCategory: 'Chicken',
+    },
+    {
+      strCategory: 'Dessert',
+    },
+    {
+      strCategory: 'Goat',
+    },
+    {
+      strCategory: 'Lamb',
+    },
+    {
+      strCategory: 'Miscellaneous',
+    },
+    {
+      strCategory: 'Pasta',
+    },
+    {
+      strCategory: 'Pork',
+    },
+    {
+      strCategory: 'Seafood',
+    },
+    {
+      strCategory: 'Side',
+    },
+    {
+      strCategory: 'Starter',
+    },
+    {
+      strCategory: 'Vegan',
+    },
+    {
+      strCategory: 'Vegetarian',
+    },
+  ];
   return (
     <SafeAreaView style={styles.container}>
       <Header colors={colors} />
-      <Categories colors={colors} />
+      <Categories colors={colors} categories={categoriesData} />
     </SafeAreaView>
   );
 }
@@ -18,7 +62,6 @@ const useStyles = (colors: IColorsTheme) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      paddingHorizontal: 16,
       backgroundColor: colors.background,
     },
     text: {
