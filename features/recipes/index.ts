@@ -1,1 +1,1 @@
-export { Categories, Header } from './components';
+export { Categories, Header, RecipesList } from './components';
