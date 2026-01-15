@@ -1,3 +1,4 @@
+import { useLocalization } from '@/features/localization';
 import { IColorsTheme } from '@/features/theme';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -10,6 +11,7 @@ interface IHeaderProps {
 export const Header = ({ colors }: IHeaderProps) => {
   const styles = useStyles(colors);
   const router = useRouter();
+  const { t } = useLocalization('home');
   const handleSearchButtonPressed = () => router.navigate('/(root)/search');
   const handleNotificationsButtonPressed = () => router.navigate('/(root)/notifications');
   return (
@@ -20,7 +22,7 @@ export const Header = ({ colors }: IHeaderProps) => {
         </View>
         <View>
           <View>
-            <Text style={styles.helloText}>Hello</Text>
+            <Text style={styles.helloText}>{t('greeting')}</Text>
           </View>
           <View style={styles.nameView}>
             <Text style={styles.nameText}>Stepan!</Text>

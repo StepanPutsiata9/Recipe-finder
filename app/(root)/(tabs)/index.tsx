@@ -50,6 +50,7 @@ export default function Home() {
       strCategory: 'Vegetarian',
     },
   ];
+
   return (
     <SafeAreaView style={styles.container}>
       <Header colors={colors} />

@@ -1,3 +1,4 @@
+import { useLocalization } from '@/features/localization';
 import { Input, PrimaryButton, RegistrationBanner } from '@/features/shared';
 import { IColorsTheme, useTheme } from '@/features/theme';
 import { useRouter } from 'expo-router';
@@ -14,6 +15,7 @@ export default function Registration() {
   const handleSignInLink = () => {
     router.navigate('/(auth)/login');
   };
+  const { t } = useLocalization('auth');
   const { colors } = useTheme();
   const styles = useStyles(colors);
   return (
@@ -24,7 +26,7 @@ export default function Registration() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.content}>
-          <Text style={styles.text}>Welcome!</Text>
+          <Text style={styles.text}>{t('greetingRegistration')}</Text>
           <View style={styles.banner}>
             <RegistrationBanner />
           </View>
@@ -32,7 +34,7 @@ export default function Registration() {
             <Input
               value={loginText}
               onChangeText={setLoginText}
-              placeholder="Enter login"
+              placeholder={t('loginPlaceholder')}
               error={null}
               isSecure={false}
               colors={colors}
@@ -40,7 +42,7 @@ export default function Registration() {
             <Input
               value={passwordText}
               onChangeText={setPasswordText}
-              placeholder="Enter password"
+              placeholder={t('passwordPlaceholder')}
               error={null}
               isSecure={true}
               colors={colors}
@@ -48,17 +50,17 @@ export default function Registration() {
             <Input
               value={repidPasswordText}
               onChangeText={setRepidPasswordText}
-              placeholder="Repid your password"
+              placeholder={t('repidPasswordPlaceholder')}
               error={null}
               isSecure={true}
               colors={colors}
             />
           </View>
           <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={() => {}} title="Sign Up" colors={colors} />
+            <PrimaryButton onPress={() => {}} title={t('signUp')} colors={colors} />
           </View>
           <Text style={styles.link} onPress={handleSignInLink}>
-            Already have an account? <Text style={styles.signUpText}>Sign In</Text>
+            {t('linkToSignIn')} <Text style={styles.signUpText}>{t('signUp')}</Text>
           </Text>
         </View>
       </KeyboardAwareScrollView>

@@ -2,6 +2,7 @@ import { IColorsTheme } from '@/features/theme';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import React, { useState } from 'react';
 import { Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useLocalization } from '../hooks';
 
 interface ILanguageSwitcherProps {
   colors: IColorsTheme;
@@ -10,15 +11,14 @@ interface ILanguageSwitcherProps {
 export const LanguageSwitcher = ({ colors }: ILanguageSwitcherProps) => {
   const styles = useStyles(colors);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const currentLanguage = 'ru';
-  const onLanguageChange = (str: string) => {};
+  const { currentLanguage, changeLanguage, t } = useLocalization('settings');
   const languages = [
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+    { code: 'en', name: 'English' },
+    { code: 'ru', name: 'Русский' },
   ];
 
   const handleLanguageSelect = (langCode: string) => {
-    onLanguageChange(langCode);
+    changeLanguage(langCode);
     setIsModalVisible(false);
   };
 
@@ -32,7 +32,7 @@ export const LanguageSwitcher = ({ colors }: ILanguageSwitcherProps) => {
         activeOpacity={0.9}
       >
         <View style={styles.buttonContent}>
-          <Text style={styles.buttonLanguageCode}>Language</Text>
+          <Text style={styles.buttonLanguageCode}>{t('language')}</Text>
           <Text style={styles.buttonLanguageCode}>{currentLang.code.toUpperCase()}</Text>
         </View>
       </TouchableOpacity>
@@ -48,7 +48,7 @@ export const LanguageSwitcher = ({ colors }: ILanguageSwitcherProps) => {
           <Pressable style={styles.modalCard} onPress={(e) => e.stopPropagation()}>
             <View style={styles.modalHeader}>
               <Ionicons name="globe-outline" size={24} color={colors.primary} />
-              <Text style={styles.modalTitle}>Choose Language</Text>
+              <Text style={styles.modalTitle}>{t('chooseLanguage')}</Text>
               <View style={styles.gradientLine} />
             </View>
             <View style={styles.languagesList}>

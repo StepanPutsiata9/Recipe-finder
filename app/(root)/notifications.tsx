@@ -1,3 +1,4 @@
+import { useLocalization } from '@/features/localization';
 import { IColorsTheme, useTheme } from '@/features/theme';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useRouter } from 'expo-router';
@@ -9,7 +10,7 @@ export default function Notifications() {
   const styles = useStyles(colors);
   const router = useRouter();
   const handleBack = () => router.back();
-
+  const { t } = useLocalization('notifications');
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -17,7 +18,7 @@ export default function Notifications() {
           <Ionicons name="chevron-back" size={32} color={colors.primary} />
         </TouchableOpacity>
         <View style={styles.titleContainer}>
-          <Text style={styles.text}>Notifications</Text>
+          <Text style={styles.text}>{t('notifications')}</Text>
         </View>
         <View style={styles.rightPlaceholder} />
       </View>

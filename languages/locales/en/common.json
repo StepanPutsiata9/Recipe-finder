@@ -1,15 +1,7 @@
 {
-  "welcome": "Welcome",
-  "settings": "Settings",
   "save": "Save",
   "cancel": "Cancel",
-  "language": "Language",
-  "english": "English",
-  "russian": "Russian",
-  "selectLanguage": "Select language",
-  "meal": "Meal",
-  "category": "Category",
-  "area": "Cuisine",
-  "viewRecipe": "View Recipe",
-  "categories": "Categories"
+  "home": "Home",
+  "favorites": "Favorites",
+  "settings": "Settings"
 }

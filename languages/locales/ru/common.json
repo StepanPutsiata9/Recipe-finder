@@ -1,15 +1,7 @@
 {
-  "welcome": "Добро пожаловать",
-  "settings": "Настройки",
   "save": "Сохранить",
   "cancel": "Отмена",
-  "language": "Язык",
-  "english": "Английский",
-  "russian": "Русский",
-  "selectLanguage": "Выберите язык",
-  "meal": "Блюдо",
-  "category": "Категория",
-  "area": "Кухня",
-  "viewRecipe": "Посмотреть рецепт",
-  "categories": "Категории"
+  "home": "Дом",
+  "favorites": "Избранные",
+  "settings": "Настройки"
 }

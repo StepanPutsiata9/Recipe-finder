@@ -1,3 +1,4 @@
+import { useLocalization } from '@/features/localization';
 import { IColorsTheme } from '@/features/theme';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import React from 'react';
@@ -12,6 +13,7 @@ interface IChangeAvatarButtonProps {
 export const ChangeAvatarButton = ({ colors }: IChangeAvatarButtonProps) => {
   const styles = useStyles(colors);
   const { bottomSheetRef, isOpen, handleOpen, handleClose, handleSheetChanges } = useBottomSheet();
+  const { t } = useLocalization('settings');
   const handlePickFromGallery = () => {
     handleClose();
     console.log('Выбрать из галереи');
@@ -24,7 +26,7 @@ export const ChangeAvatarButton = ({ colors }: IChangeAvatarButtonProps) => {
   return (
     <>
       <TouchableOpacity style={styles.button} onPress={handleOpen} activeOpacity={0.9}>
-        <Text style={styles.buttonText}>Change Avatar</Text>
+        <Text style={styles.buttonText}>{t('changeAvatar')}</Text>
         <MaterialIcons name="arrow-forward" size={24} color={colors.primary} />
       </TouchableOpacity>
       <AvatarBottomSheet
