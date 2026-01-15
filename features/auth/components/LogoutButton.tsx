@@ -1,17 +1,18 @@
+import { useLocalization } from '@/features/localization';
 import { IColorsTheme } from '@/features/theme';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 interface ILogoutButtonProps {
-  onPress: () => void;
   colors: IColorsTheme;
 }
-export const LogoutButton = ({ onPress, colors }: ILogoutButtonProps) => {
+export const LogoutButton = ({ colors }: ILogoutButtonProps) => {
   const styles = useStyles(colors);
+  const { t } = useLocalization('settings');
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress} activeOpacity={0.9}>
-      <Text style={styles.buttonText}>Sign Out</Text>
+    <TouchableOpacity style={styles.button} onPress={() => {}} activeOpacity={0.9}>
+      <Text style={styles.buttonText}>{t('signOut')}</Text>
       <MaterialIcons name="logout" size={24} color={'#FE5C51'} />
     </TouchableOpacity>
   );

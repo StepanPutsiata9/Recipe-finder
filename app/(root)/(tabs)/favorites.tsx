@@ -1,12 +1,14 @@
+import { useLocalization } from '@/features/localization';
 import { IColorsTheme, useTheme } from '@/features/theme';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function Favorites() {
   const { colors } = useTheme();
   const styles = useStyles(colors);
+  const { t } = useLocalization('favorites');
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Favorites Screen</Text>
+      <Text style={styles.text}>{t('favorites')}</Text>
     </View>
   );
 }

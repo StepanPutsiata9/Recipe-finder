@@ -1,3 +1,4 @@
+import { useLocalization } from '@/features/localization';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import React from 'react';
 import { Platform, StyleSheet, Switch, Text, View } from 'react-native';
@@ -10,6 +11,7 @@ interface ISwitchThemeButtonProps {
 
 export const SwitchThemeButton = ({ colors }: ISwitchThemeButtonProps) => {
   const { isDark, handleToggleTheme } = useTheme();
+  const { t } = useLocalization('settings');
   const styles = useStyles(colors);
   return (
     <View style={styles.container}>
@@ -19,7 +21,7 @@ export const SwitchThemeButton = ({ colors }: ISwitchThemeButtonProps) => {
           size={20}
           color={isDark ? colors.secondaryButtonBorder : colors.primary}
         />
-        <Text style={styles.text}>{isDark ? 'Dark mode' : 'Light mode'}</Text>
+        <Text style={styles.text}>{isDark ? t('darkMode') : t('lightMode')}</Text>
       </View>
 
       <View style={styles.switchWrapper}>

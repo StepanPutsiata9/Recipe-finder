@@ -1,5 +1,7 @@
+import { useLocalization } from '@/features/localization';
 import { LoadingModal } from '@/features/shared';
 import { useTheme } from '@/features/theme';
+import i18next from '@/languages';
 import { store } from '@/store';
 import { PortalProvider } from '@gorhom/portal';
 import { useFonts } from 'expo-font';
@@ -7,6 +9,7 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
+import { I18nextProvider } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
@@ -15,9 +18,14 @@ SplashScreen.preventAutoHideAsync();
 
 function AppNavigationStack() {
   const { loadTheme } = useTheme();
+  const { loadLanguage } = useLocalization();
   useEffect(() => {
-    loadTheme();
-  }, [loadTheme]);
+    const initializeApp = async () => {
+      await loadTheme();
+      await loadLanguage();
+    };
+    initializeApp();
+  }, []);
   return (
     <>
       <StatusBar style="dark" />
@@ -57,13 +65,15 @@ export default function RootLayout() {
   }
   return (
     <Provider store={store}>
-      <GestureHandlerRootView style={styles.root}>
-        <PortalProvider>
-          <KeyboardProvider>
-            <AppNavigationStack />
-          </KeyboardProvider>
-        </PortalProvider>
-      </GestureHandlerRootView>
+      <I18nextProvider i18n={i18next}>
+        <GestureHandlerRootView style={styles.root}>
+          <PortalProvider>
+            <KeyboardProvider>
+              <AppNavigationStack />
+            </KeyboardProvider>
+          </PortalProvider>
+        </GestureHandlerRootView>
+      </I18nextProvider>
     </Provider>
   );
 }

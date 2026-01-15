@@ -1,4 +1,5 @@
 import { LogoutButton } from '@/features/auth';
+import { LanguageSwitcher } from '@/features/localization';
 import { IColorsTheme, SwitchThemeButton, useTheme } from '@/features/theme';
 import { ChangeAvatarButton } from '@/features/userAvatar';
 import { StyleSheet, Text, View } from 'react-native';
@@ -13,8 +14,9 @@ export default function Settings() {
       <Text style={styles.text}>Settings</Text>
       <View style={styles.buttonsContainer}>
         <SwitchThemeButton colors={colors} />
+        <LanguageSwitcher colors={colors} />
         <ChangeAvatarButton colors={colors} />
-        <LogoutButton onPress={() => {}} colors={colors} />
+        <LogoutButton colors={colors} />
       </View>
     </SafeAreaView>
   );

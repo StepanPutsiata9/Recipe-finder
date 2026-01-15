@@ -1,3 +1,4 @@
+import { useLocalization } from '@/features/localization';
 import { IColorsTheme } from '@/features/theme';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
@@ -29,6 +30,7 @@ export const AvatarBottomSheet = ({
 }: IAvatarBottomSheetProps) => {
   const insets = useSafeAreaInsets();
   const snapPoints = useMemo(() => ['60%'], []);
+  const { t } = useLocalization(['common', 'settings']);
   const styles = useStyles(colors);
   const renderBackdrop = useCallback(
     (props: any) => (
@@ -59,7 +61,7 @@ export const AvatarBottomSheet = ({
         onChange={handleSheetChanges}
       >
         <BottomSheetView style={[styles.contentContainer, { paddingBottom: insets.bottom + 20 }]}>
-          <Text style={styles.modalTitle}>Change Avatar</Text>
+          <Text style={styles.modalTitle}>{t('changeAvatar')}</Text>
 
           <View style={styles.avatarContainer}>
             {currentAvatar ? (
@@ -73,18 +75,18 @@ export const AvatarBottomSheet = ({
 
           <TouchableOpacity style={styles.modalOption} onPress={onPickFromGallery}>
             <MaterialIcons name="photo-library" size={24} color={colors.primary} />
-            <Text style={styles.modalOptionText}>Choose from Gallery</Text>
+            <Text style={styles.modalOptionText}>{t('chooseFromGallery')}</Text>
             <MaterialIcons name="arrow-forward" size={20} color={colors.primary} />
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.modalOption} onPress={onTakePhoto}>
             <MaterialIcons name="photo-camera" size={24} color={colors.primary} />
-            <Text style={styles.modalOptionText}>Take Photo</Text>
+            <Text style={styles.modalOptionText}>{t('takePhoto')}</Text>
             <MaterialIcons name="arrow-forward" size={20} color={colors.primary} />
           </TouchableOpacity>
 
           <TouchableOpacity style={[styles.modalOption, styles.cancelOption]} onPress={onClose}>
-            <Text style={styles.cancelText}>Cancel</Text>
+            <Text style={styles.cancelText}>{t('cancel')}</Text>
           </TouchableOpacity>
         </BottomSheetView>
       </BottomSheet>

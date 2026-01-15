@@ -1,0 +1,11 @@
+{
+  "settings": "Settings",
+  "darkMode": "Dark mode",
+  "lightMode": "Light mode",
+  "language": "Language",
+  "chooseLanguage": "Choose Language",
+  "changeAvatar": "Change Avatar",
+  "chooseFromGallery": "Choose from gallery",
+  "takePhoto": "Take Photo",
+  "signOut": "Sign Out"
+}

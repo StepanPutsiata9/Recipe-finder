@@ -1,0 +1,11 @@
+{
+  "settings": "Настройки",
+  "darkMode": "Теманя тема",
+  "lightMode": "Светлая тема",
+  "language": "Язык",
+  "chooseLanguage": "Выбрать язык",
+  "changeAvatar": "Поменять аватарку",
+  "chooseFromGallery": "Выбрать из галереи",
+  "takePhoto": "Сделать фото",
+  "signOut": "Выйти"
+}

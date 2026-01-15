@@ -1,3 +1,4 @@
+import { useLocalization } from '@/features/localization';
 import { AuthBanner, Input, PrimaryButton } from '@/features/shared';
 import { IColorsTheme, useTheme } from '@/features/theme';
 import { useRouter } from 'expo-router';
@@ -14,6 +15,7 @@ export default function Login() {
   const handleSignUpLink = () => {
     router.navigate('/(auth)/registration');
   };
+  const { t } = useLocalization('auth');
   const { colors } = useTheme();
   const styles = useStyles(colors);
   return (
@@ -24,7 +26,7 @@ export default function Login() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.content}>
-          <Text style={styles.text}>Lets cook again!</Text>
+          <Text style={styles.text}>{t('greetingAuth')}</Text>
           <View style={styles.banner}>
             <AuthBanner />
           </View>
@@ -32,7 +34,7 @@ export default function Login() {
             <Input
               value={loginText}
               onChangeText={setLoginText}
-              placeholder="Enter login"
+              placeholder={t('loginPlaceholder')}
               error={null}
               isSecure={false}
               colors={colors}
@@ -40,17 +42,17 @@ export default function Login() {
             <Input
               value={passwordText}
               onChangeText={setPasswordText}
-              placeholder="Enter password"
+              placeholder={t('passwordPlaceholder')}
               error={null}
               isSecure={true}
               colors={colors}
             />
           </View>
           <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={() => {}} title="Sign In" colors={colors} />
+            <PrimaryButton onPress={() => {}} title={t('signIn')} colors={colors} />
           </View>
           <Text style={styles.link} onPress={handleSignUpLink}>
-            Don&apos;t have an account? <Text style={styles.signUpText}>Sign Up</Text>
+            {t('linkToSignUp')} <Text style={styles.signUpText}>{t('signUp')}</Text>
           </Text>
         </View>
       </KeyboardAwareScrollView>
