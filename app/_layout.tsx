@@ -1,3 +1,4 @@
+import { useLocalization } from '@/features/localization';
 import { LoadingModal } from '@/features/shared';
 import { useTheme } from '@/features/theme';
 import i18next from '@/languages';
@@ -17,9 +18,14 @@ SplashScreen.preventAutoHideAsync();
 
 function AppNavigationStack() {
   const { loadTheme } = useTheme();
+  const { loadLanguage } = useLocalization();
   useEffect(() => {
-    loadTheme();
-  }, [loadTheme]);
+    const initializeApp = async () => {
+      await loadTheme();
+      await loadLanguage();
+    };
+    initializeApp();
+  }, []);
   return (
     <>
       <StatusBar style="dark" />

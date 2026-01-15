@@ -16,12 +16,10 @@ export const ChangeAvatarButton = ({ colors }: IChangeAvatarButtonProps) => {
   const { t } = useLocalization('settings');
   const handlePickFromGallery = () => {
     handleClose();
-    console.log('Выбрать из галереи');
   };
 
   const handleTakePhoto = () => {
     handleClose();
-    console.log('Сделать фото');
   };
   return (
     <>

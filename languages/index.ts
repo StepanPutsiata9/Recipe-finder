@@ -35,7 +35,7 @@ const languageDetector = {
     try {
       await AsyncStorage.setItem('user-language', language);
     } catch (error) {
-      console.log('Error saving language:', error);
+      console.error('Error saving language:', error);
     }
   },
 };

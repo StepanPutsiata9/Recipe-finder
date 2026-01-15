@@ -18,12 +18,22 @@ export const useLocalization = (namespace?: string | string[]) => {
       dispatch(setLanguageLoading(false));
     }
   };
-
+  const loadLanguage = async () => {
+    try {
+      dispatch(setLanguageLoading(true));
+      dispatch(setLanguage(i18n.language));
+    } catch (error) {
+      console.error('Error loading language:', error);
+    } finally {
+      dispatch(setLanguageLoading(false));
+    }
+  };
   return {
     t,
     i18n: i18nInstance,
     currentLanguage,
     changeLanguage,
     isLoading: languageLoading,
+    loadLanguage: loadLanguage,
   };
 };
