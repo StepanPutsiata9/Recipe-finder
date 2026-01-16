@@ -1,23 +1,33 @@
+import { useAuthForm } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
 import { AuthBanner, Input, PrimaryButton } from '@/features/shared';
 import { IColorsTheme, useTheme } from '@/features/theme';
+
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import { Controller } from 'react-hook-form';
 import { StyleSheet, Text, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Login() {
-  const [loginText, setLoginText] = useState('');
-  const [passwordText, setPasswordText] = useState('');
-
   const router = useRouter();
-  const handleSignUpLink = () => {
-    router.navigate('/(auth)/registration');
-  };
   const { t } = useLocalization('auth');
   const { colors } = useTheme();
   const styles = useStyles(colors);
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useAuthForm(true);
+
+  const handleSignUpLink = () => {
+    router.navigate('/(auth)/registration');
+  };
+
+  const onSubmit = (data: any) => {
+    console.log('Form data:', data);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAwareScrollView
@@ -30,27 +40,55 @@ export default function Login() {
           <View style={styles.banner}>
             <AuthBanner />
           </View>
+
           <View style={styles.inputsContainer}>
-            <Input
-              value={loginText}
-              onChangeText={setLoginText}
-              placeholder={t('loginPlaceholder')}
-              error={null}
-              isSecure={false}
-              colors={colors}
+            <Controller
+              control={control}
+              name="login"
+              render={({ field: { onChange, onBlur, value } }) => (
+                <Input
+                  value={value}
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                  placeholder={t('loginPlaceholder')}
+                  error={errors.login?.message}
+                  isSecure={false}
+                  colors={colors}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  returnKeyType="next"
+                />
+              )}
             />
-            <Input
-              value={passwordText}
-              onChangeText={setPasswordText}
-              placeholder={t('passwordPlaceholder')}
-              error={null}
-              isSecure={true}
-              colors={colors}
+            <Controller
+              control={control}
+              name="password"
+              render={({ field: { onChange, onBlur, value } }) => (
+                <Input
+                  value={value}
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                  placeholder={t('passwordPlaceholder')}
+                  error={errors.password?.message}
+                  isSecure={true}
+                  colors={colors}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  returnKeyType="done"
+                />
+              )}
             />
           </View>
+
           <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={() => {}} title={t('signIn')} colors={colors} />
+            <PrimaryButton
+              disabled={isSubmitting}
+              onPress={handleSubmit(onSubmit)}
+              title={t('signIn')}
+              colors={colors}
+            />
           </View>
+
           <Text style={styles.link} onPress={handleSignUpLink}>
             {t('linkToSignUp')} <Text style={styles.signUpText}>{t('signUp')}</Text>
           </Text>
@@ -74,7 +112,6 @@ const useStyles = (colors: IColorsTheme) =>
       paddingHorizontal: 16,
       justifyContent: 'center',
     },
-
     text: {
       color: colors.text.primary,
       fontSize: 20,

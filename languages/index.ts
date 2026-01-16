@@ -53,7 +53,16 @@ i18n
       useSuspense: false,
     },
     supportedLngs: ['en', 'ru'],
-    ns: ['common', 'home', 'settings', 'favorities', 'auth', 'search', 'notifications'],
+    ns: [
+      'common',
+      'home',
+      'settings',
+      'favorities',
+      'auth',
+      'search',
+      'notifications',
+      'validation',
+    ],
     defaultNS: 'common',
   });
 

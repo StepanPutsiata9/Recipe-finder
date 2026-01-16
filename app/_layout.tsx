@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useLocalization } from '@/features/localization';
 import { LoadingModal } from '@/features/shared';
 import { useTheme } from '@/features/theme';
@@ -36,10 +37,10 @@ function AppNavigationStack() {
           animation: 'fade',
         }}
       >
-        <Stack.Protected guard={true}>
+        <Stack.Protected guard={false}>
           <Stack.Screen name="(root)" />
         </Stack.Protected>
-        <Stack.Protected guard={false}>
+        <Stack.Protected guard={true}>
           <Stack.Screen name="(auth)" />
         </Stack.Protected>
       </Stack>

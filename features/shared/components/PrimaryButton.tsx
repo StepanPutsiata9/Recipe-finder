@@ -7,17 +7,18 @@ interface PrimaryButtonProps {
   title: string;
   onPress: (event: GestureResponderEvent) => void;
   colors: IColorsTheme;
+  disabled: boolean;
 }
 
-export function PrimaryButton({ title, onPress, colors }: PrimaryButtonProps) {
+export function PrimaryButton({ title, onPress, colors, disabled }: PrimaryButtonProps) {
   const styles = useStyles(colors);
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.8} disabled={disabled}>
       <LinearGradient
         colors={['#FF6E41', '#FF602E']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-        style={styles.gradient}
+        style={[styles.gradient, disabled && styles.disabled]}
       >
         <View style={styles.content}>
           <Text style={styles.text}>{title}</Text>
@@ -36,6 +37,9 @@ const useStyles = (colors: IColorsTheme) =>
       minHeight: 52,
       width: '100%',
       alignSelf: 'center',
+    },
+    disabled: {
+      opacity: 0.5,
     },
     content: {
       flexDirection: 'row',
