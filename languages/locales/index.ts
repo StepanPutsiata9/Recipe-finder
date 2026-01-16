@@ -5,6 +5,7 @@ import enHome from './en/home.json';
 import enNotifications from './en/notifications.json';
 import enSearch from './en/search.json';
 import enSettings from './en/settings.json';
+import enValidation from './en/validation.json';
 
 import ruAuth from './ru/auth.json';
 import ruCommon from './ru/common.json';
@@ -13,6 +14,7 @@ import ruHome from './ru/home.json';
 import ruNotifications from './ru/notifications.json';
 import ruSearch from './ru/search.json';
 import ruSettings from './ru/settings.json';
+import ruValidation from './ru/validation.json';
 
 export const resources = {
   en: {
@@ -23,6 +25,7 @@ export const resources = {
     notifications: enNotifications,
     search: enSearch,
     settings: enSettings,
+    validation: enValidation,
   },
   ru: {
     common: ruCommon,
@@ -32,5 +35,6 @@ export const resources = {
     notifications: ruNotifications,
     search: ruSearch,
     settings: ruSettings,
+    validation: ruValidation,
   },
 };
