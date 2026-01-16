@@ -1,66 +1,84 @@
 import { IColorsTheme } from '@/features/theme';
 import { Ionicons } from '@expo/vector-icons';
-import { useState } from 'react';
-import { StyleSheet, TextInput, TouchableOpacity, View, ViewStyle } from 'react-native';
+import React, { forwardRef, useState } from 'react';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TextInputProps,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 
-interface IInput {
+interface IInput extends TextInputProps {
   value: string;
   placeholder: string;
-  error: null | string;
+  error?: string | null;
   onChangeText: (text: string) => void;
   isSecure?: boolean;
   containerStyle?: ViewStyle;
-  keyboardType?: 'default' | 'email-address' | 'numeric' | 'phone-pad';
-  autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
-  returnKeyType?: 'done' | 'go' | 'next' | 'search' | 'send';
   colors: IColorsTheme;
 }
 
-export const Input = ({
-  value,
-  error,
-  placeholder,
-  onChangeText,
-  isSecure = false,
-  keyboardType = 'default',
-  autoCapitalize = 'none',
-  returnKeyType = 'next',
-  colors,
-}: IInput) => {
-  const [showPassword, setShowPassword] = useState(false);
-  const styles = useStyles(colors);
-  return (
-    <View style={[styles.inputContainer, error && styles.errorContainer]}>
-      <TextInput
-        value={value}
-        placeholder={placeholder}
-        style={styles.textInput}
-        onChangeText={onChangeText}
-        keyboardType={keyboardType}
-        autoCapitalize={autoCapitalize}
-        autoCorrect={false}
-        placeholderTextColor={colors.placeholder}
-        returnKeyType={returnKeyType}
-        secureTextEntry={isSecure && !showPassword}
-      />
+export const Input = forwardRef<TextInput, IInput>(
+  (
+    {
+      value,
+      error,
+      placeholder,
+      onChangeText,
+      isSecure = false,
+      keyboardType = 'default',
+      autoCapitalize = 'none',
+      returnKeyType = 'next',
+      colors,
+      ...props
+    },
+    ref
+  ) => {
+    const [showPassword, setShowPassword] = useState(false);
+    const styles = useStyles(colors);
 
-      {isSecure && (
-        <TouchableOpacity
-          style={styles.eyeButton}
-          onPress={() => setShowPassword(!showPassword)}
-          activeOpacity={0.7}
-        >
-          <Ionicons
-            name={showPassword ? 'eye-outline' : 'eye-off-outline'}
-            size={22}
-            color={colors.placeholder}
+    return (
+      <View>
+        <View style={[styles.inputContainer, error && styles.errorContainer]}>
+          <TextInput
+            ref={ref}
+            value={value}
+            placeholder={placeholder}
+            style={styles.textInput}
+            onChangeText={onChangeText}
+            keyboardType={keyboardType}
+            autoCapitalize={autoCapitalize}
+            autoCorrect={false}
+            placeholderTextColor={colors.placeholder}
+            returnKeyType={returnKeyType}
+            secureTextEntry={isSecure && !showPassword}
+            {...props}
           />
-        </TouchableOpacity>
-      )}
-    </View>
-  );
-};
 
+          {isSecure && (
+            <TouchableOpacity
+              style={styles.eyeButton}
+              onPress={() => setShowPassword(!showPassword)}
+              activeOpacity={0.7}
+            >
+              <Ionicons
+                name={showPassword ? 'eye-outline' : 'eye-off-outline'}
+                size={22}
+                color={colors.placeholder}
+              />
+            </TouchableOpacity>
+          )}
+        </View>
+
+        {error && <Text style={styles.errorText}>{error}</Text>}
+      </View>
+    );
+  }
+);
+Input.displayName = 'Input';
 const useStyles = (colors: IColorsTheme) =>
   StyleSheet.create({
     inputContainer: {
@@ -90,5 +108,12 @@ const useStyles = (colors: IColorsTheme) =>
       paddingHorizontal: 16,
       height: '100%',
       justifyContent: 'center',
+    },
+    errorText: {
+      fontSize: 12,
+      fontFamily: 'Montserrat',
+      color: colors.error,
+      marginTop: 4,
+      marginLeft: 20,
     },
   });
