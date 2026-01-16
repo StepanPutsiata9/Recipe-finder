@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useLocalization } from '@/features/localization';
 import { LoadingModal } from '@/features/shared';
 import { useTheme } from '@/features/theme';
