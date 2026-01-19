@@ -37,8 +37,6 @@ export const useAuth = () => {
   const handleLogin = async (loginText: string, passwordText: string) => {
     dispatch(setLoading(true));
     try {
-      console.log(loginText, ' ', passwordText);
-
       const userCredential = await signInWithEmailAndPassword(auth, loginText, passwordText);
       console.log(userCredential);
       dispatch(setUser(userCredential.user.email));
@@ -53,7 +51,6 @@ export const useAuth = () => {
     dispatch(setLoading(true));
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, loginText, passwordText);
-      console.log('Пользователь создан:', userCredential.user.uid);
       dispatch(setUser(userCredential.user.email));
       dispatch(setLoading(false));
     } catch (error) {
@@ -72,9 +69,9 @@ export const useAuth = () => {
     dispatch(setLoading(true));
     try {
       await signOut(auth);
+      dispatch(setLoading(false));
     } catch {
       Alert.alert('Ошибка при выходе');
-
       dispatch(setLoading(false));
     }
   };

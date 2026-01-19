@@ -70,6 +70,9 @@
     "redux": "^5.0.1",
     "yup": "^1.7.1"
   },
+  "installConfig": {
+    "hoistingLimits": "workspaces"
+  },
   "devDependencies": {
     "@types/react": "~19.1.0",
     "@typescript-eslint/eslint-plugin": "^8.52.0",
