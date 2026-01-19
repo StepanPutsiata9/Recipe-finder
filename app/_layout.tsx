@@ -21,9 +21,10 @@ SplashScreen.preventAutoHideAsync();
 function AppNavigationStack() {
   const { loadTheme } = useTheme();
   const { loadLanguage } = useLocalization();
-  const { user, isLoading } = useAuth();
+  const { user, isLoading, loadUser } = useAuth();
   useEffect(() => {
     const initializeApp = async () => {
+      await loadUser();
       await loadTheme();
       await loadLanguage();
     };

@@ -1,4 +1,6 @@
+import { User } from 'firebase/auth';
+
 export interface AuthState {
-  user: string | null;
+  user: User | null;
   isLoading: boolean;
 }
