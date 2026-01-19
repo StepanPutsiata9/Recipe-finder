@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useAuth } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
-import { LoadingModal } from '@/features/shared';
+import { LoadingModal, LoadingScreen } from '@/features/shared';
 import { useTheme } from '@/features/theme';
 import i18next from '@/languages';
 import { store } from '@/store';
@@ -10,7 +10,7 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -19,21 +19,38 @@ import { Provider } from 'react-redux';
 SplashScreen.preventAutoHideAsync();
 
 function AppNavigationStack() {
-  const { loadTheme } = useTheme();
+  const { loadTheme, isDark } = useTheme();
   const { loadLanguage } = useLocalization();
-  const { user, isLoading, loadUser } = useAuth();
+  const { user, loadUser } = useAuth();
+  const [isAppInitialized, setIsAppInitialized] = useState(false);
+
   useEffect(() => {
     const initializeApp = async () => {
-      await loadTheme();
-      await loadLanguage();
-      await loadUser();
+      try {
+        await Promise.all([loadUser(), loadTheme(), loadLanguage()]);
+      } catch (error) {
+        console.error('App initialization error:', error);
+      } finally {
+        setIsAppInitialized(true);
+      }
     };
+
     initializeApp();
   }, []);
+
+  if (!isAppInitialized) {
+    return (
+      <>
+        <StatusBar style="dark" />
+        <LoadingScreen />
+      </>
+    );
+  }
+
   return (
     <>
-      <StatusBar style="dark" />
-      <LoadingModal visible={isLoading} />
+      <StatusBar style={isDark ? 'light' : 'dark'} />
+      <LoadingModal visible={false} />
       <Stack
         screenOptions={{
           headerShown: false,
