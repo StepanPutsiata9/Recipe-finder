@@ -12,8 +12,8 @@ export const useLocalization = (namespace?: string | string[]) => {
       dispatch(setLanguageLoading(true));
       await i18n.changeLanguage(lang);
       dispatch(setLanguage(lang));
-    } catch (error) {
-      console.error('Error changing language:', error);
+    } catch {
+      dispatch(setLanguage('en'));
     } finally {
       dispatch(setLanguageLoading(false));
     }
@@ -22,8 +22,8 @@ export const useLocalization = (namespace?: string | string[]) => {
     try {
       dispatch(setLanguageLoading(true));
       dispatch(setLanguage(i18n.language));
-    } catch (error) {
-      console.error('Error loading language:', error);
+    } catch {
+      dispatch(setLanguage('en'));
     } finally {
       dispatch(setLanguageLoading(false));
     }

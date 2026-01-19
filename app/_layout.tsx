@@ -24,9 +24,9 @@ function AppNavigationStack() {
   const { user, isLoading, loadUser } = useAuth();
   useEffect(() => {
     const initializeApp = async () => {
-      await loadUser();
       await loadTheme();
       await loadLanguage();
+      await loadUser();
     };
     initializeApp();
   }, []);

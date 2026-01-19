@@ -7,5 +7,6 @@
   "changeAvatar": "Поменять аватарку",
   "chooseFromGallery": "Выбрать из галереи",
   "takePhoto": "Сделать фото",
-  "signOut": "Выйти"
+  "signOut": "Выйти",
+  "cancel": "Отмена"
 }

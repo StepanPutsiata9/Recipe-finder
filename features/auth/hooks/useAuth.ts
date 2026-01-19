@@ -14,22 +14,18 @@ export const useAuth = () => {
 
   const loadUser = async () => {
     dispatch(setLoading(true));
-    console.log('load');
-
-    try {
-      const currentUser = auth.currentUser;
-      console.log(currentUser);
-
-      if (currentUser) {
-        dispatch(setUser(currentUser));
-      } else {
-        dispatch(setUser(null));
-      }
-    } catch {
-      Alert.alert(t('error'), t('loadUserFail'));
-    } finally {
-      dispatch(setLoading(false));
-    }
+    return new Promise<void>((resolve) => {
+      const unsubscribe = onAuthChange((firebaseUser) => {
+        unsubscribe();
+        if (firebaseUser) {
+          dispatch(setUser(firebaseUser));
+        } else {
+          dispatch(setUser(null));
+        }
+        resolve();
+        dispatch(setLoading(false));
+      });
+    });
   };
 
   const handleLogin = async (email: string, password: string) => {
