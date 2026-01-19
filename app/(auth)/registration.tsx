@@ -1,4 +1,4 @@
-import { useAuthForm } from '@/features/auth';
+import { useAuth, useAuthForm } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
 import { Input, PrimaryButton, RegistrationBanner } from '@/features/shared';
 import { IColorsTheme, useTheme } from '@/features/theme';
@@ -15,13 +15,15 @@ export default function Registration() {
   };
   const { t } = useLocalization('auth');
   const { colors } = useTheme();
+  const { handleRegistration } = useAuth();
   const styles = useStyles(colors);
   const {
     control,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useAuthForm(false);
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: { login: string; password: string }) => {
+    handleRegistration(data.login, data.password);
     console.log('Form data:', data);
   };
   return (

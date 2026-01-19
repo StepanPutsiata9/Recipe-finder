@@ -1,2 +1,2 @@
 export { LogoutButton } from './components';
-export { useAuthForm, useAuthSchema } from './hooks';
+export { useAuth, useAuthForm, useAuthSchema } from './hooks';

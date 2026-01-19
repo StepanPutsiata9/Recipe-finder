@@ -1,4 +1,4 @@
-import { useAuthForm } from '@/features/auth';
+import { useAuth, useAuthForm } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
 import { AuthBanner, Input, PrimaryButton } from '@/features/shared';
 import { IColorsTheme, useTheme } from '@/features/theme';
@@ -14,6 +14,7 @@ export default function Login() {
   const { t } = useLocalization('auth');
   const { colors } = useTheme();
   const styles = useStyles(colors);
+  const { handleLogin } = useAuth();
   const {
     control,
     handleSubmit,
@@ -24,7 +25,8 @@ export default function Login() {
     router.navigate('/(auth)/registration');
   };
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: { login: string; password: string }) => {
+    handleLogin(data.login, data.password);
     console.log('Form data:', data);
   };
 

@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useAuth } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
 import { LoadingModal } from '@/features/shared';
 import { useTheme } from '@/features/theme';
@@ -20,6 +21,7 @@ SplashScreen.preventAutoHideAsync();
 function AppNavigationStack() {
   const { loadTheme } = useTheme();
   const { loadLanguage } = useLocalization();
+  const { user, isLoading } = useAuth();
   useEffect(() => {
     const initializeApp = async () => {
       await loadTheme();
@@ -30,17 +32,17 @@ function AppNavigationStack() {
   return (
     <>
       <StatusBar style="dark" />
-      <LoadingModal visible={false} />
+      <LoadingModal visible={isLoading} />
       <Stack
         screenOptions={{
           headerShown: false,
           animation: 'fade',
         }}
       >
-        <Stack.Protected guard={false}>
+        <Stack.Protected guard={!!user}>
           <Stack.Screen name="(root)" />
         </Stack.Protected>
-        <Stack.Protected guard={true}>
+        <Stack.Protected guard={!user}>
           <Stack.Screen name="(auth)" />
         </Stack.Protected>
       </Stack>
