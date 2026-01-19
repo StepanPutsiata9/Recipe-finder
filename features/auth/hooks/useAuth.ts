@@ -1,3 +1,4 @@
+import { useLocalization } from '@/features/localization';
 import { auth, onAuthChange } from '@/firebase/config';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { useRouter } from 'expo-router';
@@ -9,6 +10,7 @@ export const useAuth = () => {
   const dispatch = useAppDispatch();
   const { user, isLoading } = useAppSelector((state) => state.auth);
   const router = useRouter();
+  const { t } = useLocalization('auth');
 
   const loadUser = async () => {
     dispatch(setLoading(true));
@@ -24,7 +26,7 @@ export const useAuth = () => {
         dispatch(setUser(null));
       }
     } catch {
-      Alert.alert('Ошибка', 'Не удалось загрузить данные пользователя');
+      Alert.alert(t('error'), t('loadUserFail'));
     } finally {
       dispatch(setLoading(false));
     }
@@ -36,7 +38,7 @@ export const useAuth = () => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       dispatch(setUser(userCredential.user));
     } catch {
-      Alert.alert('Ошибка входа');
+      Alert.alert(t('loginFail'));
     } finally {
       dispatch(setLoading(false));
     }
@@ -48,7 +50,7 @@ export const useAuth = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       dispatch(setUser(userCredential.user));
     } catch {
-      Alert.alert('Ошибка регистрации');
+      Alert.alert(t('registerFail'));
     } finally {
       dispatch(setLoading(false));
     }
@@ -61,7 +63,7 @@ export const useAuth = () => {
       dispatch(setUser(null));
       router.replace('/(auth)/login');
     } catch {
-      Alert.alert('Ошибка', 'Не удалось выйти из системы');
+      Alert.alert(t('erorr'), t('signOutFail'));
     } finally {
       dispatch(setLoading(false));
     }
@@ -69,15 +71,15 @@ export const useAuth = () => {
 
   const handleLogoutPress = () => {
     Alert.alert(
-      'Выход',
-      'Вы уверены, что хотите выйти?',
+      t('signOut'),
+      t('signOutWarning'),
       [
         {
-          text: 'Отмена',
+          text: t('cancel'),
           style: 'cancel',
         },
         {
-          text: 'Выйти',
+          text: t('signOut'),
           style: 'destructive',
           onPress: handleLogout,
         },
