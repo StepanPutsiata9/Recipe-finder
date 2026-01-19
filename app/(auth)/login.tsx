@@ -27,7 +27,6 @@ export default function Login() {
 
   const onSubmit = (data: { login: string; password: string }) => {
     handleLogin(data.login, data.password);
-    console.log('Form data:', data);
   };
 
   return (

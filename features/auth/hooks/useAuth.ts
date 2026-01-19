@@ -1,7 +1,6 @@
 import { auth } from '@/firebase/config';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { useRouter } from 'expo-router';
-import { FirebaseError } from 'firebase/app';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { Alert } from 'react-native';
 import { setLoading, setUser } from '../store/auth.slice';
@@ -9,31 +8,6 @@ export const useAuth = () => {
   const dispatch = useAppDispatch();
   const { user, isLoading } = useAppSelector((state) => state.auth);
   const router = useRouter();
-  const getAuthErrorMessage = (error: FirebaseError): string => {
-    console.log(error.code);
-    switch (error.code) {
-      case 'auth/invalid-email':
-        return 'Неверный формат email';
-      case 'auth/user-disabled':
-        return 'Аккаунт отключен';
-      case 'auth/user-not-found':
-        return 'Пользователь не найден';
-      case 'auth/wrong-password':
-        return 'Неверный пароль';
-      case 'auth/email-already-in-use':
-        return 'Этот email уже используется';
-      case 'auth/weak-password':
-        return 'Пароль должен содержать минимум 6 символов';
-      case 'auth/operation-not-allowed':
-        return 'Регистрация по email отключена';
-      case 'auth/too-many-requests':
-        return 'Слишком много попыток. Попробуйте позже';
-      case 'auth/network-request-failed':
-        return 'Ошибка сети. Проверьте подключение';
-      default:
-        return 'Произошла ошибка. Попробуйте еще раз';
-    }
-  };
   const handleLogin = async (loginText: string, passwordText: string) => {
     dispatch(setLoading(true));
     try {
@@ -53,13 +27,8 @@ export const useAuth = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, loginText, passwordText);
       dispatch(setUser(userCredential.user.email));
       dispatch(setLoading(false));
-    } catch (error) {
-      const errorMessage =
-        error instanceof FirebaseError
-          ? getAuthErrorMessage(error)
-          : 'Не удалось войти. Проверьте данные';
-
-      Alert.alert('Ошибка регистрации', errorMessage);
+    } catch {
+      Alert.alert('Ошибка регистрации');
       router.push('/(auth)/registration');
       dispatch(setLoading(false));
     }
@@ -70,6 +39,7 @@ export const useAuth = () => {
     try {
       await signOut(auth);
       dispatch(setLoading(false));
+      dispatch(setUser(null));
     } catch {
       Alert.alert('Ошибка при выходе');
       dispatch(setLoading(false));

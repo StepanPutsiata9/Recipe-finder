@@ -1,16 +1,18 @@
+import { useAuth } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
 import { IColorsTheme } from '@/features/theme';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useRouter } from 'expo-router';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 interface IHeaderProps {
   colors: IColorsTheme;
 }
 export const Header = ({ colors }: IHeaderProps) => {
   const styles = useStyles(colors);
   const router = useRouter();
+  const { user } = useAuth();
   const { t } = useLocalization('home');
   const handleSearchButtonPressed = () => router.navigate('/(root)/search');
   const handleNotificationsButtonPressed = () => router.navigate('/(root)/notifications');
@@ -25,7 +27,11 @@ export const Header = ({ colors }: IHeaderProps) => {
             <Text style={styles.helloText}>{t('greeting')}</Text>
           </View>
           <View style={styles.nameView}>
-            <Text style={styles.nameText}>Stepan!</Text>
+            <ScrollView horizontal>
+              <Text
+                style={styles.nameText}
+              >{`${user?.length || 'user'.length > 13 ? user?.slice(0, 13) + '...' : user}`}</Text>
+            </ScrollView>
           </View>
         </View>
       </View>
@@ -72,7 +78,7 @@ const useStyles = (colors: IColorsTheme) =>
     },
     nameView: {},
     nameText: {
-      fontSize: 22,
+      fontSize: 18,
       fontFamily: 'MontserratBold',
       color: colors.text.primary,
     },

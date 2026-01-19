@@ -24,7 +24,6 @@ export default function Registration() {
   } = useAuthForm(false);
   const onSubmit = (data: { login: string; password: string }) => {
     handleRegistration(data.login, data.password);
-    console.log('Form data:', data);
   };
   return (
     <SafeAreaView style={styles.container}>
