@@ -22,8 +22,8 @@ export default function Registration() {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useAuthForm(false);
-  const onSubmit = (data: { login: string; password: string }) => {
-    handleRegistration(data.login, data.password);
+  const onSubmit = (data: { email: string; password: string }) => {
+    handleRegistration(data.email, data.password);
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -40,14 +40,14 @@ export default function Registration() {
           <View style={styles.inputsContainer}>
             <Controller
               control={control}
-              name="login"
+              name="email"
               render={({ field: { onChange, onBlur, value } }) => (
                 <Input
                   value={value}
                   onChangeText={onChange}
                   onBlur={onBlur}
                   placeholder={t('loginPlaceholder')}
-                  error={errors.login?.message}
+                  error={errors.email?.message}
                   isSecure={false}
                   colors={colors}
                   autoCapitalize="none"

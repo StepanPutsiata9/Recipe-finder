@@ -4,17 +4,21 @@ import * as yup from 'yup';
 export const useAuthSchema = () => {
   const { t } = useTranslation('validation');
 
-  const loginSchema = yup.string().required(t('login.required')).min(8, t('login.min'));
+  const emailSchema = yup
+    .string()
+    .email(t('email.invalid'))
+    .required(t('email.required'))
+    .min(8, t('email.min'));
 
   const passwordSchema = yup.string().required(t('password.required')).min(8, t('password.min'));
 
   const authSchema = yup.object({
-    login: loginSchema,
+    email: emailSchema,
     password: passwordSchema,
   });
 
   const registerSchema = yup.object({
-    login: loginSchema,
+    email: emailSchema,
     password: passwordSchema,
     confirmPassword: yup
       .string()

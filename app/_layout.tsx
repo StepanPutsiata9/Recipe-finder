@@ -21,7 +21,7 @@ SplashScreen.preventAutoHideAsync();
 function AppNavigationStack() {
   const { loadTheme, isDark } = useTheme();
   const { loadLanguage } = useLocalization();
-  const { user, loadUser } = useAuth();
+  const { user, loadUser, isLoading } = useAuth();
   const [isAppInitialized, setIsAppInitialized] = useState(false);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ function AppNavigationStack() {
   return (
     <>
       <StatusBar style={isDark ? 'light' : 'dark'} />
-      <LoadingModal visible={false} />
+      <LoadingModal visible={isLoading} />
       <Stack
         screenOptions={{
           headerShown: false,

@@ -25,8 +25,8 @@ export default function Login() {
     router.navigate('/(auth)/registration');
   };
 
-  const onSubmit = (data: { login: string; password: string }) => {
-    handleLogin(data.login, data.password);
+  const onSubmit = (data: { email: string; password: string }) => {
+    handleLogin(data.email, data.password);
   };
 
   return (
@@ -45,14 +45,14 @@ export default function Login() {
           <View style={styles.inputsContainer}>
             <Controller
               control={control}
-              name="login"
+              name="email"
               render={({ field: { onChange, onBlur, value } }) => (
                 <Input
                   value={value}
                   onChangeText={onChange}
                   onBlur={onBlur}
                   placeholder={t('loginPlaceholder')}
-                  error={errors.login?.message}
+                  error={errors.email?.message}
                   isSecure={false}
                   colors={colors}
                   autoCapitalize="none"
