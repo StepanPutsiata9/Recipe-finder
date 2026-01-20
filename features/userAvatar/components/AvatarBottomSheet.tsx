@@ -30,7 +30,7 @@ export const AvatarBottomSheet = ({
 }: IAvatarBottomSheetProps) => {
   const insets = useSafeAreaInsets();
   const snapPoints = useMemo(() => ['60%'], []);
-  const { t } = useLocalization(['common', 'settings']);
+  const { t } = useLocalization('settings');
   const styles = useStyles(colors);
   const renderBackdrop = useCallback(
     (props: any) => (

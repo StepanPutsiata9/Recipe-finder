@@ -10,7 +10,7 @@ export default function TabsLayout() {
   return (
     <Tabs
       tabBar={(props) => <CustomTabBar {...props} colors={colors} />}
-      screenOptions={{ headerShown: false }}
+      screenOptions={{ headerShown: false, animation: 'none' }}
     >
       <Tabs.Screen name="index" options={{ title: t('home') }} />
       <Tabs.Screen name="favorites" options={{ title: t('favorites') }} />

@@ -87,7 +87,7 @@ const useStyles = (colors: IColorsTheme) =>
       backgroundColor: colors.tabbarBackground,
       width: '80%',
       alignSelf: 'center',
-      bottom: 42,
+      bottom: 50,
       borderRadius: 40,
       paddingVertical: 12,
       paddingHorizontal: 0,

@@ -10,8 +10,8 @@ export const useAuthForm = (isLogin: boolean = true) => {
   const formMethods = useForm({
     resolver: yupResolver(schema),
     defaultValues: isLogin
-      ? { login: '', password: '' }
-      : { login: '', password: '', confirmPassword: '' },
+      ? { email: '', password: '' }
+      : { email: '', password: '', confirmPassword: '' },
     mode: 'onBlur',
   });
 

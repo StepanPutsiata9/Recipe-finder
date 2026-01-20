@@ -1,4 +1,4 @@
-import { useAuthForm } from '@/features/auth';
+import { useAuth, useAuthForm } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
 import { Input, PrimaryButton, RegistrationBanner } from '@/features/shared';
 import { IColorsTheme, useTheme } from '@/features/theme';
@@ -15,14 +15,15 @@ export default function Registration() {
   };
   const { t } = useLocalization('auth');
   const { colors } = useTheme();
+  const { handleRegistration } = useAuth();
   const styles = useStyles(colors);
   const {
     control,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useAuthForm(false);
-  const onSubmit = (data: any) => {
-    console.log('Form data:', data);
+  const onSubmit = (data: { email: string; password: string }) => {
+    handleRegistration(data.email, data.password);
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -39,14 +40,14 @@ export default function Registration() {
           <View style={styles.inputsContainer}>
             <Controller
               control={control}
-              name="login"
+              name="email"
               render={({ field: { onChange, onBlur, value } }) => (
                 <Input
                   value={value}
                   onChangeText={onChange}
                   onBlur={onBlur}
                   placeholder={t('loginPlaceholder')}
-                  error={errors.login?.message}
+                  error={errors.email?.message}
                   isSecure={false}
                   colors={colors}
                   autoCapitalize="none"
