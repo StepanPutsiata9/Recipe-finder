@@ -28,9 +28,11 @@ export const Header = ({ colors }: IHeaderProps) => {
           </View>
           <View style={styles.nameView}>
             <ScrollView horizontal>
-              <Text
-                style={styles.nameText}
-              >{`${user?.email?.length || 'user'.length > 13 ? user?.email?.slice(0, 13) + '...' : user?.email}`}</Text>
+              <Text style={styles.nameText}>
+                {user?.email && user.email.length > 13
+                  ? user.email.slice(0, 13) + '...'
+                  : user?.email}
+              </Text>
             </ScrollView>
           </View>
         </View>

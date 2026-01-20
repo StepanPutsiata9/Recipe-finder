@@ -46,6 +46,9 @@ function AppNavigationStack() {
       </>
     );
   }
+  // if (!isAppInitialized) {
+  //   return null;
+  // }
 
   return (
     <>
