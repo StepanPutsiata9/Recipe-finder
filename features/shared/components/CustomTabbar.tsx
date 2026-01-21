@@ -4,6 +4,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Animated, { FadeIn, LinearTransition } from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 
@@ -17,8 +18,9 @@ export const CustomTabBar: React.FC<BottomTabBarProps & ITabbarProps> = ({
   colors,
 }: BottomTabBarProps & ITabbarProps) => {
   const styles = useStyles(colors);
+  const { bottom } = useSafeAreaInsets();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { bottom: 25 + bottom }]}>
       {state.routes.map((route, index) => {
         if (['_sitemap', '+not-found'].includes(route.name)) return null;
 
@@ -87,7 +89,6 @@ const useStyles = (colors: IColorsTheme) =>
       backgroundColor: colors.tabbarBackground,
       width: '80%',
       alignSelf: 'center',
-      bottom: 50,
       borderRadius: 40,
       paddingVertical: 12,
       paddingHorizontal: 0,
