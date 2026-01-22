@@ -7,7 +7,7 @@ export function LoadingScreen() {
       <LottieView
         autoPlay
         style={styles.animation}
-        source={require('@/assets/animations/Loader.json')}
+        source={require('@/assets/animations/loader.json')}
       />
       <Text style={styles.text}>Recipe Finder</Text>
     </SafeAreaView>
