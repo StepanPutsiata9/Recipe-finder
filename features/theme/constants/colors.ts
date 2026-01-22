@@ -1,5 +1,9 @@
-import { IColorsTheme } from '../types';
+import { IColorsTheme, ILoadingColors } from '../types';
 
+export const loadingColors: ILoadingColors = {
+  background: '#f9beac',
+  text: '#fff',
+};
 export const darkTheme: IColorsTheme = {
   primary: '#FF6E41',
   primaryGradient: {
@@ -25,6 +29,7 @@ export const darkTheme: IColorsTheme = {
   placeholder: '#BBBBBB',
   trackFalse: '#E5E7EB',
   trackTrue: '#FF8C6B',
+  activeCategory: '#fff',
 } as const;
 
 export const lightTheme: IColorsTheme = {
@@ -53,4 +58,5 @@ export const lightTheme: IColorsTheme = {
   placeholder: '#BBBBBB',
   trackFalse: '#E5E7EB',
   trackTrue: '#FF8C6B',
+  activeCategory: '#fff',
 } as const;

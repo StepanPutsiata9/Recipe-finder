@@ -86,7 +86,7 @@ const useStyles = (colors: IColorsTheme) =>
       fontFamily: 'Montserrat',
     },
     activeCategoryText: {
-      color: '#fff',
+      color: colors.activeCategory,
       fontFamily: 'Montserrat',
     },
   });

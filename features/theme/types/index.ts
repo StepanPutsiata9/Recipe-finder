@@ -24,6 +24,11 @@ export interface IColorsTheme {
   trackFalse: string;
   trackTrue: string;
   placeholder: string;
+  activeCategory: string;
+}
+export interface ILoadingColors {
+  text: string;
+  background: string;
 }
 export type ThemeMode = 'light' | 'dark';
 
