@@ -6,7 +6,6 @@ import { useTheme } from '@/features/theme';
 import i18next from '@/languages';
 import { store } from '@/store';
 import { PortalProvider } from '@gorhom/portal';
-import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
@@ -69,21 +68,13 @@ function AppNavigationStack() {
 }
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    Montserrat: require('@/assets/fonts/Montserrat.ttf'),
-    MontserratBold: require('@/assets/fonts/MontserratBold.ttf'),
-    MontserratRegular: require('@/assets/fonts/MontserratRegular.ttf'),
-  });
-
   useEffect(() => {
-    if (loaded || error) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded, error]);
+    const hideSplash = async () => {
+      await SplashScreen.hideAsync();
+    };
+    hideSplash();
+  }, []);
 
-  if (!loaded && !error) {
-    return null;
-  }
   return (
     <Provider store={store}>
       <I18nextProvider i18n={i18next}>
