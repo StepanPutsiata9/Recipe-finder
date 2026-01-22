@@ -12,7 +12,7 @@ interface IHeaderProps {
 export const Header = ({ colors }: IHeaderProps) => {
   const styles = useStyles(colors);
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, getUserEmail } = useAuth();
   const { t } = useLocalization('home');
   const handleSearchButtonPressed = () => router.navigate('/(root)/search');
   const handleNotificationsButtonPressed = () => router.navigate('/(root)/notifications');
@@ -28,11 +28,7 @@ export const Header = ({ colors }: IHeaderProps) => {
           </View>
           <View style={styles.nameView}>
             <ScrollView horizontal>
-              <Text style={styles.nameText}>
-                {user?.email && user.email.length > 13
-                  ? user.email.slice(0, 13) + '...'
-                  : user?.email}
-              </Text>
+              <Text style={styles.nameText}>{getUserEmail(user?.email || 'user')}</Text>
             </ScrollView>
           </View>
         </View>

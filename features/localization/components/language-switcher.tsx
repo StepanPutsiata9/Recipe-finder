@@ -21,16 +21,14 @@ export const LanguageSwitcher = ({ colors }: ILanguageSwitcherProps) => {
     changeLanguage(langCode);
     setIsModalVisible(false);
   };
+  const handleCloseModal = () => setIsModalVisible(false);
+  const handleOpenModal = () => setIsModalVisible(true);
 
   const currentLang = languages.find((lang) => lang.code === currentLanguage) || languages[0];
 
   return (
     <>
-      <TouchableOpacity
-        style={styles.floatingButton}
-        onPress={() => setIsModalVisible(true)}
-        activeOpacity={0.9}
-      >
+      <TouchableOpacity style={styles.floatingButton} onPress={handleOpenModal} activeOpacity={0.9}>
         <View style={styles.buttonContent}>
           <Text style={styles.buttonLanguageCode}>{t('language')}</Text>
           <Text style={styles.buttonLanguageCode}>{currentLang.code.toUpperCase()}</Text>
@@ -42,9 +40,9 @@ export const LanguageSwitcher = ({ colors }: ILanguageSwitcherProps) => {
         transparent
         statusBarTranslucent
         animationType="fade"
-        onRequestClose={() => setIsModalVisible(false)}
+        onRequestClose={handleCloseModal}
       >
-        <Pressable style={styles.modalOverlay} onPress={() => setIsModalVisible(false)}>
+        <Pressable style={styles.modalOverlay} onPress={handleCloseModal}>
           <Pressable style={styles.modalCard} onPress={(e) => e.stopPropagation()}>
             <View style={styles.modalHeader}>
               <Ionicons name="globe-outline" size={24} color={colors.primary} />

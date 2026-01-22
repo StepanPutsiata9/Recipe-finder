@@ -17,11 +17,7 @@ export const useAuth = () => {
     return new Promise<void>((resolve) => {
       const unsubscribe = onAuthChange((firebaseUser) => {
         unsubscribe();
-        if (firebaseUser) {
-          dispatch(setUser(firebaseUser));
-        } else {
-          dispatch(setUser(null));
-        }
+        dispatch(setUser(firebaseUser ?? null));
         resolve();
         dispatch(setLoading(false));
       });
@@ -93,6 +89,9 @@ export const useAuth = () => {
     });
   };
 
+  const getUserEmail = (email: string) => {
+    return email && email.length > 13 ? email.slice(0, 13) + '...' : email;
+  };
   return {
     user,
     handleLogin,
@@ -101,5 +100,6 @@ export const useAuth = () => {
     handleLogoutPress,
     loadUser,
     checkAuth,
+    getUserEmail,
   };
 };

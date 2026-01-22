@@ -26,11 +26,7 @@ export const useTheme = () => {
   const loadTheme = async () => {
     try {
       const theme = await getTheme();
-      if (theme) {
-        await handleSetTheme(theme);
-      } else {
-        await handleSetTheme('light');
-      }
+      handleSetTheme(theme ?? 'light');
     } catch {
       await handleSetTheme('light');
     }
