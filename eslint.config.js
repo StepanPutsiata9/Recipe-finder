@@ -18,7 +18,7 @@ module.exports = defineConfig([
     },
     rules: {
       '@typescript-eslint/no-unused-vars': 'error',
-
+      'react-hooks/exhaustive-deps': 'off',
       'react/jsx-uses-react': 'off',
       'react/react-in-jsx-scope': 'off',
 

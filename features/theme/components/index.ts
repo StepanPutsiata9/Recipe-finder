@@ -1,1 +1,1 @@
-export { SwitchThemeButton } from './SwitchThemeButton';
+export { SwitchThemeButton } from './switch-theme-button';

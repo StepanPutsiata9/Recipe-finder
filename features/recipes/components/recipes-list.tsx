@@ -1,7 +1,7 @@
 import { useLocalization } from '@/features/localization';
 import { IColorsTheme } from '@/features/theme';
 import { StyleSheet, Text, View } from 'react-native';
-import { MealCard } from './RecipeItem';
+import { MealCard } from './recipe-item';
 
 interface IRecipesList {
   colors: IColorsTheme;

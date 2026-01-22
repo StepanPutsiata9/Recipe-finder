@@ -4,7 +4,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useBottomSheet } from '../hooks';
-import { AvatarBottomSheet } from './AvatarBottomSheet';
+import { AvatarBottomSheet } from './avatar-bottom-sheet';
 
 interface IChangeAvatarButtonProps {
   colors: IColorsTheme;

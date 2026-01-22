@@ -1,1 +1,1 @@
-export { clearTheme, getTheme, storeTheme } from './themeStorage';
+export { clearTheme, getTheme, storeTheme } from './theme-storage';

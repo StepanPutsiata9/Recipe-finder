@@ -1,5 +1,7 @@
-export { CustomTabBar } from './CustomTabbar';
-export { Input } from './Input';
-export { LoadingModal } from './LoadingModal';
-export { LoadingScreen } from './LoadingScreen';
-export { PrimaryButton } from './PrimaryButton';
+export { AuthBanner } from './auth-banner';
+export { CustomTabBar } from './custom-tabbar';
+export { Input } from './input';
+export { LoadingModal } from './loading-modal';
+export { LoadingScreen } from './loading-screen';
+export { PrimaryButton } from './primary-button';
+export { RegistrationBanner } from './registration-banner';

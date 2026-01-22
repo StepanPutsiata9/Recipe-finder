@@ -1,7 +1,7 @@
 import { LogoutButton } from '@/features/auth';
 import { LanguageSwitcher } from '@/features/localization';
 import { IColorsTheme, SwitchThemeButton, useTheme } from '@/features/theme';
-import { ChangeAvatarButton } from '@/features/userAvatar';
+import { ChangeAvatarButton } from '@/features/user-avatar';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 

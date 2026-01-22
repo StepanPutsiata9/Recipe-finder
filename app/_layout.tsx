@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useAuth } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
 import { LoadingModal, LoadingScreen } from '@/features/shared';

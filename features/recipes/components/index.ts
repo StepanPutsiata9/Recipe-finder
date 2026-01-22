@@ -1,3 +1,3 @@
-export { Categories } from './Categories';
-export { Header } from './Header';
-export { RecipesList } from './RecipesList';
+export { Categories } from './categories';
+export { Header } from './header';
+export { RecipesList } from './recipes-list';
