@@ -15,7 +15,7 @@ export function PrimaryButton({ title, onPress, colors, disabled }: PrimaryButto
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={0.8} disabled={disabled}>
       <LinearGradient
-        colors={['#FF6E41', '#FF602E']}
+        colors={[colors.primaryGradient.start, colors.primaryGradient.end]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={[styles.gradient, disabled && styles.disabled]}

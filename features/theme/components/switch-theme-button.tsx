@@ -28,7 +28,7 @@ export const SwitchThemeButton = ({ colors }: ISwitchThemeButtonProps) => {
         <Switch
           value={isDark}
           onValueChange={handleToggleTheme}
-          trackColor={{ false: '#E5E7EB', true: '#FF8C6B' }}
+          trackColor={{ false: colors.trackFalse, true: colors.trackTrue }}
           thumbColor={colors.switchColors.thumbColor}
           ios_backgroundColor={colors.switchColors.ios_backgroundColor}
         />

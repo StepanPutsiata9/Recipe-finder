@@ -15,7 +15,7 @@ export const LogoutButton = ({ colors }: ILogoutButtonProps) => {
   return (
     <TouchableOpacity style={styles.button} onPress={handleLogoutPress} activeOpacity={0.9}>
       <Text style={styles.buttonText}>{t('signOut')}</Text>
-      <MaterialIcons name="logout" size={24} color={'#FE5C51'} />
+      <MaterialIcons name="logout" size={24} color={colors.primary} />
     </TouchableOpacity>
   );
 };

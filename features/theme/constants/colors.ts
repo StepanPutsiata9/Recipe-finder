@@ -23,6 +23,8 @@ export const darkTheme: IColorsTheme = {
     ios_backgroundColor: '#9CA3AF',
   },
   placeholder: '#BBBBBB',
+  trackFalse: '#E5E7EB',
+  trackTrue: '#FF8C6B',
 } as const;
 
 export const lightTheme: IColorsTheme = {
@@ -49,4 +51,6 @@ export const lightTheme: IColorsTheme = {
     ios_backgroundColor: '#9CA3AF',
   },
   placeholder: '#BBBBBB',
+  trackFalse: '#E5E7EB',
+  trackTrue: '#FF8C6B',
 } as const;

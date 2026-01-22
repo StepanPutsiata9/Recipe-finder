@@ -1,9 +1,11 @@
+import { useTheme } from '@/features/theme';
 import { ActivityIndicator, Modal, StyleSheet, View } from 'react-native';
 export function LoadingModal({ visible }: { visible: boolean }) {
+  const { colors } = useTheme();
   return (
     <Modal visible={visible} transparent={true} animationType="fade" statusBarTranslucent={true}>
       <View style={styles.modalContainer}>
-        <ActivityIndicator size={'large'} color={'#FF6E41'} />
+        <ActivityIndicator size={'large'} color={colors.primary} />
       </View>
     </Modal>
   );

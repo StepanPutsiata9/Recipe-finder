@@ -21,6 +21,8 @@ export interface IColorsTheme {
     thumbColor: string;
     ios_backgroundColor: string;
   };
+  trackFalse: string;
+  trackTrue: string;
   placeholder: string;
 }
 export type ThemeMode = 'light' | 'dark';
