@@ -31,8 +31,7 @@ export const useTheme = () => {
       } else {
         await handleSetTheme('light');
       }
-    } catch (error) {
-      console.error('Error loading theme:', error);
+    } catch {
       await handleSetTheme('light');
     }
   };

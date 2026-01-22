@@ -32,11 +32,7 @@ const languageDetector = {
   },
   init: () => {},
   cacheUserLanguage: async (language: string) => {
-    try {
-      await AsyncStorage.setItem('user-language', language);
-    } catch (error) {
-      console.error('Error saving language:', error);
-    }
+    await AsyncStorage.setItem('user-language', language);
   },
 };
 

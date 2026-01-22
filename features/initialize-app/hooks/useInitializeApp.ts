@@ -11,10 +11,9 @@ export const useInitializeApp = () => {
   const initializeApp = async () => {
     try {
       await Promise.all([loadUser(), loadTheme(), loadLanguage()]);
-    } catch (error) {
-      console.error('App initialization error:', error);
-    } finally {
       setIsAppInitialized(true);
+    } catch {
+      setIsAppInitialized(false);
     }
   };
   return {
