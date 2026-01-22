@@ -1,9 +1,10 @@
 module.exports = {
-    semi: true,
-    singleQuote: true,
-    tabWidth: 2,
-    trailingComma: 'es5',
-    printWidth: 100,
-    bracketSpacing: true,
-    jsxBracketSameLine: false,
+  semi: true,
+  singleQuote: true,
+  tabWidth: 2,
+  trailingComma: 'es5',
+  printWidth: 100,
+  bracketSpacing: true,
+  jsxBracketSameLine: false,
+  importOrder: ['^react$', '^react-native$', '^expo', '^@expo', '^@?\\w', '^@/(.*)$', '^[./]'],
 };
