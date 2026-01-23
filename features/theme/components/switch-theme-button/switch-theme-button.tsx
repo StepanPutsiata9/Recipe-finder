@@ -1,9 +1,9 @@
-import { useLocalization } from '@/features/localization';
+import { useLocalization } from '@/features/localization/hooks';
 import { fontSize, indets } from '@/styles';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import React, { JSX, useMemo } from 'react';
 import { Switch, Text, View } from 'react-native';
-import { useTheme } from '../../hooks';
+import { useTheme } from '@/features/theme/hooks';
 import { createStyles } from './switch-theme-button.styles';
 
 export const SwitchThemeButton = (): JSX.Element => {

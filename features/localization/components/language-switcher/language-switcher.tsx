@@ -1,4 +1,4 @@
-import { useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme/hooks';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import React, { JSX, useState } from 'react';
 import { Modal, Pressable, Text, TouchableOpacity, View } from 'react-native';
