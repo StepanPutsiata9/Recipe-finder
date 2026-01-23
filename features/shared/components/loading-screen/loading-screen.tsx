@@ -1,3 +1,4 @@
+import { animations } from '@/paths';
 import LottieView from 'lottie-react-native';
 import { JSX } from 'react';
 import { Text } from 'react-native';
@@ -7,11 +8,7 @@ export function LoadingScreen(): JSX.Element {
   const styles = useStyles();
   return (
     <SafeAreaView style={styles.modalContainer}>
-      <LottieView
-        autoPlay
-        style={styles.animation}
-        source={require('@/assets/animations/loader.json')}
-      />
+      <LottieView autoPlay style={styles.animation} source={animations.loader} />
       <Text style={styles.text}>Recipe Finder</Text>
     </SafeAreaView>
   );

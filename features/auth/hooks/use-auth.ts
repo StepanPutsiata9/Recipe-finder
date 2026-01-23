@@ -53,7 +53,7 @@ export const useAuth = () => {
     try {
       await signOut(auth);
       dispatch(setUser(null));
-      router.replace('/(auth)/login');
+      router.replace('/(auth)/login/login-screen');
     } catch {
       Alert.alert(t('erorr'), t('signOutFail'));
     } finally {
