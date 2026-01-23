@@ -5,12 +5,8 @@ import { Platform, StyleSheet, Switch, Text, View } from 'react-native';
 import { useTheme } from '../hooks';
 import { IColorsTheme } from '../types';
 
-interface ISwitchThemeButtonProps {
-  colors: IColorsTheme;
-}
-
-export const SwitchThemeButton = ({ colors }: ISwitchThemeButtonProps) => {
-  const { isDark, handleToggleTheme } = useTheme();
+export const SwitchThemeButton = () => {
+  const { isDark, handleToggleTheme, colors } = useTheme();
   const { t } = useLocalization('settings');
   const styles = useMemo(() => createStyles(colors), [colors]);
   return (

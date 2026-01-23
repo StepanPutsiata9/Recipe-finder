@@ -1,4 +1,4 @@
-import { IColorsTheme } from '@/features/theme';
+import { IColorsTheme, useTheme } from '@/features/theme';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
@@ -8,15 +8,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 
-interface ITabbarProps {
-  colors: IColorsTheme;
-}
-export const CustomTabBar: React.FC<BottomTabBarProps & ITabbarProps> = ({
+export const CustomTabBar: React.FC<BottomTabBarProps> = ({
   state,
   descriptors,
   navigation,
-  colors,
-}: BottomTabBarProps & ITabbarProps) => {
+}: BottomTabBarProps) => {
+  const { colors } = useTheme();
   const styles = useStyles(colors);
   const { bottom } = useSafeAreaInsets();
   return (

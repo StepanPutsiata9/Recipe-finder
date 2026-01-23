@@ -1,14 +1,12 @@
 import { useLocalization } from '@/features/localization';
-import { IColorsTheme } from '@/features/theme';
+import { IColorsTheme, useTheme } from '@/features/theme';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useAuth } from '../hooks';
 
-interface ILogoutButtonProps {
-  colors: IColorsTheme;
-}
-export const LogoutButton = ({ colors }: ILogoutButtonProps) => {
+export const LogoutButton = () => {
+  const { colors } = useTheme();
   const styles = useStyles(colors);
   const { t } = useLocalization('settings');
   const { handleLogoutPress } = useAuth();

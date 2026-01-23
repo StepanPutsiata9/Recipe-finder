@@ -53,9 +53,9 @@ export default function Home() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header colors={colors} />
-      <Categories colors={colors} categories={categoriesData} />
-      <RecipesList colors={colors} />
+      <Header />
+      <Categories categories={categoriesData} />
+      <RecipesList />
     </SafeAreaView>
   );
 }

@@ -1,15 +1,14 @@
 import { useAuth } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
-import { IColorsTheme } from '@/features/theme';
+import { IColorsTheme, useTheme } from '@/features/theme';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useRouter } from 'expo-router';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-interface IHeaderProps {
-  colors: IColorsTheme;
-}
-export const Header = ({ colors }: IHeaderProps) => {
+
+export const Header = () => {
+  const { colors } = useTheme();
   const styles = useStyles(colors);
   const router = useRouter();
   const { user, getUserEmail } = useAuth();

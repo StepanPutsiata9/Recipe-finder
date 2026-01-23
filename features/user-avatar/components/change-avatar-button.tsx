@@ -1,16 +1,13 @@
 import { useLocalization } from '@/features/localization';
-import { IColorsTheme } from '@/features/theme';
+import { IColorsTheme, useTheme } from '@/features/theme';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useBottomSheet } from '../hooks';
 import { AvatarBottomSheet } from './avatar-bottom-sheet';
 
-interface IChangeAvatarButtonProps {
-  colors: IColorsTheme;
-}
-
-export const ChangeAvatarButton = ({ colors }: IChangeAvatarButtonProps) => {
+export const ChangeAvatarButton = () => {
+  const { colors } = useTheme();
   const styles = useStyles(colors);
   const { bottomSheetRef, isOpen, handleOpen, handleClose, handleSheetChanges } = useBottomSheet();
   const { t } = useLocalization('settings');

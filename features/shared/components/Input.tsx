@@ -1,4 +1,4 @@
-import { IColorsTheme } from '@/features/theme';
+import { IColorsTheme, useTheme } from '@/features/theme';
 import { Ionicons } from '@expo/vector-icons';
 import React, { forwardRef, useState } from 'react';
 import {
@@ -18,7 +18,6 @@ interface IInput extends TextInputProps {
   onChangeText: (text: string) => void;
   isSecure?: boolean;
   containerStyle?: ViewStyle;
-  colors: IColorsTheme;
 }
 
 export const Input = forwardRef<TextInput, IInput>(
@@ -32,12 +31,12 @@ export const Input = forwardRef<TextInput, IInput>(
       keyboardType = 'default',
       autoCapitalize = 'none',
       returnKeyType = 'next',
-      colors,
       ...props
     },
     ref
   ) => {
     const [showPassword, setShowPassword] = useState(false);
+    const { colors } = useTheme();
     const styles = useStyles(colors);
 
     return (

@@ -49,7 +49,6 @@ export default function Registration() {
                   placeholder={t('loginPlaceholder')}
                   error={errors.email?.message}
                   isSecure={false}
-                  colors={colors}
                   autoCapitalize="none"
                   autoCorrect={false}
                   returnKeyType="next"
@@ -67,7 +66,6 @@ export default function Registration() {
                   placeholder={t('passwordPlaceholder')}
                   error={errors.password?.message}
                   isSecure={true}
-                  colors={colors}
                   autoCapitalize="none"
                   autoCorrect={false}
                   returnKeyType="next"
@@ -85,7 +83,6 @@ export default function Registration() {
                   placeholder={t('repidPasswordPlaceholder')}
                   error={errors.confirmPassword?.message}
                   isSecure={true}
-                  colors={colors}
                   autoCapitalize="none"
                   autoCorrect={false}
                   returnKeyType="next"
@@ -97,7 +94,6 @@ export default function Registration() {
             <PrimaryButton
               onPress={handleSubmit(onSubmit)}
               title={t('signUp')}
-              colors={colors}
               disabled={isSubmitting}
             />
           </View>

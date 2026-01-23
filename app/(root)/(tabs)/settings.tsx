@@ -13,10 +13,10 @@ export default function Settings() {
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>Settings</Text>
       <View style={styles.buttonsContainer}>
-        <SwitchThemeButton colors={colors} />
-        <LanguageSwitcher colors={colors} />
-        <ChangeAvatarButton colors={colors} />
-        <LogoutButton colors={colors} />
+        <SwitchThemeButton />
+        <LanguageSwitcher />
+        <ChangeAvatarButton />
+        <LogoutButton />
       </View>
     </SafeAreaView>
   );

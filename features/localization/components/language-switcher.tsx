@@ -1,14 +1,11 @@
-import { IColorsTheme } from '@/features/theme';
+import { IColorsTheme, useTheme } from '@/features/theme';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import React, { useState } from 'react';
 import { Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useLocalization } from '../hooks';
 
-interface ILanguageSwitcherProps {
-  colors: IColorsTheme;
-}
-
-export const LanguageSwitcher = ({ colors }: ILanguageSwitcherProps) => {
+export const LanguageSwitcher = () => {
+  const { colors } = useTheme();
   const styles = useStyles(colors);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { currentLanguage, changeLanguage, t } = useLocalization('settings');

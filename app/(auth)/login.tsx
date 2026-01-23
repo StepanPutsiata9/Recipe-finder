@@ -54,7 +54,6 @@ export default function Login() {
                   placeholder={t('loginPlaceholder')}
                   error={errors.email?.message}
                   isSecure={false}
-                  colors={colors}
                   autoCapitalize="none"
                   autoCorrect={false}
                   returnKeyType="next"
@@ -72,7 +71,6 @@ export default function Login() {
                   placeholder={t('passwordPlaceholder')}
                   error={errors.password?.message}
                   isSecure={true}
-                  colors={colors}
                   autoCapitalize="none"
                   autoCorrect={false}
                   returnKeyType="done"
@@ -86,7 +84,6 @@ export default function Login() {
               disabled={isSubmitting}
               onPress={handleSubmit(onSubmit)}
               title={t('signIn')}
-              colors={colors}
             />
           </View>
 

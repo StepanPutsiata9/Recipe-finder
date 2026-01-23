@@ -1,14 +1,13 @@
 import { useLocalization } from '@/features/localization';
-import { IColorsTheme } from '@/features/theme';
+import { IColorsTheme, useTheme } from '@/features/theme';
 import { StyleSheet, Text, View } from 'react-native';
 import { MealCard } from './recipe-item';
 
-interface IRecipesList {
-  colors: IColorsTheme;
-}
-export const RecipesList = ({ colors }: IRecipesList) => {
+export const RecipesList = () => {
+  const { colors } = useTheme();
   const styles = useStyles(colors);
   const { t } = useLocalization('home');
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{t('recipes')}</Text>
