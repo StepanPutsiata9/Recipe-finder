@@ -3,7 +3,7 @@ import i18next from '@/languages';
 import { store } from '@/store';
 import { PortalProvider } from '@gorhom/portal';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import { JSX, useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+export default function RootLayout(): JSX.Element {
   useEffect(() => {
     const hideSplash = async () => {
       await SplashScreen.hideAsync();

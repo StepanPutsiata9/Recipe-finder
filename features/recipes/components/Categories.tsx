@@ -1,7 +1,7 @@
 import { useLocalization } from '@/features/localization';
 import { useTheme } from '@/features/theme';
 import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
-import { useState } from 'react';
+import { JSX, useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 interface ICategory {
@@ -12,12 +12,12 @@ interface ICategoriesProps {
   categories: ICategory[];
 }
 
-export const Categories = ({ categories }: ICategoriesProps) => {
+export const Categories = ({ categories }: ICategoriesProps): JSX.Element => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const { colors } = useTheme();
   const styles = useStyles(colors, indets, fontSize);
   const { t } = useLocalization('home');
-  const handleCategoryPress = (category: string) => {
+  const handleCategoryPress = (category: string): void => {
     setActiveCategory(category);
   };
 

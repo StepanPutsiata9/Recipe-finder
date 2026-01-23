@@ -8,22 +8,22 @@ import { ThemeMode } from '../types';
 export const useTheme = () => {
   const { mode } = useAppSelector((state) => state.theme);
   const dispatch = useAppDispatch();
-  const colors: IColorsTheme = useMemo(() => {
+  const colors: IColorsTheme = useMemo((): IColorsTheme => {
     return mode === 'light' ? lightTheme : darkTheme;
   }, [mode]);
 
   const isDark = mode === 'dark';
   const isLight = mode === 'light';
-  const handleToggleTheme = async () => {
+  const handleToggleTheme = async (): Promise<void> => {
     const newTheme = mode === 'light' ? 'dark' : 'light';
     await storeTheme(newTheme);
     dispatch(toggleTheme());
   };
-  const handleSetTheme = async (theme: ThemeMode) => {
+  const handleSetTheme = async (theme: ThemeMode): Promise<void> => {
     await storeTheme(theme);
     dispatch(setTheme(theme));
   };
-  const loadTheme = async () => {
+  const loadTheme = async (): Promise<void> => {
     try {
       const theme = await getTheme();
       handleSetTheme(theme ?? 'light');

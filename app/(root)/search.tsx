@@ -3,14 +3,15 @@ import { useTheme } from '@/features/theme';
 import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useRouter } from 'expo-router';
+import { JSX } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function Search() {
+export default function Search(): JSX.Element {
   const { colors } = useTheme();
   const styles = useStyles(colors, indets, fontSize);
   const router = useRouter();
-  const handleBack = () => router.back();
+  const handleBack = (): void => router.back();
   const { t } = useLocalization('search');
   return (
     <SafeAreaView style={styles.container}>

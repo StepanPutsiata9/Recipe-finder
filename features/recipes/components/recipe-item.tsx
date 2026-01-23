@@ -2,7 +2,7 @@ import { useTheme } from '@/features/theme';
 import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
-import React from 'react';
+import React, { JSX } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 interface IMealCard {
   meal: {
@@ -15,7 +15,7 @@ interface IMealCard {
   onPress?: () => void;
 }
 
-export const MealCard = ({ meal, onPress }: IMealCard) => {
+export const MealCard = ({ meal, onPress }: IMealCard): JSX.Element => {
   const { colors } = useTheme();
   const styles = useStyles(colors, indets, fontSize);
 

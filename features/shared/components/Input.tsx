@@ -1,7 +1,7 @@
 import { useTheme } from '@/features/theme';
 import { IColorsTheme } from '@/styles';
 import { Ionicons } from '@expo/vector-icons';
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, JSX, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -35,7 +35,7 @@ export const Input = forwardRef<TextInput, IInput>(
       ...props
     },
     ref
-  ) => {
+  ): JSX.Element => {
     const [showPassword, setShowPassword] = useState(false);
     const { colors } = useTheme();
     const styles = useStyles(colors);

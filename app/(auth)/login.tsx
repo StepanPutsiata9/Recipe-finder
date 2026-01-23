@@ -4,11 +4,12 @@ import { AuthBanner, Input, PrimaryButton } from '@/features/shared';
 import { useTheme } from '@/features/theme';
 import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import { useRouter } from 'expo-router';
+import { JSX } from 'react';
 import { Controller } from 'react-hook-form';
 import { StyleSheet, Text, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import { SafeAreaView } from 'react-native-safe-area-context';
-export default function Login() {
+export default function Login(): JSX.Element {
   const router = useRouter();
   const { t } = useLocalization('auth');
   const { colors } = useTheme();
@@ -20,11 +21,11 @@ export default function Login() {
     formState: { errors, isSubmitting },
   } = useAuthForm(true);
 
-  const handleSignUpLink = () => {
+  const handleSignUpLink = (): void => {
     router.navigate('/(auth)/registration');
   };
 
-  const onSubmit = (data: { email: string; password: string }) => {
+  const onSubmit = (data: { email: string; password: string }): void => {
     handleLogin(data.email, data.password);
   };
 

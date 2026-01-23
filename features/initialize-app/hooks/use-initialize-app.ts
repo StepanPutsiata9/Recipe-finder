@@ -8,7 +8,7 @@ export const useInitializeApp = () => {
   const { loadLanguage } = useLocalization();
   const { loadUser } = useAuth();
   const [isAppInitialized, setIsAppInitialized] = useState(false);
-  const initializeApp = async () => {
+  const initializeApp = async (): Promise<void> => {
     try {
       await Promise.all([loadUser(), loadTheme(), loadLanguage()]);
       setIsAppInitialized(true);

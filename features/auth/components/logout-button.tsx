@@ -2,11 +2,11 @@ import { useLocalization } from '@/features/localization';
 import { useTheme } from '@/features/theme';
 import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import React from 'react';
+import React, { JSX } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useAuth } from '../hooks';
 
-export const LogoutButton = () => {
+export const LogoutButton = (): JSX.Element => {
   const { colors } = useTheme();
   const styles = useStyles(colors, indets, fontSize);
   const { t } = useLocalization('settings');

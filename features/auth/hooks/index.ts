@@ -1,3 +1,3 @@
-export { useAuth } from './useAuth';
-export { useAuthForm } from './useAuthForms';
-export { AuthFormData, RegisterFormData, useAuthSchema } from './useAuthSchema';
+export { useAuth } from './use-auth';
+export { useAuthForm } from './use-auth-forms';
+export { AuthFormData, RegisterFormData, useAuthSchema } from './use-auth-schema';

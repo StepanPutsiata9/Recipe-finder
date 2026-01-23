@@ -1,6 +1,7 @@
 import { useTheme } from '@/features/theme';
+import { JSX } from 'react';
 import { ActivityIndicator, Modal, StyleSheet, View } from 'react-native';
-export function LoadingModal({ visible }: { visible: boolean }) {
+export function LoadingModal({ visible }: { visible: boolean }): JSX.Element {
   const { colors } = useTheme();
   return (
     <Modal visible={visible} transparent={true} animationType="fade" statusBarTranslucent={true}>

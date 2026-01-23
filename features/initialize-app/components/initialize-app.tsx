@@ -3,10 +3,10 @@ import { LoadingModal, LoadingScreen } from '@/features/shared';
 import { useTheme } from '@/features/theme';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { JSX, useEffect } from 'react';
 import { useInitializeApp } from '../hooks';
 
-export const AppNavigationStack = () => {
+export const AppNavigationStack = (): JSX.Element => {
   const { isDark } = useTheme();
   const { user, isLoading } = useAuth();
   const { isAppInitialized, initializeApp } = useInitializeApp();

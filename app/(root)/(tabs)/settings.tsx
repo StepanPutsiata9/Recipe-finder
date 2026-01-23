@@ -3,10 +3,11 @@ import { LanguageSwitcher } from '@/features/localization';
 import { SwitchThemeButton, useTheme } from '@/features/theme';
 import { ChangeAvatarButton } from '@/features/user-avatar';
 import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
+import { JSX } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function Settings() {
+export default function Settings(): JSX.Element {
   const { colors } = useTheme();
   const styles = useStyles(colors, indets, fontSize);
 

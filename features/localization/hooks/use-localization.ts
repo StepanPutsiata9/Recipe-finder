@@ -7,7 +7,7 @@ export const useLocalization = (namespace?: string | string[]) => {
   const dispatch = useAppDispatch();
   const { currentLanguage, languageLoading } = useAppSelector((state) => state.localization);
 
-  const changeLanguage = async (lang: string) => {
+  const changeLanguage = async (lang: string): Promise<void> => {
     try {
       dispatch(setLanguageLoading(true));
       await i18n.changeLanguage(lang);

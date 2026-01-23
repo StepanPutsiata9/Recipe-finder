@@ -2,21 +2,21 @@ import { useLocalization } from '@/features/localization';
 import { useTheme } from '@/features/theme';
 import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import React from 'react';
+import React, { JSX } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useBottomSheet } from '../hooks';
 import { AvatarBottomSheet } from './avatar-bottom-sheet';
 
-export const ChangeAvatarButton = () => {
+export const ChangeAvatarButton = (): JSX.Element => {
   const { colors } = useTheme();
   const styles = useStyles(colors, indets, fontSize);
   const { bottomSheetRef, isOpen, handleOpen, handleClose, handleSheetChanges } = useBottomSheet();
   const { t } = useLocalization('settings');
-  const handlePickFromGallery = () => {
+  const handlePickFromGallery = (): void => {
     handleClose();
   };
 
-  const handleTakePhoto = () => {
+  const handleTakePhoto = (): void => {
     handleClose();
   };
   return (

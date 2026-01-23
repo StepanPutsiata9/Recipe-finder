@@ -1,7 +1,7 @@
 import { useTheme } from '@/features/theme';
 import { IColorsTheme } from '@/styles';
 import { LinearGradient } from 'expo-linear-gradient';
-import React from 'react';
+import React, { JSX } from 'react';
 import { GestureResponderEvent, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 interface PrimaryButtonProps {
@@ -10,7 +10,7 @@ interface PrimaryButtonProps {
   disabled: boolean;
 }
 
-export function PrimaryButton({ title, onPress, disabled }: PrimaryButtonProps) {
+export function PrimaryButton({ title, onPress, disabled }: PrimaryButtonProps): JSX.Element {
   const { colors } = useTheme();
   const styles = useStyles(colors);
   return (

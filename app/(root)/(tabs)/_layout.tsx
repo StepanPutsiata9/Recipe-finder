@@ -1,9 +1,9 @@
 import { useLocalization } from '@/features/localization';
 import { CustomTabBar } from '@/features/shared';
 import { Tabs } from 'expo-router';
-import React from 'react';
+import React, { JSX } from 'react';
 
-export default function TabsLayout() {
+export default function TabsLayout(): JSX.Element {
   const { t } = useLocalization('common');
   return (
     <Tabs

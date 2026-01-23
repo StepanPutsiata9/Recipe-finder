@@ -1,6 +1,7 @@
 import { Stack } from 'expo-router';
+import { JSX } from 'react';
 
-export default function MainLayout() {
+export default function MainLayout(): JSX.Element {
   return (
     <Stack
       screenOptions={{

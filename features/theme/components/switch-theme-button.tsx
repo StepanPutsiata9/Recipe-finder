@@ -1,14 +1,14 @@
 import { useLocalization } from '@/features/localization';
 import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import React, { useMemo } from 'react';
+import React, { JSX, useMemo } from 'react';
 import { Platform, StyleSheet, Switch, Text, View } from 'react-native';
 import { useTheme } from '../hooks';
 
-export const SwitchThemeButton = () => {
+export const SwitchThemeButton = (): JSX.Element => {
   const { isDark, handleToggleTheme, colors } = useTheme();
   const { t } = useLocalization('settings');
-  const styles = useMemo(() => createStyles(colors, indets, fontSize), [colors]);
+  const styles = useMemo(() => createStyles(colors, indets, fontSize), [colors, indets, fontSize]);
   return (
     <View style={styles.container}>
       <View style={styles.iconTextContainer}>

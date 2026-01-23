@@ -1,1 +1,1 @@
-export { useInitializeApp } from './useInitializeApp';
+export { useInitializeApp } from './use-initialize-app';

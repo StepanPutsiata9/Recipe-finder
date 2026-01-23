@@ -4,7 +4,7 @@ import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
 import { Portal } from '@gorhom/portal';
-import React, { useCallback, useMemo } from 'react';
+import React, { JSX, useCallback, useMemo } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -26,7 +26,7 @@ export const AvatarBottomSheet = ({
   onTakePhoto,
   bottomSheetRef,
   handleSheetChanges,
-}: IAvatarBottomSheetProps) => {
+}: IAvatarBottomSheetProps): JSX.Element | null => {
   const insets = useSafeAreaInsets();
   const snapPoints = useMemo(() => ['60%'], []);
   const { t } = useLocalization('settings');

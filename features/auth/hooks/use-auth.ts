@@ -12,7 +12,7 @@ export const useAuth = () => {
   const router = useRouter();
   const { t } = useLocalization('auth');
 
-  const loadUser = async () => {
+  const loadUser = async (): Promise<void> => {
     dispatch(setLoading(true));
     return new Promise<void>((resolve) => {
       const unsubscribe = onAuthChange((firebaseUser) => {
@@ -24,7 +24,7 @@ export const useAuth = () => {
     });
   };
 
-  const handleLogin = async (email: string, password: string) => {
+  const handleLogin = async (email: string, password: string): Promise<void> => {
     dispatch(setLoading(true));
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -36,7 +36,7 @@ export const useAuth = () => {
     }
   };
 
-  const handleRegistration = async (email: string, password: string) => {
+  const handleRegistration = async (email: string, password: string): Promise<void> => {
     dispatch(setLoading(true));
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -48,7 +48,7 @@ export const useAuth = () => {
     }
   };
 
-  const handleLogout = async () => {
+  const handleLogout = async (): Promise<void> => {
     dispatch(setLoading(true));
     try {
       await signOut(auth);
@@ -61,7 +61,7 @@ export const useAuth = () => {
     }
   };
 
-  const handleLogoutPress = () => {
+  const handleLogoutPress = (): void => {
     Alert.alert(
       t('signOut'),
       t('signOutWarning'),
@@ -80,7 +80,7 @@ export const useAuth = () => {
     );
   };
 
-  const checkAuth = async () => {
+  const checkAuth = async (): Promise<boolean> => {
     return new Promise((resolve) => {
       const unsubscribe = onAuthChange((user) => {
         unsubscribe();
@@ -89,7 +89,7 @@ export const useAuth = () => {
     });
   };
 
-  const getUserEmail = (email: string) => {
+  const getUserEmail = (email: string): string => {
     return email && email.length > 13 ? email.slice(0, 13) + '...' : email;
   };
   return {

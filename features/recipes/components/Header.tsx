@@ -6,16 +6,17 @@ import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useRouter } from 'expo-router';
+import { JSX } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export const Header = () => {
+export const Header = (): JSX.Element => {
   const { colors } = useTheme();
   const styles = useStyles(colors, indets, fontSize);
   const router = useRouter();
   const { user, getUserEmail } = useAuth();
   const { t } = useLocalization('home');
-  const handleSearchButtonPressed = () => router.navigate('/(root)/search');
-  const handleNotificationsButtonPressed = () => router.navigate('/(root)/notifications');
+  const handleSearchButtonPressed = (): void => router.navigate('/(root)/search');
+  const handleNotificationsButtonPressed = (): void => router.navigate('/(root)/notifications');
   return (
     <View style={styles.container}>
       <View style={styles.greetView}>

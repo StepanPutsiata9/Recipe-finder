@@ -1,11 +1,11 @@
 import { useTheme } from '@/features/theme';
 import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import React, { useState } from 'react';
+import React, { JSX, useState } from 'react';
 import { Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useLocalization } from '../hooks';
 
-export const LanguageSwitcher = () => {
+export const LanguageSwitcher = (): JSX.Element => {
   const { colors } = useTheme();
   const styles = useStyles(colors, indets, fontSize);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -15,12 +15,12 @@ export const LanguageSwitcher = () => {
     { code: 'ru', name: 'Русский' },
   ];
 
-  const handleLanguageSelect = (langCode: string) => {
+  const handleLanguageSelect = (langCode: string): void => {
     changeLanguage(langCode);
     setIsModalVisible(false);
   };
-  const handleCloseModal = () => setIsModalVisible(false);
-  const handleOpenModal = () => setIsModalVisible(true);
+  const handleCloseModal = (): void => setIsModalVisible(false);
+  const handleOpenModal = (): void => setIsModalVisible(true);
 
   const currentLang = languages.find((lang) => lang.code === currentLanguage) || languages[0];
 
