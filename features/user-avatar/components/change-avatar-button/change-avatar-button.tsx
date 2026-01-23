@@ -1,6 +1,6 @@
 import { useLocalization } from '@/features/localization';
+import { IoniconsIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import React, { JSX } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import { useBottomSheet } from '../../hooks';
@@ -23,7 +23,7 @@ export const ChangeAvatarButton = (): JSX.Element => {
     <>
       <TouchableOpacity style={styles.button} onPress={handleOpen} activeOpacity={0.9}>
         <Text style={styles.buttonText}>{t('changeAvatar')}</Text>
-        <MaterialIcons name="arrow-forward" size={24} color={colors.primary} />
+        <IoniconsIcon name="arrow-forward" size={24} color={colors.primary} />
       </TouchableOpacity>
       <AvatarBottomSheet
         isOpen={isOpen}

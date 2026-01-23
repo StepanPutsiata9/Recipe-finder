@@ -1,6 +1,6 @@
 import { useLocalization } from '@/features/localization';
+import { IoniconsIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
 import { Portal } from '@gorhom/portal';
 import React, { JSX, useCallback, useMemo } from 'react';
@@ -68,21 +68,21 @@ export const AvatarBottomSheet = ({
               <Image source={{ uri: currentAvatar }} style={styles.avatar} />
             ) : (
               <View style={styles.avatarPlaceholder}>
-                <MaterialIcons name="person" size={60} color={colors.primary} />
+                <IoniconsIcon name="person" size={60} color={colors.primary} />
               </View>
             )}
           </View>
 
           <TouchableOpacity style={styles.modalOption} onPress={onPickFromGallery}>
-            <MaterialIcons name="photo-library" size={24} color={colors.primary} />
+            <IoniconsIcon name="library-outline" size={24} color={colors.primary} />
             <Text style={styles.modalOptionText}>{t('chooseFromGallery')}</Text>
-            <MaterialIcons name="arrow-forward" size={20} color={colors.primary} />
+            <IoniconsIcon name="arrow-forward" size={20} color={colors.primary} />
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.modalOption} onPress={onTakePhoto}>
-            <MaterialIcons name="photo-camera" size={24} color={colors.primary} />
+            <IoniconsIcon name="camera" size={24} color={colors.primary} />
             <Text style={styles.modalOptionText}>{t('takePhoto')}</Text>
-            <MaterialIcons name="arrow-forward" size={20} color={colors.primary} />
+            <IoniconsIcon name="arrow-forward" size={20} color={colors.primary} />
           </TouchableOpacity>
 
           <TouchableOpacity style={[styles.modalOption, styles.cancelOption]} onPress={onClose}>

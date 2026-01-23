@@ -1,9 +1,9 @@
 import { useLocalization } from '@/features/localization/hooks';
+import { FeatherIcon } from '@/features/shared';
+import { useTheme } from '@/features/theme/hooks';
 import { fontSize, indets } from '@/styles';
-import AntDesign from '@expo/vector-icons/AntDesign';
 import React, { JSX, useMemo } from 'react';
 import { Switch, Text, View } from 'react-native';
-import { useTheme } from '@/features/theme/hooks';
 import { createStyles } from './switch-theme-button.styles';
 
 export const SwitchThemeButton = (): JSX.Element => {
@@ -13,7 +13,7 @@ export const SwitchThemeButton = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <View style={styles.iconTextContainer}>
-        <AntDesign
+        <FeatherIcon
           name={isDark ? 'moon' : 'sun'}
           size={20}
           color={isDark ? colors.secondaryButtonBorder : colors.primary}

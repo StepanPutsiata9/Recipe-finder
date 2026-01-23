@@ -1,6 +1,6 @@
 import { useLocalization } from '@/features/localization';
+import { IoniconsIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import React, { JSX } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import { useAuth } from '../../hooks';
@@ -14,7 +14,7 @@ export const LogoutButton = (): JSX.Element => {
   return (
     <TouchableOpacity style={styles.button} onPress={handleLogoutPress} activeOpacity={0.9}>
       <Text style={styles.buttonText}>{t('signOut')}</Text>
-      <MaterialIcons name="logout" size={24} color={colors.primary} />
+      <IoniconsIcon name="exit-outline" size={24} color={colors.primary} />
     </TouchableOpacity>
   );
 };
