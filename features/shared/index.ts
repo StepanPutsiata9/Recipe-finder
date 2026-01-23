@@ -7,4 +7,4 @@ export {
   PrimaryButton,
   RegistrationBanner,
 } from './components';
-export { getIconByRouteName } from './utils';
+export { FeatherIcon, getIconByRouteName, IoniconsIcon } from './utils';

@@ -1,6 +1,6 @@
+import { FeatherIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import Feather from '@expo/vector-icons/Feather';
 import React, { JSX } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { useStyles } from './recipe-item.styles';
@@ -33,7 +33,7 @@ export const MealCard = ({ meal, onPress }: IMealCard): JSX.Element => {
 
           <View style={styles.detailsRow}>
             <View style={styles.detailTag}>
-              <Feather name="map-pin" size={14} color={colors.primary} />
+              <FeatherIcon name="map-pin" size={14} color={colors.primary} />
               <Text style={styles.detailText}>{meal.strArea}</Text>
             </View>
             <View style={styles.detailTag}>

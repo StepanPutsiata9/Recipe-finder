@@ -1,5 +1,5 @@
+import { IoniconsIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme/hooks';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import React, { JSX, useState } from 'react';
 import { Modal, Pressable, Text, TouchableOpacity, View } from 'react-native';
 import { useLocalization } from '../../hooks';
@@ -43,7 +43,7 @@ export const LanguageSwitcher = (): JSX.Element => {
         <Pressable style={styles.modalOverlay} onPress={handleCloseModal}>
           <Pressable style={styles.modalCard} onPress={(e) => e.stopPropagation()}>
             <View style={styles.modalHeader}>
-              <Ionicons name="globe-outline" size={24} color={colors.primary} />
+              <IoniconsIcon name="globe-outline" size={24} color={colors.primary} />
               <Text style={styles.modalTitle}>{t('chooseLanguage')}</Text>
               <View style={styles.gradientLine} />
             </View>
@@ -70,7 +70,7 @@ export const LanguageSwitcher = (): JSX.Element => {
                   </View>
 
                   {currentLanguage === language.code && (
-                    <Ionicons name="checkmark-circle" size={24} color={colors.primary} />
+                    <IoniconsIcon name="checkmark-circle" size={24} color={colors.primary} />
                   )}
                 </TouchableOpacity>
               ))}

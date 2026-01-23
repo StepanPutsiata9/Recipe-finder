@@ -1,7 +1,7 @@
 import { useLocalization } from '@/features/localization';
+import { IoniconsIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
 import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { useRouter } from 'expo-router';
 import { JSX } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -17,7 +17,7 @@ export default function Search(): JSX.Element {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={handleBack} style={styles.backButton} activeOpacity={0.9}>
-          <Ionicons name="chevron-back" size={32} color={colors.primary} />
+          <IoniconsIcon name="chevron-back" size={32} color={colors.primary} />
         </TouchableOpacity>
         <View style={styles.titleContainer}>
           <Text style={styles.text}>{t('search')}</Text>

@@ -1,7 +1,7 @@
 import { useTheme } from '@/features/theme';
-import { Ionicons } from '@expo/vector-icons';
 import React, { forwardRef, JSX, useState } from 'react';
 import { Text, TextInput, TextInputProps, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { IoniconsIcon } from '../../utils';
 import { useStyles } from './input.styles';
 
 interface IInput extends TextInputProps {
@@ -56,7 +56,7 @@ export const Input = forwardRef<TextInput, IInput>(
               onPress={() => setShowPassword(!showPassword)}
               activeOpacity={0.7}
             >
-              <Ionicons
+              <IoniconsIcon
                 name={showPassword ? 'eye-outline' : 'eye-off-outline'}
                 size={22}
                 color={colors.placeholder}

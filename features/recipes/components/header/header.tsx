@@ -1,8 +1,7 @@
 import { useAuth } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
+import { FeatherIcon, IoniconsIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
-import Feather from '@expo/vector-icons/Feather';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useRouter } from 'expo-router';
 import { JSX } from 'react';
@@ -41,14 +40,14 @@ export const Header = (): JSX.Element => {
           style={styles.placeholder}
           activeOpacity={0.9}
         >
-          <Feather name="search" size={20} color={colors.primary} />
+          <FeatherIcon name="search" size={20} color={colors.primary} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.placeholder}
           onPress={handleNotificationsButtonPressed}
           activeOpacity={0.9}
         >
-          <Ionicons name="notifications-outline" size={20} color={colors.primary} />
+          <IoniconsIcon name="notifications-outline" size={20} color={colors.primary} />
         </TouchableOpacity>
       </View>
     </View>
