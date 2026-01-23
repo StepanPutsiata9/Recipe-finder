@@ -1,4 +1,4 @@
-import { IColorsTheme, ILoadingColors } from '../types';
+import { IColorsTheme, ILoadingColors } from './colors.types';
 
 export const loadingColors: ILoadingColors = {
   background: '#f9beac',
@@ -7,8 +7,8 @@ export const loadingColors: ILoadingColors = {
 export const darkTheme: IColorsTheme = {
   primary: '#FF6E41',
   primaryGradient: {
-    start: '#ff9900',
-    end: '#FFB412',
+    start: '#FF6E41',
+    end: '#fe6536',
   },
   primaryButtonText: '#ffffff',
   secondaryButtonBackground: '#ff6e410d',
@@ -36,7 +36,7 @@ export const lightTheme: IColorsTheme = {
   primary: '#FF6E41',
   primaryGradient: {
     start: '#FF6E41',
-    end: '#FF602E',
+    end: '#fe6536',
   },
   secondaryButtonBackground: '#FFF5F2',
   secondaryButtonBorder: '#FFE5DC',

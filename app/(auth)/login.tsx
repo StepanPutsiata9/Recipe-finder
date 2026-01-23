@@ -1,19 +1,18 @@
 import { useAuth, useAuthForm } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
 import { AuthBanner, Input, PrimaryButton } from '@/features/shared';
-import { IColorsTheme, useTheme } from '@/features/theme';
-
+import { useTheme } from '@/features/theme';
+import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import { useRouter } from 'expo-router';
 import { Controller } from 'react-hook-form';
 import { StyleSheet, Text, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
 export default function Login() {
   const router = useRouter();
   const { t } = useLocalization('auth');
   const { colors } = useTheme();
-  const styles = useStyles(colors);
+  const styles = useStyles(colors, indets, fontSize);
   const { handleLogin } = useAuth();
   const {
     control,
@@ -96,7 +95,7 @@ export default function Login() {
   );
 }
 
-const useStyles = (colors: IColorsTheme) =>
+const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
   StyleSheet.create({
     container: {
       flex: 1,
@@ -107,31 +106,31 @@ const useStyles = (colors: IColorsTheme) =>
     },
     content: {
       flex: 1,
-      paddingHorizontal: 16,
+      paddingHorizontal: indets.m,
       justifyContent: 'center',
     },
     text: {
       color: colors.text.primary,
-      fontSize: 20,
+      fontSize: fontSize.xl,
       textAlign: 'center',
       fontFamily: 'Montserrat',
-      marginBottom: 24,
+      marginBottom: indets.xl,
     },
     banner: {
       alignItems: 'center',
-      marginBottom: 24,
+      marginBottom: indets.xl,
     },
     inputsContainer: {
       width: '100%',
-      marginBottom: 24,
-      gap: 12,
+      marginBottom: indets.xl,
+      gap: indets.s,
     },
     buttonContainer: {
-      marginBottom: 24,
+      marginBottom: indets.xl,
     },
     link: {
       fontFamily: 'Montserrat',
-      fontSize: 14,
+      fontSize: fontSize.s,
       textAlign: 'center',
       color: colors.text.secondary,
     },

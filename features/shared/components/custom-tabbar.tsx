@@ -1,10 +1,10 @@
-import { IColorsTheme, useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme';
+import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Animated, { FadeIn, LinearTransition } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { getIconByRouteName } from '../utils';
-
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 
 export const CustomTabBar: React.FC<BottomTabBarProps> = ({
@@ -13,7 +13,7 @@ export const CustomTabBar: React.FC<BottomTabBarProps> = ({
   navigation,
 }: BottomTabBarProps) => {
   const { colors } = useTheme();
-  const styles = useStyles(colors);
+  const styles = useStyles(colors, indets, fontSize);
   const { bottom } = useSafeAreaInsets();
   return (
     <View style={[styles.container, { bottom: 25 + bottom }]}>
@@ -61,7 +61,7 @@ export const CustomTabBar: React.FC<BottomTabBarProps> = ({
     </View>
   );
 };
-const useStyles = (colors: IColorsTheme) =>
+const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
   StyleSheet.create({
     container: {
       position: 'absolute',
@@ -72,7 +72,7 @@ const useStyles = (colors: IColorsTheme) =>
       width: '80%',
       alignSelf: 'center',
       borderRadius: 40,
-      paddingVertical: 12,
+      paddingVertical: indets.s,
       paddingHorizontal: 0,
       shadowColor: colors.primary,
       shadowOffset: { width: 0, height: 4 },
@@ -86,7 +86,7 @@ const useStyles = (colors: IColorsTheme) =>
       justifyContent: 'center',
       alignItems: 'center',
       height: 45,
-      paddingHorizontal: 16,
+      paddingHorizontal: indets.m,
       borderRadius: 30,
       minWidth: 60,
     },
@@ -100,7 +100,7 @@ const useStyles = (colors: IColorsTheme) =>
     },
     text: {
       color: colors.tabbarActiveText,
-      fontSize: 14,
+      fontSize: fontSize.s,
       marginLeft: 8,
       fontFamily: 'Montserrat',
       fontWeight: '600',

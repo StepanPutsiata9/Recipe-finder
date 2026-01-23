@@ -1,5 +1,6 @@
 import { useLocalization } from '@/features/localization';
-import { IColorsTheme, useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme';
+import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useRouter } from 'expo-router';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -7,7 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Notifications() {
   const { colors } = useTheme();
-  const styles = useStyles(colors);
+  const styles = useStyles(colors, indets, fontSize);
   const router = useRouter();
   const handleBack = () => router.back();
   const { t } = useLocalization('notifications');
@@ -26,7 +27,7 @@ export default function Notifications() {
   );
 }
 
-const useStyles = (colors: IColorsTheme) =>
+const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
   StyleSheet.create({
     container: {
       flex: 1,
@@ -36,8 +37,8 @@ const useStyles = (colors: IColorsTheme) =>
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      paddingHorizontal: 16,
-      paddingVertical: 12,
+      paddingHorizontal: indets.m,
+      paddingVertical: indets.s,
     },
     backButton: {
       width: 40,
@@ -56,7 +57,7 @@ const useStyles = (colors: IColorsTheme) =>
     },
     text: {
       color: colors.text.primary,
-      fontSize: 20,
+      fontSize: fontSize.xl,
       fontFamily: 'Montserrat',
     },
     rightPlaceholder: {

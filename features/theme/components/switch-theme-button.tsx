@@ -1,14 +1,14 @@
 import { useLocalization } from '@/features/localization';
+import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import React, { useMemo } from 'react';
 import { Platform, StyleSheet, Switch, Text, View } from 'react-native';
 import { useTheme } from '../hooks';
-import { IColorsTheme } from '../types';
 
 export const SwitchThemeButton = () => {
   const { isDark, handleToggleTheme, colors } = useTheme();
   const { t } = useLocalization('settings');
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const styles = useMemo(() => createStyles(colors, indets, fontSize), [colors]);
   return (
     <View style={styles.container}>
       <View style={styles.iconTextContainer}>
@@ -33,11 +33,11 @@ export const SwitchThemeButton = () => {
   );
 };
 
-const createStyles = (colors: IColorsTheme) =>
+const createStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
   StyleSheet.create({
     container: {
-      paddingHorizontal: 16,
-      paddingVertical: 16,
+      paddingHorizontal: indets.m,
+      paddingVertical: indets.m,
       backgroundColor: colors.secondaryButtonBackground,
       borderRadius: 20,
       flexDirection: 'row',
@@ -49,10 +49,10 @@ const createStyles = (colors: IColorsTheme) =>
     iconTextContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      gap: 12,
+      gap: indets.s,
     },
     text: {
-      fontSize: 16,
+      fontSize: fontSize.m,
       fontFamily: 'MontserratBold',
       color: colors.text.secondary,
       letterSpacing: 1.2,

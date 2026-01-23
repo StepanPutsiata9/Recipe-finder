@@ -1,5 +1,6 @@
 import { useLocalization } from '@/features/localization';
-import { IColorsTheme, useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme';
+import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
@@ -8,7 +9,7 @@ import { AvatarBottomSheet } from './avatar-bottom-sheet';
 
 export const ChangeAvatarButton = () => {
   const { colors } = useTheme();
-  const styles = useStyles(colors);
+  const styles = useStyles(colors, indets, fontSize);
   const { bottomSheetRef, isOpen, handleOpen, handleClose, handleSheetChanges } = useBottomSheet();
   const { t } = useLocalization('settings');
   const handlePickFromGallery = () => {
@@ -37,10 +38,10 @@ export const ChangeAvatarButton = () => {
   );
 };
 
-const useStyles = (colors: IColorsTheme) =>
+const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
   StyleSheet.create({
     button: {
-      paddingVertical: 16,
+      paddingVertical: indets.m,
       backgroundColor: colors.secondaryButtonBackground,
       borderRadius: 20,
       flexDirection: 'row',
@@ -50,9 +51,9 @@ const useStyles = (colors: IColorsTheme) =>
       borderColor: colors.secondaryButtonBorder,
     },
     buttonText: {
-      fontSize: 16,
+      fontSize: fontSize.m,
       fontFamily: 'MontserratBold',
       color: colors.primary,
-      marginRight: 15,
+      marginRight: indets.s,
     },
   });

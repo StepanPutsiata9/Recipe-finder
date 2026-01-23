@@ -1,10 +1,10 @@
-import { IColorsTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme';
+import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 interface IMealCard {
-  colors: IColorsTheme;
   meal: {
     idMeal: string;
     strMeal: string;
@@ -15,8 +15,9 @@ interface IMealCard {
   onPress?: () => void;
 }
 
-export const MealCard = ({ colors, meal, onPress }: IMealCard) => {
-  const styles = useStyles(colors);
+export const MealCard = ({ meal, onPress }: IMealCard) => {
+  const { colors } = useTheme();
+  const styles = useStyles(colors, indets, fontSize);
 
   return (
     <TouchableOpacity style={styles.container} onPress={onPress} activeOpacity={0.8}>
@@ -52,14 +53,14 @@ export const MealCard = ({ colors, meal, onPress }: IMealCard) => {
   );
 };
 
-const useStyles = (colors: IColorsTheme) =>
+const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
   StyleSheet.create({
     container: {
       flexDirection: 'row',
       backgroundColor: colors.background,
-      marginBottom: 25,
+      marginBottom: indets.xl,
       borderBottomWidth: 1,
-      paddingBottom: 10,
+      paddingBottom: indets.s,
       borderColor: colors.placeholder,
     },
     imageContainer: {
@@ -75,16 +76,16 @@ const useStyles = (colors: IColorsTheme) =>
     infoContainer: {
       flex: 1,
       justifyContent: 'space-between',
-      marginLeft: 16,
+      marginLeft: indets.m,
     },
     mainInfo: {
       flex: 1,
     },
     mealName: {
       color: colors.text.primary,
-      fontSize: 18,
+      fontSize: fontSize.l,
       fontFamily: 'MontserratBold',
-      marginBottom: 5,
+      marginBottom: indets.xs,
       lineHeight: 22,
     },
     detailsRow: {
@@ -102,7 +103,7 @@ const useStyles = (colors: IColorsTheme) =>
     },
     detailText: {
       color: colors.text.primary,
-      fontSize: 12,
+      fontSize: fontSize.xs,
       fontFamily: 'Montserrat',
       letterSpacing: 0.3,
     },
@@ -116,9 +117,9 @@ const useStyles = (colors: IColorsTheme) =>
     },
     viewText: {
       color: colors.text.secondary,
-      fontSize: 12,
+      fontSize: indets.s,
       fontFamily: 'Montserrat',
-      marginRight: 6,
+      marginRight: indets.xs,
     },
     arrowContainer: {
       width: 24,

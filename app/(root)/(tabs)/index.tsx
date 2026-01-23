@@ -1,8 +1,8 @@
 import { Categories, Header, RecipesList } from '@/features/recipes';
-import { IColorsTheme, useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme';
+import { IColorsTheme } from '@/styles';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
 export default function Home() {
   const { colors } = useTheme();
   const styles = useStyles(colors);
@@ -65,12 +65,5 @@ const useStyles = (colors: IColorsTheme) =>
     container: {
       flex: 1,
       backgroundColor: colors.background,
-    },
-    text: {
-      color: colors.text.primary,
-      fontSize: 20,
-      textAlign: 'center',
-      fontFamily: 'Montserrat',
-      marginBottom: 20,
     },
   });

@@ -1,5 +1,6 @@
 import { useLocalization } from '@/features/localization';
-import { IColorsTheme, useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme';
+import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
 import { Portal } from '@gorhom/portal';
@@ -30,7 +31,7 @@ export const AvatarBottomSheet = ({
   const snapPoints = useMemo(() => ['60%'], []);
   const { t } = useLocalization('settings');
   const { colors } = useTheme();
-  const styles = useStyles(colors);
+  const styles = useStyles(colors, indets, fontSize);
   const renderBackdrop = useCallback(
     (props: any) => (
       <BottomSheetBackdrop
@@ -93,12 +94,12 @@ export const AvatarBottomSheet = ({
   );
 };
 
-const useStyles = (colors: IColorsTheme) =>
+const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
   StyleSheet.create({
     contentContainer: {
       flex: 1,
-      paddingHorizontal: 20,
-      paddingTop: 10,
+      paddingHorizontal: indets.l,
+      paddingTop: indets.s,
       zIndex: 9999,
     },
     handleIndicator: {
@@ -113,15 +114,15 @@ const useStyles = (colors: IColorsTheme) =>
       borderTopRightRadius: 20,
     },
     modalTitle: {
-      fontSize: 20,
+      fontSize: indets.l,
       fontFamily: 'MontserratBold',
       color: colors.text.primary,
       textAlign: 'center',
-      marginBottom: 20,
+      marginBottom: indets.l,
     },
     avatarContainer: {
       alignItems: 'center',
-      marginVertical: 20,
+      marginVertical: indets.l,
     },
     avatar: {
       width: 100,
@@ -143,20 +144,20 @@ const useStyles = (colors: IColorsTheme) =>
     modalOption: {
       flexDirection: 'row',
       alignItems: 'center',
-      paddingVertical: 18,
-      paddingHorizontal: 20,
+      paddingVertical: indets.m,
+      paddingHorizontal: indets.l,
       borderRadius: 16,
-      marginBottom: 12,
+      marginBottom: indets.m,
       backgroundColor: 'rgba(255, 110, 65, 0.05)',
       borderWidth: 1,
       borderColor: colors.secondaryButtonBorder,
     },
     modalOptionText: {
-      fontSize: 16,
+      fontSize: fontSize.m,
       fontFamily: 'MontserratBold',
       color: colors.primary,
       flex: 1,
-      marginLeft: 15,
+      marginLeft: indets.s,
     },
     cancelOption: {
       backgroundColor: 'transparent',
@@ -164,7 +165,7 @@ const useStyles = (colors: IColorsTheme) =>
       justifyContent: 'center',
     },
     cancelText: {
-      fontSize: 16,
+      fontSize: fontSize.m,
       fontFamily: 'MontserratBold',
       color: colors.placeholder,
       textAlign: 'center',

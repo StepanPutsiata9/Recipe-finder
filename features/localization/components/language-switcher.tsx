@@ -1,4 +1,5 @@
-import { IColorsTheme, useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme';
+import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import React, { useState } from 'react';
 import { Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -6,7 +7,7 @@ import { useLocalization } from '../hooks';
 
 export const LanguageSwitcher = () => {
   const { colors } = useTheme();
-  const styles = useStyles(colors);
+  const styles = useStyles(colors, indets, fontSize);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { currentLanguage, changeLanguage, t } = useLocalization('settings');
   const languages = [
@@ -81,13 +82,13 @@ export const LanguageSwitcher = () => {
   );
 };
 
-const useStyles = (colors: IColorsTheme) =>
+const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
   StyleSheet.create({
     floatingButton: {
       backgroundColor: colors.secondaryButtonBackground,
       borderRadius: 20,
-      paddingHorizontal: 16,
-      paddingVertical: 16,
+      paddingHorizontal: indets.m,
+      paddingVertical: indets.m,
       borderWidth: 1,
       borderColor: colors.secondaryButtonBorder,
     },
@@ -99,38 +100,37 @@ const useStyles = (colors: IColorsTheme) =>
     buttonTextContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      gap: 6,
+      gap: indets.xs,
     },
     buttonLanguageCode: {
-      fontSize: 16,
+      fontSize: fontSize.m,
       fontFamily: 'MontserratBold',
       color: colors.primary,
     },
-    // Модалка
     modalOverlay: {
       flex: 1,
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
       justifyContent: 'center',
       alignItems: 'center',
-      padding: 20,
+      padding: indets.m,
     },
     modalCard: {
       backgroundColor: colors.background,
       borderRadius: 24,
       width: '100%',
       maxWidth: 320,
-      padding: 24,
+      padding: indets.xl,
     },
     modalHeader: {
       alignItems: 'center',
-      marginBottom: 24,
+      marginBottom: indets.xl,
     },
     modalTitle: {
-      fontSize: 20,
+      fontSize: fontSize.xl,
       fontFamily: 'MontserratBold',
       color: colors.text.primary,
-      marginTop: 12,
-      marginBottom: 16,
+      marginTop: indets.s,
+      marginBottom: indets.m,
     },
     gradientLine: {
       height: 2,
@@ -141,14 +141,14 @@ const useStyles = (colors: IColorsTheme) =>
     },
 
     languagesList: {
-      gap: 8,
-      marginBottom: 24,
+      gap: indets.s,
+      marginBottom: indets.xl,
     },
     languageItem: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      padding: 16,
+      padding: indets.m,
       borderRadius: 16,
       backgroundColor: colors.secondaryButtonBackground,
       borderWidth: 1,
@@ -163,7 +163,7 @@ const useStyles = (colors: IColorsTheme) =>
       alignItems: 'center',
     },
     languageName: {
-      fontSize: 16,
+      fontSize: indets.m,
       fontFamily: 'Montserrat',
       color: colors.text.primary,
     },

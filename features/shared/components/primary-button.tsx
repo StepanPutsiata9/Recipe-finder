@@ -1,4 +1,5 @@
-import { IColorsTheme, useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme';
+import { IColorsTheme } from '@/styles';
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { GestureResponderEvent, StyleSheet, Text, TouchableOpacity, View } from 'react-native';

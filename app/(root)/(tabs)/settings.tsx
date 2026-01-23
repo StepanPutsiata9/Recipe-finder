@@ -1,13 +1,14 @@
 import { LogoutButton } from '@/features/auth';
 import { LanguageSwitcher } from '@/features/localization';
-import { IColorsTheme, SwitchThemeButton, useTheme } from '@/features/theme';
+import { SwitchThemeButton, useTheme } from '@/features/theme';
 import { ChangeAvatarButton } from '@/features/user-avatar';
+import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Settings() {
   const { colors } = useTheme();
-  const styles = useStyles(colors);
+  const styles = useStyles(colors, indets, fontSize);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -22,22 +23,22 @@ export default function Settings() {
   );
 }
 
-const useStyles = (colors: IColorsTheme) => {
+const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) => {
   return StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: colors.background,
-      paddingHorizontal: 16,
+      paddingHorizontal: indets.l,
     },
     text: {
       color: colors.text.primary,
-      fontSize: 20,
+      fontSize: fontSize.xl,
       fontFamily: 'MontserratBold',
       letterSpacing: 0.5,
-      marginBottom: 20,
+      marginBottom: indets.l,
     },
     buttonsContainer: {
-      gap: 12,
+      gap: indets.s,
     },
   });
 };

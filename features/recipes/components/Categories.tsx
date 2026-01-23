@@ -1,5 +1,6 @@
 import { useLocalization } from '@/features/localization';
-import { IColorsTheme, useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme';
+import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -14,7 +15,7 @@ interface ICategoriesProps {
 export const Categories = ({ categories }: ICategoriesProps) => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const { colors } = useTheme();
-  const styles = useStyles(colors);
+  const styles = useStyles(colors, indets, fontSize);
   const { t } = useLocalization('home');
   const handleCategoryPress = (category: string) => {
     setActiveCategory(category);
@@ -52,28 +53,28 @@ export const Categories = ({ categories }: ICategoriesProps) => {
   );
 };
 
-const useStyles = (colors: IColorsTheme) =>
+const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
   StyleSheet.create({
     container: {
-      marginBottom: 20,
+      marginBottom: indets.l,
     },
     title: {
       color: colors.text.primary,
-      fontSize: 18,
+      fontSize: fontSize.l,
       fontFamily: 'MontserratBold',
-      marginBottom: 12,
-      marginLeft: 16,
+      marginBottom: indets.s,
+      marginLeft: indets.m,
     },
     scrollContent: {
-      paddingHorizontal: 16,
+      paddingHorizontal: indets.m,
     },
     categoryButton: {
-      paddingHorizontal: 16,
-      paddingVertical: 8,
+      paddingHorizontal: indets.m,
+      paddingVertical: indets.xs,
       borderColor: colors.primary,
       borderWidth: 1,
       borderRadius: 20,
-      marginRight: 8,
+      marginRight: indets.xs,
       minHeight: 36,
       justifyContent: 'center',
     },
@@ -82,7 +83,7 @@ const useStyles = (colors: IColorsTheme) =>
     },
     categoryText: {
       color: colors.text.secondary,
-      fontSize: 14,
+      fontSize: indets.s,
       fontFamily: 'Montserrat',
     },
     activeCategoryText: {

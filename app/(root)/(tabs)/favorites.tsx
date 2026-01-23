@@ -1,10 +1,10 @@
 import { useLocalization } from '@/features/localization';
-import { IColorsTheme, useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme';
+import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import { StyleSheet, Text, View } from 'react-native';
-
 export default function Favorites() {
   const { colors } = useTheme();
-  const styles = useStyles(colors);
+  const styles = useStyles(colors, indets, fontSize);
   const { t } = useLocalization('favorites');
   return (
     <View style={styles.container}>
@@ -13,7 +13,7 @@ export default function Favorites() {
   );
 }
 
-const useStyles = (colors: IColorsTheme) =>
+const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
   StyleSheet.create({
     container: {
       flex: 1,
@@ -23,7 +23,7 @@ const useStyles = (colors: IColorsTheme) =>
     },
     text: {
       color: colors.text.primary,
-      fontSize: 20,
+      fontSize: fontSize.xxl,
       fontFamily: 'Montserrat',
     },
   });

@@ -1,9 +1,9 @@
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { darkTheme, IColorsTheme, lightTheme, loadingColors } from '@/styles';
 import { useMemo } from 'react';
-import { darkTheme, lightTheme, loadingColors } from '../constants/colors';
 import { getTheme, storeTheme } from '../storage';
 import { setTheme, toggleTheme } from '../store/theme.slice';
-import { IColorsTheme, ThemeMode } from '../types';
+import { ThemeMode } from '../types';
 
 export const useTheme = () => {
   const { mode } = useAppSelector((state) => state.theme);

@@ -1,6 +1,7 @@
 import { useAuth } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
-import { IColorsTheme, useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme';
+import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
@@ -9,7 +10,7 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 
 export const Header = () => {
   const { colors } = useTheme();
-  const styles = useStyles(colors);
+  const styles = useStyles(colors, indets, fontSize);
   const router = useRouter();
   const { user, getUserEmail } = useAuth();
   const { t } = useLocalization('home');
@@ -53,29 +54,29 @@ export const Header = () => {
   );
 };
 
-const useStyles = (colors: IColorsTheme) =>
+const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
   StyleSheet.create({
     container: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      marginBottom: 15,
+      marginBottom: indets.m,
       paddingHorizontal: 16,
     },
     greetView: {
       flexDirection: 'row',
-      gap: 12,
+      gap: indets.s,
       alignItems: 'center',
     },
     helloText: {
       color: colors.text.primary,
       fontFamily: 'Montserrat',
-      fontSize: 18,
+      fontSize: fontSize.l,
       letterSpacing: 1.3,
     },
     nameView: {},
     nameText: {
-      fontSize: 18,
+      fontSize: fontSize.l,
       fontFamily: 'MontserratBold',
       color: colors.text.primary,
     },
@@ -101,6 +102,6 @@ const useStyles = (colors: IColorsTheme) =>
     },
     functionsBlock: {
       flexDirection: 'row',
-      gap: 12,
+      gap: indets.s,
     },
   });

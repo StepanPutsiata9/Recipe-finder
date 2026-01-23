@@ -1,4 +1,5 @@
-import { ILoadingColors, useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme';
+import { ILoadingColors } from '@/styles';
 import LottieView from 'lottie-react-native';
 import { StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';

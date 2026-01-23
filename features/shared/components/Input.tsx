@@ -1,4 +1,5 @@
-import { IColorsTheme, useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme';
+import { IColorsTheme } from '@/styles';
 import { Ionicons } from '@expo/vector-icons';
 import React, { forwardRef, useState } from 'react';
 import {
