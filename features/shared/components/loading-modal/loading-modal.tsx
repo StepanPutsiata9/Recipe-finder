@@ -1,6 +1,7 @@
 import { useTheme } from '@/features/theme';
 import { JSX } from 'react';
-import { ActivityIndicator, Modal, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Modal, View } from 'react-native';
+import { styles } from './loading-modal.styles';
 export function LoadingModal({ visible }: { visible: boolean }): JSX.Element {
   const { colors } = useTheme();
   return (
@@ -11,11 +12,3 @@ export function LoadingModal({ visible }: { visible: boolean }): JSX.Element {
     </Modal>
   );
 }
-const styles = StyleSheet.create({
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-  },
-});

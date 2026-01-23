@@ -1,1 +1,1 @@
-export { AppNavigationStack } from './initialize-app';
+export { AppNavigationStack } from './inizialize-app';

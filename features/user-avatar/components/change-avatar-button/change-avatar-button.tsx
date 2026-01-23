@@ -1,11 +1,12 @@
 import { useLocalization } from '@/features/localization';
 import { useTheme } from '@/features/theme';
-import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
+import { fontSize, indets } from '@/styles';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import React, { JSX } from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { useBottomSheet } from '../hooks';
-import { AvatarBottomSheet } from './avatar-bottom-sheet';
+import { Text, TouchableOpacity } from 'react-native';
+import { useBottomSheet } from '../../hooks';
+import { AvatarBottomSheet } from '../avatar-bottom-sheet/avatar-bottom-sheet';
+import { useStyles } from './change-avatar-button.styles';
 
 export const ChangeAvatarButton = (): JSX.Element => {
   const { colors } = useTheme();
@@ -37,23 +38,3 @@ export const ChangeAvatarButton = (): JSX.Element => {
     </>
   );
 };
-
-const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
-  StyleSheet.create({
-    button: {
-      paddingVertical: indets.m,
-      backgroundColor: colors.secondaryButtonBackground,
-      borderRadius: 20,
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderWidth: 1,
-      borderColor: colors.secondaryButtonBorder,
-    },
-    buttonText: {
-      fontSize: fontSize.m,
-      fontFamily: 'MontserratBold',
-      color: colors.primary,
-      marginRight: indets.s,
-    },
-  });

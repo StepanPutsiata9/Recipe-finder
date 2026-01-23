@@ -4,7 +4,7 @@ import { useTheme } from '@/features/theme';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { JSX, useEffect } from 'react';
-import { useInitializeApp } from '../hooks';
+import { useInitializeApp } from '../../hooks';
 
 export const AppNavigationStack = (): JSX.Element => {
   const { isDark } = useTheme();

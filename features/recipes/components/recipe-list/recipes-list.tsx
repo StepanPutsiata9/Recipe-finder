@@ -1,9 +1,10 @@
 import { useLocalization } from '@/features/localization';
 import { useTheme } from '@/features/theme';
-import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
+import { fontSize, indets } from '@/styles';
 import { JSX } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { MealCard } from './recipe-item';
+import { Text, View } from 'react-native';
+import { MealCard } from '../recipe-item/recipe-item';
+import { useStyles } from './recipes-list.styles';
 
 export const RecipesList = (): JSX.Element => {
   const { colors } = useTheme();
@@ -36,16 +37,3 @@ export const RecipesList = (): JSX.Element => {
     </View>
   );
 };
-const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
-  StyleSheet.create({
-    container: {
-      paddingHorizontal: indets.m,
-      marginBottom: indets.l,
-    },
-    title: {
-      color: colors.text.primary,
-      fontSize: indets.l,
-      fontFamily: 'MontserratBold',
-      marginBottom: indets.s,
-    },
-  });

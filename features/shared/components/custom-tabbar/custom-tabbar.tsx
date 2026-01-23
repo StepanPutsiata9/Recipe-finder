@@ -1,11 +1,12 @@
 import { useTheme } from '@/features/theme';
-import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
+import { fontSize, indets } from '@/styles';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { JSX } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import Animated, { FadeIn, LinearTransition } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { getIconByRouteName } from '../utils';
+import { getIconByRouteName } from '../../utils';
+import { useStyles } from './custom-tabbar.styles';
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 
 export const CustomTabBar: React.FC<BottomTabBarProps> = ({
@@ -62,48 +63,3 @@ export const CustomTabBar: React.FC<BottomTabBarProps> = ({
     </View>
   );
 };
-const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
-  StyleSheet.create({
-    container: {
-      position: 'absolute',
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      alignItems: 'center',
-      backgroundColor: colors.tabbarBackground,
-      width: '80%',
-      alignSelf: 'center',
-      borderRadius: 40,
-      paddingVertical: indets.s,
-      paddingHorizontal: 0,
-      shadowColor: colors.primary,
-      shadowOffset: { width: 0, height: 4 },
-      shadowOpacity: 0.2,
-      shadowRadius: 8,
-      borderWidth: 1,
-      borderColor: colors.secondaryButtonBorder,
-    },
-    tabItem: {
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: 45,
-      paddingHorizontal: indets.m,
-      borderRadius: 30,
-      minWidth: 60,
-    },
-    activeTabItem: {
-      backgroundColor: colors.primary,
-      shadowColor: colors.primary,
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.3,
-      shadowRadius: 4,
-      elevation: 3,
-    },
-    text: {
-      color: colors.tabbarActiveText,
-      fontSize: fontSize.s,
-      marginLeft: 8,
-      fontFamily: 'Montserrat',
-      fontWeight: '600',
-    },
-  });

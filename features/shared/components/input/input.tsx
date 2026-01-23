@@ -1,16 +1,9 @@
 import { useTheme } from '@/features/theme';
-import { IColorsTheme } from '@/styles';
+import { fontSize, indets } from '@/styles';
 import { Ionicons } from '@expo/vector-icons';
 import React, { forwardRef, JSX, useState } from 'react';
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TextInputProps,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from 'react-native';
+import { Text, TextInput, TextInputProps, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { useStyles } from './input.styles';
 
 interface IInput extends TextInputProps {
   value: string;
@@ -38,7 +31,7 @@ export const Input = forwardRef<TextInput, IInput>(
   ): JSX.Element => {
     const [showPassword, setShowPassword] = useState(false);
     const { colors } = useTheme();
-    const styles = useStyles(colors);
+    const styles = useStyles(colors, indets, fontSize);
 
     return (
       <View>
@@ -79,41 +72,3 @@ export const Input = forwardRef<TextInput, IInput>(
   }
 );
 Input.displayName = 'Input';
-const useStyles = (colors: IColorsTheme) =>
-  StyleSheet.create({
-    inputContainer: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      height: 56,
-      borderRadius: 32,
-      backgroundColor: colors.inputBackground,
-      borderWidth: 1,
-      borderColor: 'transparent',
-      overflow: 'hidden',
-    },
-    errorContainer: {
-      borderColor: colors.error,
-    },
-    textInput: {
-      flex: 1,
-      fontSize: 16,
-      fontFamily: 'Montserrat',
-      color: colors.text.primary,
-      paddingHorizontal: 20,
-      paddingVertical: 0,
-      height: '100%',
-      includeFontPadding: false,
-    },
-    eyeButton: {
-      paddingHorizontal: 16,
-      height: '100%',
-      justifyContent: 'center',
-    },
-    errorText: {
-      fontSize: 12,
-      fontFamily: 'Montserrat',
-      color: colors.error,
-      marginTop: 4,
-      marginLeft: 20,
-    },
-  });

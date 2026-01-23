@@ -1,8 +1,9 @@
 import { useTheme } from '@/features/theme';
-import { IColorsTheme } from '@/styles';
+import { fontSize, indets } from '@/styles';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { JSX } from 'react';
-import { GestureResponderEvent, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { GestureResponderEvent, Text, TouchableOpacity, View } from 'react-native';
+import { useStyles } from './primary-button.styles';
 
 interface PrimaryButtonProps {
   title: string;
@@ -12,7 +13,7 @@ interface PrimaryButtonProps {
 
 export function PrimaryButton({ title, onPress, disabled }: PrimaryButtonProps): JSX.Element {
   const { colors } = useTheme();
-  const styles = useStyles(colors);
+  const styles = useStyles(colors, indets, fontSize);
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={0.8} disabled={disabled}>
       <LinearGradient
@@ -28,30 +29,3 @@ export function PrimaryButton({ title, onPress, disabled }: PrimaryButtonProps):
     </TouchableOpacity>
   );
 }
-
-const useStyles = (colors: IColorsTheme) =>
-  StyleSheet.create({
-    gradient: {
-      borderRadius: 32,
-      alignItems: 'center',
-      justifyContent: 'center',
-      minHeight: 52,
-      width: '100%',
-      alignSelf: 'center',
-    },
-    disabled: {
-      opacity: 0.5,
-    },
-    content: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingVertical: 12,
-    },
-    text: {
-      fontSize: 16,
-      color: colors.primaryButtonText,
-      fontFamily: 'Montserrat',
-      textAlign: 'center',
-    },
-  });

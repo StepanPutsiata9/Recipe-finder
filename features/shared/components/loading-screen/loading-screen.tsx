@@ -1,12 +1,13 @@
 import { useTheme } from '@/features/theme';
-import { ILoadingColors } from '@/styles';
+import { fontSize } from '@/styles';
 import LottieView from 'lottie-react-native';
 import { JSX } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useStyles } from './loading-screen.styles';
 export function LoadingScreen(): JSX.Element {
   const { loadingColors } = useTheme();
-  const styles = useStyles(loadingColors);
+  const styles = useStyles(loadingColors, fontSize);
   return (
     <SafeAreaView style={styles.modalContainer}>
       <LottieView
@@ -18,18 +19,3 @@ export function LoadingScreen(): JSX.Element {
     </SafeAreaView>
   );
 }
-const useStyles = (loadingColors: ILoadingColors) =>
-  StyleSheet.create({
-    modalContainer: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: loadingColors.background,
-    },
-    animation: { width: 200, height: 200 },
-    text: {
-      fontSize: 22,
-      color: loadingColors.text,
-      fontFamily: 'MontserratBold',
-    },
-  });

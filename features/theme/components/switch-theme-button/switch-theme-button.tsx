@@ -1,9 +1,10 @@
 import { useLocalization } from '@/features/localization';
-import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
+import { fontSize, indets } from '@/styles';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import React, { JSX, useMemo } from 'react';
-import { Platform, StyleSheet, Switch, Text, View } from 'react-native';
-import { useTheme } from '../hooks';
+import { Switch, Text, View } from 'react-native';
+import { useTheme } from '../../hooks';
+import { createStyles } from './switch-theme-button.styles';
 
 export const SwitchThemeButton = (): JSX.Element => {
   const { isDark, handleToggleTheme, colors } = useTheme();
@@ -32,37 +33,3 @@ export const SwitchThemeButton = (): JSX.Element => {
     </View>
   );
 };
-
-const createStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
-  StyleSheet.create({
-    container: {
-      paddingHorizontal: indets.m,
-      paddingVertical: indets.m,
-      backgroundColor: colors.secondaryButtonBackground,
-      borderRadius: 20,
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      borderWidth: 1,
-      borderColor: colors.secondaryButtonBorder,
-    },
-    iconTextContainer: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      gap: indets.s,
-    },
-    text: {
-      fontSize: fontSize.m,
-      fontFamily: 'MontserratBold',
-      color: colors.text.secondary,
-      letterSpacing: 1.2,
-    },
-    switchWrapper: {
-      ...Platform.select({
-        android: {
-          marginVertical: -10,
-        },
-        ios: {},
-      }),
-    },
-  });
