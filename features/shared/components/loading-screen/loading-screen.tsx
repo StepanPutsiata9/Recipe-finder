@@ -1,13 +1,10 @@
-import { useTheme } from '@/features/theme';
-import { fontSize } from '@/styles';
 import LottieView from 'lottie-react-native';
 import { JSX } from 'react';
 import { Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from './loading-screen.styles';
 export function LoadingScreen(): JSX.Element {
-  const { loadingColors } = useTheme();
-  const styles = useStyles(loadingColors, fontSize);
+  const styles = useStyles();
   return (
     <SafeAreaView style={styles.modalContainer}>
       <LottieView

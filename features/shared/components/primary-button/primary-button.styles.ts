@@ -1,7 +1,9 @@
-import { IColorsTheme, IFontSize, IIndents } from '@/styles';
+import { useTheme } from '@/features/theme';
+import { fontSize, indets } from '@/styles';
 import { StyleSheet } from 'react-native';
-export const useStyles = (colors: IColorsTheme, indents: IIndents, fontSize: IFontSize) =>
-  StyleSheet.create({
+export const useStyles = () => {
+  const { colors } = useTheme();
+  return StyleSheet.create({
     gradient: {
       borderRadius: 32,
       alignItems: 'center',
@@ -17,7 +19,7 @@ export const useStyles = (colors: IColorsTheme, indents: IIndents, fontSize: IFo
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingVertical: indents.s,
+      paddingVertical: indets.s,
     },
     text: {
       fontSize: fontSize.m,
@@ -26,3 +28,4 @@ export const useStyles = (colors: IColorsTheme, indents: IIndents, fontSize: IFo
       textAlign: 'center',
     },
   });
+};

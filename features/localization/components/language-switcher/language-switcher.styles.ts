@@ -1,7 +1,9 @@
-import { IColorsTheme, IFontSize, IIndents } from '@/styles';
+import { useTheme } from '@/features/theme';
+import { fontSize, indets } from '@/styles';
 import { StyleSheet } from 'react-native';
-export const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
-  StyleSheet.create({
+export const useStyles = () => {
+  const { colors } = useTheme();
+  return StyleSheet.create({
     floatingButton: {
       backgroundColor: colors.secondaryButtonBackground,
       borderRadius: 20,
@@ -90,3 +92,4 @@ export const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFon
       fontFamily: 'MontserratBold',
     },
   });
+};

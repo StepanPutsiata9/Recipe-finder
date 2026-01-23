@@ -1,5 +1,4 @@
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import React, { JSX, useState } from 'react';
 import { Modal, Pressable, Text, TouchableOpacity, View } from 'react-native';
@@ -8,7 +7,7 @@ import { useStyles } from './language-switcher.styles';
 
 export const LanguageSwitcher = (): JSX.Element => {
   const { colors } = useTheme();
-  const styles = useStyles(colors, indets, fontSize);
+  const styles = useStyles();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { currentLanguage, changeLanguage, t } = useLocalization('settings');
   const languages = [

@@ -1,7 +1,6 @@
 import { useAuth } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
@@ -12,7 +11,7 @@ import { useStyles } from './header.styles';
 
 export const Header = (): JSX.Element => {
   const { colors } = useTheme();
-  const styles = useStyles(colors, indets, fontSize);
+  const styles = useStyles();
   const router = useRouter();
   const { user, getUserEmail } = useAuth();
   const { t } = useLocalization('home');

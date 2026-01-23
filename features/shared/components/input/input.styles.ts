@@ -1,7 +1,9 @@
-import { IColorsTheme, IFontSize, IIndents } from '@/styles';
+import { useTheme } from '@/features/theme';
+import { fontSize, indets } from '@/styles';
 import { StyleSheet } from 'react-native';
-export const useStyles = (colors: IColorsTheme, indents: IIndents, fontSize: IFontSize) =>
-  StyleSheet.create({
+export const useStyles = () => {
+  const { colors } = useTheme();
+  return StyleSheet.create({
     inputContainer: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -20,13 +22,13 @@ export const useStyles = (colors: IColorsTheme, indents: IIndents, fontSize: IFo
       fontSize: fontSize.l,
       fontFamily: 'Montserrat',
       color: colors.text.primary,
-      paddingHorizontal: indents.l,
+      paddingHorizontal: indets.l,
       paddingVertical: 0,
       height: '100%',
       includeFontPadding: false,
     },
     eyeButton: {
-      paddingHorizontal: indents.m,
+      paddingHorizontal: indets.m,
       height: '100%',
       justifyContent: 'center',
     },
@@ -35,6 +37,7 @@ export const useStyles = (colors: IColorsTheme, indents: IIndents, fontSize: IFo
       fontFamily: 'Montserrat',
       color: colors.error,
       marginTop: 4,
-      marginLeft: indents.l,
+      marginLeft: indets.l,
     },
   });
+};

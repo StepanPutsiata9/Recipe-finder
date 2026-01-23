@@ -1,5 +1,4 @@
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
 import { Ionicons } from '@expo/vector-icons';
 import React, { forwardRef, JSX, useState } from 'react';
 import { Text, TextInput, TextInputProps, TouchableOpacity, View, ViewStyle } from 'react-native';
@@ -31,7 +30,7 @@ export const Input = forwardRef<TextInput, IInput>(
   ): JSX.Element => {
     const [showPassword, setShowPassword] = useState(false);
     const { colors } = useTheme();
-    const styles = useStyles(colors, indets, fontSize);
+    const styles = useStyles();
 
     return (
       <View>

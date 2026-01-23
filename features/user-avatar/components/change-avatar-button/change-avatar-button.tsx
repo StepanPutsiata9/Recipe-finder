@@ -1,6 +1,5 @@
 import { useLocalization } from '@/features/localization';
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import React, { JSX } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
@@ -10,7 +9,7 @@ import { useStyles } from './change-avatar-button.styles';
 
 export const ChangeAvatarButton = (): JSX.Element => {
   const { colors } = useTheme();
-  const styles = useStyles(colors, indets, fontSize);
+  const styles = useStyles();
   const { bottomSheetRef, isOpen, handleOpen, handleClose, handleSheetChanges } = useBottomSheet();
   const { t } = useLocalization('settings');
   const handlePickFromGallery = (): void => {

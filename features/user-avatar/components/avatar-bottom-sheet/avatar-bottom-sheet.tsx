@@ -1,6 +1,5 @@
 import { useLocalization } from '@/features/localization';
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
 import { Portal } from '@gorhom/portal';
@@ -32,7 +31,7 @@ export const AvatarBottomSheet = ({
   const snapPoints = useMemo(() => ['60%'], []);
   const { t } = useLocalization('settings');
   const { colors } = useTheme();
-  const styles = useStyles(colors, indets, fontSize);
+  const styles = useStyles();
   const renderBackdrop = useCallback(
     (props: any) => (
       <BottomSheetBackdrop

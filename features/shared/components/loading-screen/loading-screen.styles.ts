@@ -1,7 +1,7 @@
-import { IFontSize, ILoadingColors } from '@/styles';
+import { fontSize, loadingColors } from '@/styles';
 import { StyleSheet } from 'react-native';
-export const useStyles = (loadingColors: ILoadingColors, fontSize: IFontSize) =>
-  StyleSheet.create({
+export const useStyles = () => {
+  return StyleSheet.create({
     modalContainer: {
       flex: 1,
       justifyContent: 'center',
@@ -15,3 +15,4 @@ export const useStyles = (loadingColors: ILoadingColors, fontSize: IFontSize) =>
       fontFamily: 'MontserratBold',
     },
   });
+};

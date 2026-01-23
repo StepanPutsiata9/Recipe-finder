@@ -1,5 +1,4 @@
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import React, { JSX } from 'react';
@@ -18,7 +17,7 @@ interface IMealCard {
 
 export const MealCard = ({ meal, onPress }: IMealCard): JSX.Element => {
   const { colors } = useTheme();
-  const styles = useStyles(colors, indets, fontSize);
+  const styles = useStyles();
 
   return (
     <TouchableOpacity style={styles.container} onPress={onPress} activeOpacity={0.8}>

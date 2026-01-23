@@ -1,14 +1,11 @@
 import { useLocalization } from '@/features/localization';
-import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
 import { JSX } from 'react';
 import { Text, View } from 'react-native';
 import { MealCard } from '../recipe-item/recipe-item';
 import { useStyles } from './recipes-list.styles';
 
 export const RecipesList = (): JSX.Element => {
-  const { colors } = useTheme();
-  const styles = useStyles(colors, indets, fontSize);
+  const styles = useStyles();
   const { t } = useLocalization('home');
 
   return (

@@ -9,8 +9,8 @@ export default function AuthLayout(): JSX.Element {
         animation: 'slide_from_left',
       }}
     >
-      <Stack.Screen name="login" />
-      <Stack.Screen name="registration" />
+      <Stack.Screen name="login/login-screen" />
+      <Stack.Screen name="registration/registration-screen" />
     </Stack>
   );
 }

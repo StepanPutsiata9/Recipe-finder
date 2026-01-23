@@ -1,5 +1,4 @@
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { JSX } from 'react';
 import { GestureResponderEvent, Text, TouchableOpacity, View } from 'react-native';
@@ -13,7 +12,7 @@ interface PrimaryButtonProps {
 
 export function PrimaryButton({ title, onPress, disabled }: PrimaryButtonProps): JSX.Element {
   const { colors } = useTheme();
-  const styles = useStyles(colors, indets, fontSize);
+  const styles = useStyles();
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={0.8} disabled={disabled}>
       <LinearGradient

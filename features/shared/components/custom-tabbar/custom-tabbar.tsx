@@ -1,5 +1,4 @@
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { JSX } from 'react';
 import { TouchableOpacity, View } from 'react-native';
@@ -15,7 +14,7 @@ export const CustomTabBar: React.FC<BottomTabBarProps> = ({
   navigation,
 }: BottomTabBarProps): JSX.Element => {
   const { colors } = useTheme();
-  const styles = useStyles(colors, indets, fontSize);
+  const styles = useStyles();
   const { bottom } = useSafeAreaInsets();
   return (
     <View style={[styles.container, { bottom: 25 + bottom }]}>
