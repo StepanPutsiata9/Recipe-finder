@@ -1,10 +1,9 @@
 import { IColorsTheme, useTheme } from '@/features/theme';
-import Feather from '@expo/vector-icons/Feather';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Animated, { FadeIn, LinearTransition } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { getIconByRouteName } from '../utils';
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 
@@ -22,12 +21,11 @@ export const CustomTabBar: React.FC<BottomTabBarProps> = ({
         if (['_sitemap', '+not-found'].includes(route.name)) return null;
 
         const { options } = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-              ? options.title
-              : route.name;
+        const label = !!options.tabBarLabel
+          ? options.tabBarLabel
+          : !!options.title
+            ? options.title
+            : route.name;
 
         const isFocused = state.index === index;
 
@@ -62,19 +60,6 @@ export const CustomTabBar: React.FC<BottomTabBarProps> = ({
       })}
     </View>
   );
-
-  function getIconByRouteName(routeName: string, color: string) {
-    switch (routeName) {
-      case 'index':
-        return <Feather name="home" size={24} color={color} />;
-      case 'favorites':
-        return <Feather name="heart" size={24} color={color} />;
-      case 'settings':
-        return <Ionicons name="settings-outline" size={24} color={color} />;
-      default:
-        return <Feather name="home" size={24} color={color} />;
-    }
-  }
 };
 const useStyles = (colors: IColorsTheme) =>
   StyleSheet.create({

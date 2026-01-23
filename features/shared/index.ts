@@ -7,3 +7,4 @@ export {
   PrimaryButton,
   RegistrationBanner,
 } from './components';
+export { getIconByRouteName } from './utils';

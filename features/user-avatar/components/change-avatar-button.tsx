@@ -32,7 +32,6 @@ export const ChangeAvatarButton = () => {
         onTakePhoto={handleTakePhoto}
         bottomSheetRef={bottomSheetRef}
         handleSheetChanges={handleSheetChanges}
-        colors={colors}
       />
     </>
   );

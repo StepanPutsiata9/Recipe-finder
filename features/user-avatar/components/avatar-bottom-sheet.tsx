@@ -1,5 +1,5 @@
 import { useLocalization } from '@/features/localization';
-import { IColorsTheme } from '@/features/theme';
+import { IColorsTheme, useTheme } from '@/features/theme';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
 import { Portal } from '@gorhom/portal';
@@ -15,7 +15,6 @@ interface IAvatarBottomSheetProps {
   onTakePhoto: () => void;
   bottomSheetRef: React.RefObject<any>;
   handleSheetChanges: (index: number) => void;
-  colors: IColorsTheme;
 }
 
 export const AvatarBottomSheet = ({
@@ -26,11 +25,11 @@ export const AvatarBottomSheet = ({
   onTakePhoto,
   bottomSheetRef,
   handleSheetChanges,
-  colors,
 }: IAvatarBottomSheetProps) => {
   const insets = useSafeAreaInsets();
   const snapPoints = useMemo(() => ['60%'], []);
   const { t } = useLocalization('settings');
+  const { colors } = useTheme();
   const styles = useStyles(colors);
   const renderBackdrop = useCallback(
     (props: any) => (
