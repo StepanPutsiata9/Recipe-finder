@@ -1,7 +1,7 @@
 import { useTheme } from '@/features/theme';
 import { fontSize, indets } from '@/styles';
 import { StyleSheet } from 'react-native';
-export const useStyles = () => {
+const useStyles = () => {
   const { colors } = useTheme();
   return StyleSheet.create({
     container: {
@@ -41,8 +41,9 @@ export const useStyles = () => {
       textAlign: 'center',
       color: colors.text.secondary,
     },
-    signUpText: {
+    signInText: {
       color: colors.primary,
     },
   });
 };
+export default useStyles;

@@ -1,4 +1,4 @@
-import { useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme/hooks';
 import { fontSize, indets } from '@/styles';
 import { StyleSheet } from 'react-native';
 export const useStyles = () => {

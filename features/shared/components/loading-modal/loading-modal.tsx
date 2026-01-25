@@ -1,4 +1,4 @@
-import { useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme/hooks';
 import { JSX } from 'react';
 import { ActivityIndicator, Modal, View } from 'react-native';
 import { useStyles } from './loading-modal.styles';

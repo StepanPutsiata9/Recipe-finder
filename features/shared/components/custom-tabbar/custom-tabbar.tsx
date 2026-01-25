@@ -1,4 +1,4 @@
-import { useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme/hooks';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { JSX } from 'react';
 import { TouchableOpacity, View } from 'react-native';

@@ -45,14 +45,6 @@
         }
       ],
       [
-        "expo-font",
-        [
-          "./assets/fonts/Montserrat.ttf",
-          "./assets/fonts/MontserratBold.ttf",
-          "./assets/fonts/MontserratRegular.ttf"
-        ]
-      ],
-      [
         "expo-build-properties",
         {
           "ios": {

@@ -1,4 +1,4 @@
-import { useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme/hooks';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { JSX } from 'react';
 import { GestureResponderEvent, Text, TouchableOpacity, View } from 'react-native';

@@ -1,4 +1,4 @@
-import { useTheme } from '@/features/theme';
+import { useTheme } from '@/features/theme/hooks';
 import React, { forwardRef, JSX, useState } from 'react';
 import { Text, TextInput, TextInputProps, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { IoniconsIcon } from '../../utils';

@@ -1,5 +1,5 @@
 import { useLocalization } from '@/features/localization/hooks';
-import { FeatherIcon } from '@/features/shared';
+import { FeatherIcon } from '@/features/shared/utils';
 import { useTheme } from '@/features/theme/hooks';
 import { fontSize, indets } from '@/styles';
 import React, { JSX, useMemo } from 'react';

@@ -7,7 +7,7 @@ import { Controller } from 'react-hook-form';
 import { Text, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useStyles } from './registration-screen.styles';
+import useStyles from './_registration-screen.styles';
 
 export default function Registration(): JSX.Element {
   const router = useRouter();
