@@ -10,8 +10,8 @@ export default function MainLayout(): JSX.Element {
       }}
     >
       <Stack.Screen name="(tabs)" />
-      <Stack.Screen name="search" />
-      <Stack.Screen name="notifications" />
+      <Stack.Screen name="search/search-screen" />
+      <Stack.Screen name="notifications/notifications-screen" />
     </Stack>
   );
 }
