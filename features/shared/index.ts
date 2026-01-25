@@ -2,6 +2,7 @@ export {
   AuthBanner,
   CustomTabBar,
   Input,
+  KeyboardAware,
   LoadingModal,
   LoadingScreen,
   PrimaryButton,

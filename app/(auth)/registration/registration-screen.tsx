@@ -1,11 +1,10 @@
 import { useAuth, useAuthForm } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
-import { Input, PrimaryButton, RegistrationBanner } from '@/features/shared';
+import { Input, KeyboardAware, PrimaryButton, RegistrationBanner } from '@/features/shared';
 import { useRouter } from 'expo-router';
 import { JSX } from 'react';
 import { Controller } from 'react-hook-form';
 import { Text, View } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import useStyles from './_registration-screen.styles';
 
@@ -27,11 +26,7 @@ export default function Registration(): JSX.Element {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAwareScrollView
-        contentContainerStyle={styles.scrollContent}
-        bottomOffset={65}
-        showsVerticalScrollIndicator={false}
-      >
+      <KeyboardAware contentContainerStyle={styles.scrollContent} bottomOffset={65}>
         <View style={styles.content}>
           <Text style={styles.text}>{t('greetingRegistration')}</Text>
           <View style={styles.banner}>
@@ -101,7 +96,7 @@ export default function Registration(): JSX.Element {
             {t('linkToSignIn')} <Text style={styles.signInText}>{t('signIn')}</Text>
           </Text>
         </View>
-      </KeyboardAwareScrollView>
+      </KeyboardAware>
     </SafeAreaView>
   );
 }

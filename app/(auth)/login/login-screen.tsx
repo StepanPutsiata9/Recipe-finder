@@ -1,11 +1,10 @@
 import { useAuth, useAuthForm } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
-import { AuthBanner, Input, PrimaryButton } from '@/features/shared';
+import { AuthBanner, Input, KeyboardAware, PrimaryButton } from '@/features/shared';
 import { useRouter } from 'expo-router';
 import { JSX } from 'react';
 import { Controller } from 'react-hook-form';
 import { Text, View } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import useStyles from './_login-screen.styles';
 export default function Login(): JSX.Element {
@@ -29,11 +28,7 @@ export default function Login(): JSX.Element {
 
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAwareScrollView
-        contentContainerStyle={styles.scrollContent}
-        bottomOffset={65}
-        showsVerticalScrollIndicator={false}
-      >
+      <KeyboardAware contentContainerStyle={styles.scrollContent} bottomOffset={65}>
         <View style={styles.content}>
           <Text style={styles.text}>{t('greetingAuth')}</Text>
           <View style={styles.banner}>
@@ -89,7 +84,7 @@ export default function Login(): JSX.Element {
             {t('linkToSignUp')} <Text style={styles.signUpText}>{t('signUp')}</Text>
           </Text>
         </View>
-      </KeyboardAwareScrollView>
+      </KeyboardAware>
     </SafeAreaView>
   );
 }
