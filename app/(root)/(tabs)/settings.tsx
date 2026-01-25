@@ -2,7 +2,7 @@ import { LogoutButton } from '@/features/auth';
 import { LanguageSwitcher } from '@/features/localization';
 import { SwitchThemeButton, useTheme } from '@/features/theme';
 import { ChangeAvatarButton } from '@/features/user-avatar';
-import { fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
+import { fontFamily, fontSize, IColorsTheme, IFontSize, IIndents, indets } from '@/styles';
 import { JSX } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -34,7 +34,7 @@ const useStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) 
     text: {
       color: colors.text.primary,
       fontSize: fontSize.xl,
-      fontFamily: 'MontserratBold',
+      fontFamily: fontFamily.bold,
       letterSpacing: 0.5,
       marginBottom: indets.l,
     },

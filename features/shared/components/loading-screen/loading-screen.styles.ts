@@ -1,4 +1,4 @@
-import { fontSize, loadingColors } from '@/styles';
+import { fontFamily, fontSize, loadingColors } from '@/styles';
 import { StyleSheet } from 'react-native';
 export const useStyles = () => {
   return StyleSheet.create({
@@ -12,7 +12,7 @@ export const useStyles = () => {
     text: {
       fontSize: fontSize.l,
       color: loadingColors.text,
-      fontFamily: 'MontserratBold',
+      fontFamily: fontFamily.bold,
     },
   });
 };

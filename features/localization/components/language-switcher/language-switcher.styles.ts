@@ -1,5 +1,5 @@
 import { useTheme } from '@/features/theme/hooks';
-import { fontSize, indets } from '@/styles';
+import { fontFamily, fontSize, indets } from '@/styles';
 import { StyleSheet } from 'react-native';
 export const useStyles = () => {
   const { colors } = useTheme();
@@ -24,7 +24,7 @@ export const useStyles = () => {
     },
     buttonLanguageCode: {
       fontSize: fontSize.m,
-      fontFamily: 'MontserratBold',
+      fontFamily: fontFamily.bold,
       color: colors.primary,
     },
     modalOverlay: {
@@ -47,7 +47,7 @@ export const useStyles = () => {
     },
     modalTitle: {
       fontSize: fontSize.xl,
-      fontFamily: 'MontserratBold',
+      fontFamily: fontFamily.bold,
       color: colors.text.primary,
       marginTop: indets.s,
       marginBottom: indets.m,
@@ -84,12 +84,12 @@ export const useStyles = () => {
     },
     languageName: {
       fontSize: indets.m,
-      fontFamily: 'Montserrat',
+      fontFamily: fontFamily.medium,
       color: colors.text.primary,
     },
     languageNameActive: {
       color: colors.primary,
-      fontFamily: 'MontserratBold',
+      fontFamily: fontFamily.bold,
     },
   });
 };

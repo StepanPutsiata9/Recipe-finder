@@ -1,5 +1,5 @@
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
+import { fontFamily, fontSize, indets } from '@/styles';
 import { StyleSheet } from 'react-native';
 export const useStyles = () => {
   const { colors } = useTheme();
@@ -23,7 +23,7 @@ export const useStyles = () => {
     },
     modalTitle: {
       fontSize: indets.l,
-      fontFamily: 'MontserratBold',
+      fontFamily: fontFamily.bold,
       color: colors.text.primary,
       textAlign: 'center',
       marginBottom: indets.l,
@@ -62,7 +62,7 @@ export const useStyles = () => {
     },
     modalOptionText: {
       fontSize: fontSize.m,
-      fontFamily: 'MontserratBold',
+      fontFamily: fontFamily.bold,
       color: colors.primary,
       flex: 1,
       marginLeft: indets.s,
@@ -74,7 +74,7 @@ export const useStyles = () => {
     },
     cancelText: {
       fontSize: fontSize.m,
-      fontFamily: 'MontserratBold',
+      fontFamily: fontFamily.bold,
       color: colors.placeholder,
       textAlign: 'center',
     },

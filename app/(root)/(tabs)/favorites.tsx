@@ -1,6 +1,6 @@
 import { useLocalization } from '@/features/localization';
 import { useTheme } from '@/features/theme';
-import { fontSize } from '@/styles';
+import { fontFamily, fontSize } from '@/styles';
 import { JSX } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 export default function Favorites(): JSX.Element {
@@ -25,7 +25,7 @@ const useStyles = () => {
     text: {
       color: colors.text.primary,
       fontSize: fontSize.xxl,
-      fontFamily: 'Montserrat',
+      fontFamily: fontFamily.medium,
     },
   });
 };

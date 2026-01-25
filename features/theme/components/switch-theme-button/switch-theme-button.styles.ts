@@ -1,4 +1,4 @@
-import { IColorsTheme, IFontSize, IIndents } from '@/styles';
+import { fontFamily, IColorsTheme, IFontSize, IIndents } from '@/styles';
 import { Platform, StyleSheet } from 'react-native';
 export const createStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
   StyleSheet.create({
@@ -20,7 +20,7 @@ export const createStyles = (colors: IColorsTheme, indets: IIndents, fontSize: I
     },
     text: {
       fontSize: fontSize.m,
-      fontFamily: 'MontserratBold',
+      fontFamily: fontFamily.bold,
       color: colors.text.secondary,
       letterSpacing: 1.2,
     },

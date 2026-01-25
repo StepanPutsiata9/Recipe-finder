@@ -1,5 +1,5 @@
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
+import { fontFamily, fontSize, indets } from '@/styles';
 import { StyleSheet } from 'react-native';
 export const useStyles = () => {
   const { colors } = useTheme();
@@ -33,7 +33,7 @@ export const useStyles = () => {
     mealName: {
       color: colors.text.primary,
       fontSize: fontSize.l,
-      fontFamily: 'MontserratBold',
+      fontFamily: fontFamily.bold,
       marginBottom: indets.xs,
       lineHeight: 22,
     },
@@ -53,7 +53,7 @@ export const useStyles = () => {
     detailText: {
       color: colors.text.primary,
       fontSize: fontSize.xs,
-      fontFamily: 'Montserrat',
+      fontFamily: fontFamily.medium,
       letterSpacing: 0.3,
     },
     categoryText: {
@@ -67,7 +67,7 @@ export const useStyles = () => {
     viewText: {
       color: colors.text.secondary,
       fontSize: indets.s,
-      fontFamily: 'Montserrat',
+      fontFamily: fontFamily.medium,
       marginRight: indets.xs,
     },
     arrowContainer: {

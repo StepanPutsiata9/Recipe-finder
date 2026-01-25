@@ -1,5 +1,5 @@
 import { useTheme } from '@/features/theme/hooks';
-import { fontSize, indets } from '@/styles';
+import { fontFamily, fontSize, indets } from '@/styles';
 import { StyleSheet } from 'react-native';
 export const useStyles = () => {
   const { colors } = useTheme();
@@ -43,8 +43,7 @@ export const useStyles = () => {
       color: colors.tabbarActiveText,
       fontSize: fontSize.s,
       marginLeft: 8,
-      fontFamily: 'Montserrat',
-      fontWeight: '600',
+      fontFamily: fontFamily.medium,
     },
   });
 };

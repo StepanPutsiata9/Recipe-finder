@@ -1,5 +1,5 @@
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
+import { fontFamily, fontSize, indets } from '@/styles';
 import { StyleSheet } from 'react-native';
 export const useStyles = () => {
   const { colors } = useTheme();
@@ -16,7 +16,7 @@ export const useStyles = () => {
     },
     buttonText: {
       fontSize: fontSize.m,
-      fontFamily: 'MontserratBold',
+      fontFamily: fontFamily.bold,
       color: colors.primary,
       marginRight: indets.m,
     },

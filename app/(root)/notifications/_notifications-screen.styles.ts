@@ -1,5 +1,5 @@
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
+import { fontFamily, fontSize, indets } from '@/styles';
 import { StyleSheet } from 'react-native';
 const useStyles = () => {
   const { colors } = useTheme();
@@ -33,7 +33,7 @@ const useStyles = () => {
     text: {
       color: colors.text.primary,
       fontSize: fontSize.xl,
-      fontFamily: 'Montserrat',
+      fontFamily: fontFamily.medium,
     },
     rightPlaceholder: {
       width: 40,

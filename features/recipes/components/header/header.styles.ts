@@ -1,5 +1,5 @@
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
+import { fontFamily, fontSize, indets } from '@/styles';
 import { StyleSheet } from 'react-native';
 export const useStyles = () => {
   const { colors } = useTheme();
@@ -18,14 +18,14 @@ export const useStyles = () => {
     },
     helloText: {
       color: colors.text.primary,
-      fontFamily: 'Montserrat',
+      fontFamily: fontFamily.medium,
       fontSize: fontSize.l,
       letterSpacing: 1.3,
     },
     nameView: {},
     nameText: {
       fontSize: fontSize.l,
-      fontFamily: 'MontserratBold',
+      fontFamily: fontFamily.bold,
       color: colors.text.primary,
     },
     avatarPlaceholder: {

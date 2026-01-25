@@ -1,5 +1,5 @@
 import { useTheme } from '@/features/theme/hooks';
-import { fontSize, indets } from '@/styles';
+import { fontFamily, fontSize, indets } from '@/styles';
 import { StyleSheet } from 'react-native';
 export const useStyles = () => {
   const { colors } = useTheme();
@@ -24,7 +24,7 @@ export const useStyles = () => {
     text: {
       fontSize: fontSize.m,
       color: colors.primaryButtonText,
-      fontFamily: 'Montserrat',
+      fontFamily: fontFamily.medium,
       textAlign: 'center',
     },
   });

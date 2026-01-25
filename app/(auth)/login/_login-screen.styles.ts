@@ -1,5 +1,5 @@
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
+import { fontFamily, fontSize, indets } from '@/styles';
 import { StyleSheet } from 'react-native';
 const useStyles = () => {
   const { colors } = useTheme();
@@ -20,7 +20,7 @@ const useStyles = () => {
       color: colors.text.primary,
       fontSize: fontSize.xl,
       textAlign: 'center',
-      fontFamily: 'Montserrat',
+      fontFamily: fontFamily.medium,
       marginBottom: indets.xl,
     },
     banner: {
@@ -36,7 +36,7 @@ const useStyles = () => {
       marginBottom: indets.xl,
     },
     link: {
-      fontFamily: 'Montserrat',
+      fontFamily: fontFamily.medium,
       fontSize: fontSize.s,
       textAlign: 'center',
       color: colors.text.secondary,

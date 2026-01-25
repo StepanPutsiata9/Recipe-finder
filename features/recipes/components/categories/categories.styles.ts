@@ -1,5 +1,5 @@
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
+import { fontFamily, fontSize, indets } from '@/styles';
 import { StyleSheet } from 'react-native';
 export const useStyles = () => {
   const { colors } = useTheme();
@@ -10,7 +10,7 @@ export const useStyles = () => {
     title: {
       color: colors.text.primary,
       fontSize: fontSize.l,
-      fontFamily: 'MontserratBold',
+      fontFamily: fontFamily.bold,
       marginBottom: indets.s,
       marginLeft: indets.m,
     },
@@ -33,11 +33,11 @@ export const useStyles = () => {
     categoryText: {
       color: colors.text.secondary,
       fontSize: indets.s,
-      fontFamily: 'Montserrat',
+      fontFamily: fontFamily.medium,
     },
     activeCategoryText: {
       color: colors.activeCategory,
-      fontFamily: 'Montserrat',
+      fontFamily: fontFamily.medium,
     },
   });
 };
