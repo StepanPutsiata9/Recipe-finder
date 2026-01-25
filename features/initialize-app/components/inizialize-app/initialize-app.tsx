@@ -1,9 +1,11 @@
-import { useAuth } from '@/features/auth';
-import { LoadingModal, LoadingScreen } from '@/features/shared';
-import { useTheme } from '@/features/theme';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { JSX, useEffect } from 'react';
+
+import { useAuth } from '@/features/auth';
+import { LoadingModal, LoadingScreen } from '@/features/shared';
+import { useTheme } from '@/features/theme';
+
 import { useInitializeApp } from '../../hooks';
 
 export const AppNavigationStack = (): JSX.Element => {

@@ -1,7 +1,9 @@
-import { IoniconsIcon } from '@/features/shared';
-import { useTheme } from '@/features/theme/hooks';
 import React, { JSX, useState } from 'react';
 import { Modal, Pressable, Text, TouchableOpacity, View } from 'react-native';
+
+import { IoniconsIcon } from '@/features/shared';
+import { useTheme } from '@/features/theme/hooks';
+
 import { useLocalization } from '../../hooks';
 import { useStyles } from './language-switcher.styles';
 

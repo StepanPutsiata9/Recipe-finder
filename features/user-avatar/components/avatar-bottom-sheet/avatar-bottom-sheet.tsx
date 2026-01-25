@@ -1,11 +1,13 @@
-import { useLocalization } from '@/features/localization';
-import { IoniconsIcon } from '@/features/shared';
-import { useTheme } from '@/features/theme';
 import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
 import { Portal } from '@gorhom/portal';
 import React, { JSX, useCallback, useMemo } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+import { useLocalization } from '@/features/localization';
+import { IoniconsIcon } from '@/features/shared';
+import { useTheme } from '@/features/theme';
+
 import { useStyles } from './avatar-bottom-sheet.styles';
 
 interface IAvatarBottomSheetProps {

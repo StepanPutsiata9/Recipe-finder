@@ -1,5 +1,7 @@
 import { JSX } from 'react';
+
 import { FeatherIcon } from '../components/icon/icon';
+
 export function getIconByRouteName(routeName: string, color: string): JSX.Element {
   switch (routeName) {
     case 'index':

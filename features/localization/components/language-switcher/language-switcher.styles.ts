@@ -1,6 +1,8 @@
+import { StyleSheet } from 'react-native';
+
 import { useTheme } from '@/features/theme/hooks';
 import { fontFamily, fontSize, indets } from '@/styles';
-import { StyleSheet } from 'react-native';
+
 export const useStyles = () => {
   const { colors } = useTheme();
   return StyleSheet.create({

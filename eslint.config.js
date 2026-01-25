@@ -3,6 +3,7 @@ const expoConfig = require('eslint-config-expo/flat');
 const typescriptPlugin = require('@typescript-eslint/eslint-plugin');
 const reactPlugin = require('eslint-plugin-react');
 const reactNativePlugin = require('eslint-plugin-react-native');
+const simpleImportSortPlugin = require('eslint-plugin-simple-import-sort');
 
 module.exports = defineConfig([
   expoConfig,
@@ -15,6 +16,7 @@ module.exports = defineConfig([
       '@typescript-eslint': typescriptPlugin,
       react: reactPlugin,
       'react-native': reactNativePlugin,
+      'simple-import-sort': simpleImportSortPlugin,
     },
     rules: {
       '@typescript-eslint/no-unused-vars': 'error',
@@ -25,6 +27,11 @@ module.exports = defineConfig([
       'react-native/no-inline-styles': 'warn',
 
       'no-unused-vars': 'off',
+
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
+
+      'import/newline-after-import': ['error', { count: 1 }],
     },
   },
 ]);

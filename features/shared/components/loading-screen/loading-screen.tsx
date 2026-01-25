@@ -1,9 +1,12 @@
-import { animations } from '@/paths';
 import LottieView from 'lottie-react-native';
 import { JSX } from 'react';
 import { Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+import { animations } from '@/paths';
+
 import { useStyles } from './loading-screen.styles';
+
 export function LoadingScreen(): JSX.Element {
   const styles = useStyles();
   return (

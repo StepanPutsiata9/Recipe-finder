@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+
 import { useAuthSchema } from './use-auth-schema';
 
 export const useAuthForm = (isLogin: boolean = true) => {

@@ -1,9 +1,12 @@
-import { FeatherIcon } from '@/features/shared';
-import { useTheme } from '@/features/theme';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import React, { JSX } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
+
+import { FeatherIcon } from '@/features/shared';
+import { useTheme } from '@/features/theme';
+
 import { useStyles } from './recipe-item.styles';
+
 interface IMealCard {
   meal: {
     idMeal: string;

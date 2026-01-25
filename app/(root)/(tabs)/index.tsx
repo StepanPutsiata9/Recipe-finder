@@ -1,9 +1,11 @@
-import { Categories, Header, RecipesList } from '@/features/recipes';
-import { useTheme } from '@/features/theme';
-import { IColorsTheme } from '@/styles';
 import { JSX } from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+import { Categories, Header, RecipesList } from '@/features/recipes';
+import { useTheme } from '@/features/theme';
+import { IColorsTheme } from '@/styles';
+
 export default function Home(): JSX.Element {
   const { colors } = useTheme();
   const styles = useStyles(colors);

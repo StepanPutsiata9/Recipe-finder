@@ -1,10 +1,12 @@
+import { useRouter } from 'expo-router';
+import type { JSX } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 import { useLocalization } from '@/features/localization';
 import { IoniconsIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
-import { useRouter } from 'expo-router';
-import { JSX } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+
 import useStyles from './_search-screen.styles';
 
 export default function Search(): JSX.Element {

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Svg, { Path, SvgProps } from 'react-native-svg';
+
 export const AuthBanner = (props: SvgProps) => (
   <Svg width={267} height={264} fill="none" {...props}>
     <Path fill="#E0E0E0" d="M259.169 26.322h-62.935v65.606h62.935V26.322Z" />

@@ -1,7 +1,10 @@
+import { useTranslation as useI18nTranslation } from 'react-i18next';
+
 import i18n from '@/languages';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { useTranslation as useI18nTranslation } from 'react-i18next';
+
 import { setLanguage, setLanguageLoading } from '../store/localization.slice';
+
 export const useLocalization = (namespace?: string | string[]) => {
   const { t, i18n: i18nInstance } = useI18nTranslation(namespace || 'common');
   const dispatch = useAppDispatch();

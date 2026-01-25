@@ -1,8 +1,10 @@
+import React, { JSX } from 'react';
+import { Text, TouchableOpacity } from 'react-native';
+
 import { useLocalization } from '@/features/localization';
 import { IoniconsIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
-import React, { JSX } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+
 import { useBottomSheet } from '../../hooks';
 import { AvatarBottomSheet } from '../avatar-bottom-sheet/avatar-bottom-sheet';
 import { useStyles } from './change-avatar-button.styles';

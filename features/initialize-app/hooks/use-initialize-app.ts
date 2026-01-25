@@ -1,7 +1,8 @@
+import { useState } from 'react';
+
 import { useAuth } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
 import { useTheme } from '@/features/theme';
-import { useState } from 'react';
 
 export const useInitializeApp = () => {
   const { loadTheme } = useTheme();

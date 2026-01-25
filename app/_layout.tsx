@@ -1,14 +1,16 @@
-import { AppNavigationStack } from '@/features/initialize-app';
-import i18next from '@/languages';
-import { store } from '@/store';
 import { PortalProvider } from '@gorhom/portal';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import { JSX, useEffect } from 'react';
+import type { JSX } from 'react';
+import { useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { Provider } from 'react-redux';
+
+import { AppNavigationStack } from '@/features/initialize-app';
+import i18next from '@/languages';
+import { store } from '@/store';
 
 SplashScreen.preventAutoHideAsync();
 

@@ -1,15 +1,18 @@
+import type { JSX } from 'react';
+import React, { useMemo } from 'react';
+import { Switch, Text, View } from 'react-native';
+
 import { useLocalization } from '@/features/localization/hooks';
 import { FeatherIcon } from '@/features/shared/utils';
 import { useTheme } from '@/features/theme/hooks';
 import { fontSize, indets } from '@/styles';
-import React, { JSX, useMemo } from 'react';
-import { Switch, Text, View } from 'react-native';
+
 import { createStyles } from './switch-theme-button.styles';
 
 export const SwitchThemeButton = (): JSX.Element => {
   const { isDark, handleToggleTheme, colors } = useTheme();
   const { t } = useLocalization('settings');
-  const styles = useMemo(() => createStyles(colors, indets, fontSize), [colors, indets, fontSize]);
+  const styles = useMemo(() => createStyles(colors, indets, fontSize), [colors]);
   return (
     <View style={styles.container}>
       <View style={styles.iconTextContainer}>

@@ -1,7 +1,9 @@
-import { useTheme } from '@/features/theme/hooks';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { JSX } from 'react';
 import { GestureResponderEvent, Text, TouchableOpacity, View } from 'react-native';
+
+import { useTheme } from '@/features/theme/hooks';
+
 import { useStyles } from './primary-button.styles';
 
 interface PrimaryButtonProps {

@@ -1,11 +1,13 @@
-import { useAuth } from '@/features/auth';
-import { useLocalization } from '@/features/localization';
-import { FeatherIcon, IoniconsIcon } from '@/features/shared';
-import { useTheme } from '@/features/theme';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useRouter } from 'expo-router';
 import { JSX } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+
+import { useAuth } from '@/features/auth';
+import { useLocalization } from '@/features/localization';
+import { FeatherIcon, IoniconsIcon } from '@/features/shared';
+import { useTheme } from '@/features/theme';
+
 import { useStyles } from './header.styles';
 
 export const Header = (): JSX.Element => {

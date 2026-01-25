@@ -1,11 +1,14 @@
-import { useTheme } from '@/features/theme/hooks';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { JSX } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import Animated, { FadeIn, LinearTransition } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+import { useTheme } from '@/features/theme/hooks';
+
 import { getIconByRouteName } from '../../utils';
 import { useStyles } from './custom-tabbar.styles';
+
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 
 export const CustomTabBar: React.FC<BottomTabBarProps> = ({

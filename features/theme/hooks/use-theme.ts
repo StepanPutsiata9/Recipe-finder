@@ -1,6 +1,8 @@
+import { useMemo } from 'react';
+
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { darkTheme, IColorsTheme, lightTheme, loadingColors } from '@/styles';
-import { useMemo } from 'react';
+
 import { getTheme, storeTheme } from '../storage';
 import { setTheme, toggleTheme } from '../store/theme.slice';
 import { ThemeMode } from '../types';

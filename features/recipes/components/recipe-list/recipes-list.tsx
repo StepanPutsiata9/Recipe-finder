@@ -1,6 +1,8 @@
-import { useLocalization } from '@/features/localization';
 import { JSX } from 'react';
 import { Text, View } from 'react-native';
+
+import { useLocalization } from '@/features/localization';
+
 import { MealCard } from '../recipe-item/recipe-item';
 import { useStyles } from './recipes-list.styles';
 

@@ -1,5 +1,7 @@
-import { fontFamily, IColorsTheme, IFontSize, IIndents } from '@/styles';
 import { Platform, StyleSheet } from 'react-native';
+
+import { fontFamily, IColorsTheme, IFontSize, IIndents } from '@/styles';
+
 export const createStyles = (colors: IColorsTheme, indets: IIndents, fontSize: IFontSize) =>
   StyleSheet.create({
     container: {

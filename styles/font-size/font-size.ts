@@ -1,4 +1,5 @@
 import { IFontSize } from './font-size.types';
+
 export const fontSize: IFontSize = {
   xs: 12,
   s: 14,

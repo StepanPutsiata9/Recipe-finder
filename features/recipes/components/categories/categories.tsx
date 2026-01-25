@@ -1,6 +1,8 @@
-import { useLocalization } from '@/features/localization';
 import { JSX, useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+
+import { useLocalization } from '@/features/localization';
+
 import { useStyles } from './categories.styles';
 
 interface ICategory {

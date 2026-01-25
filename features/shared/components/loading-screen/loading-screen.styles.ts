@@ -1,5 +1,7 @@
-import { fontFamily, fontSize, loadingColors } from '@/styles';
 import { StyleSheet } from 'react-native';
+
+import { fontFamily, fontSize, loadingColors } from '@/styles';
+
 export const useStyles = () => {
   return StyleSheet.create({
     modalContainer: {

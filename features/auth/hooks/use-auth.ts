@@ -1,9 +1,11 @@
-import { useLocalization } from '@/features/localization';
-import { auth, onAuthChange } from '@/firebase/config';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { useRouter } from 'expo-router';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { Alert } from 'react-native';
+
+import { useLocalization } from '@/features/localization';
+import { auth, onAuthChange } from '@/firebase/config';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+
 import { setLoading, setUser } from '../store/auth.slice';
 
 export const useAuth = () => {
