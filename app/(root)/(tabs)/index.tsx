@@ -1,8 +1,15 @@
-import { JSX } from 'react';
+import { JSX, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import useStyles from '@/app/_styles/root-styles/tabs-styles/index.styles';
-import { Categories, Header, RecipesList } from '@/features/recipes';
+import {
+  Categories,
+  ErrorContainer,
+  Header,
+  LoadingContainer,
+  RecipesList,
+  useRecipes,
+} from '@/features/recipes';
 
 export default function Home(): JSX.Element {
   const styles = useStyles();
@@ -50,12 +57,21 @@ export default function Home(): JSX.Element {
       strCategory: 'Vegetarian',
     },
   ];
-
+  const { loadRecipes, recipesLoading, recipesErorr } = useRecipes();
+  useEffect(() => {
+    loadRecipes('Beef');
+  }, []);
   return (
     <SafeAreaView style={styles.container}>
       <Header />
-      <Categories categories={categoriesData} />
-      <RecipesList />
+      {recipesLoading && <LoadingContainer isLoading={recipesLoading} />}
+      {recipesErorr && <ErrorContainer error={recipesErorr} />}
+      {!recipesLoading && !recipesLoading && (
+        <>
+          <Categories categories={categoriesData} />
+          <RecipesList />
+        </>
+      )}
     </SafeAreaView>
   );
 }

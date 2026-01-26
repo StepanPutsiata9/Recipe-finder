@@ -11,14 +11,15 @@ interface IMealCard {
   meal: {
     idMeal: string;
     strMeal: string;
-    strCategory: string;
     strMealThumb: string;
-    strArea: string;
   };
+  strCategory: string;
+  strArea: string;
+
   onPress?: () => void;
 }
 
-export const MealCard = ({ meal, onPress }: IMealCard): JSX.Element => {
+export const MealCard = ({ meal, onPress, strCategory, strArea }: IMealCard): JSX.Element => {
   const { colors } = useTheme();
   const styles = useStyles();
 
@@ -37,10 +38,10 @@ export const MealCard = ({ meal, onPress }: IMealCard): JSX.Element => {
           <View style={styles.detailsRow}>
             <View style={styles.detailTag}>
               <FeatherIcon name="map-pin" size={14} color={colors.primary} />
-              <Text style={styles.detailText}>{meal.strArea}</Text>
+              <Text style={styles.detailText}>{strArea}</Text>
             </View>
             <View style={styles.detailTag}>
-              <Text style={styles.categoryText}>{meal.strCategory}</Text>
+              <Text style={styles.categoryText}>{strCategory}</Text>
             </View>
           </View>
         </View>
