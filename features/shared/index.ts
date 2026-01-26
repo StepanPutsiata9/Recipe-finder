@@ -1,2 +1,11 @@
-export { CustomTabBar, Input, LoadingModal, LoadingScreen, PrimaryButton } from './components';
-export { AuthBanner, RegistrationBanner } from './utils';
+export {
+  AuthBanner,
+  CustomTabBar,
+  Input,
+  KeyboardAware,
+  LoadingModal,
+  LoadingScreen,
+  PrimaryButton,
+  RegistrationBanner,
+} from './components';
+export { FeatherIcon, getIconByRouteName, IoniconsIcon } from './utils';

@@ -1,10 +1,11 @@
-import { useLocalization } from '@/features/localization';
-import { IColorsTheme, useTheme } from '@/features/theme';
-import { StyleSheet, Text, View } from 'react-native';
+import type { JSX } from 'react';
+import { Text, View } from 'react-native';
 
-export default function Favorites() {
-  const { colors } = useTheme();
-  const styles = useStyles(colors);
+import useStyles from '@/app/_styles/root-styles/tabs-styles/favorites.styles';
+import { useLocalization } from '@/features/localization';
+
+export default function Favorites(): JSX.Element {
+  const styles = useStyles();
   const { t } = useLocalization('favorites');
   return (
     <View style={styles.container}>
@@ -12,18 +13,3 @@ export default function Favorites() {
     </View>
   );
 }
-
-const useStyles = (colors: IColorsTheme) =>
-  StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: colors.background,
-    },
-    text: {
-      color: colors.text.primary,
-      fontSize: 20,
-      fontFamily: 'Montserrat',
-    },
-  });

@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Localization from 'expo-localization';
 import { createInstance } from 'i18next';
 import { initReactI18next } from 'react-i18next';
+
 import { resources } from './locales';
 
 const i18n = createInstance();
@@ -32,11 +33,7 @@ const languageDetector = {
   },
   init: () => {},
   cacheUserLanguage: async (language: string) => {
-    try {
-      await AsyncStorage.setItem('user-language', language);
-    } catch (error) {
-      console.error('Error saving language:', error);
-    }
+    await AsyncStorage.setItem('user-language', language);
   },
 };
 

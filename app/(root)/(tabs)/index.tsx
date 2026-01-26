@@ -1,11 +1,11 @@
-import { Categories, Header, RecipesList } from '@/features/recipes';
-import { IColorsTheme, useTheme } from '@/features/theme';
-import { StyleSheet } from 'react-native';
+import { JSX } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function Home() {
-  const { colors } = useTheme();
-  const styles = useStyles(colors);
+import useStyles from '@/app/_styles/root-styles/tabs-styles/index.styles';
+import { Categories, Header, RecipesList } from '@/features/recipes';
+
+export default function Home(): JSX.Element {
+  const styles = useStyles();
   const categoriesData = [
     {
       strCategory: 'Beef',
@@ -53,24 +53,9 @@ export default function Home() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header colors={colors} />
-      <Categories colors={colors} categories={categoriesData} />
-      <RecipesList colors={colors} />
+      <Header />
+      <Categories categories={categoriesData} />
+      <RecipesList />
     </SafeAreaView>
   );
 }
-
-const useStyles = (colors: IColorsTheme) =>
-  StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: colors.background,
-    },
-    text: {
-      color: colors.text.primary,
-      fontSize: 20,
-      textAlign: 'center',
-      fontFamily: 'Montserrat',
-      marginBottom: 20,
-    },
-  });

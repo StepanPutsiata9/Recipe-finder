@@ -6,7 +6,6 @@ import enNotifications from './en/notifications.json';
 import enSearch from './en/search.json';
 import enSettings from './en/settings.json';
 import enValidation from './en/validation.json';
-
 import ruAuth from './ru/auth.json';
 import ruCommon from './ru/common.json';
 import ruFavorites from './ru/favorites.json';
