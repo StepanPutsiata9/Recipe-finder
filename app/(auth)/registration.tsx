@@ -12,7 +12,7 @@ import { Input, KeyboardAware, PrimaryButton, RegistrationBanner } from '@/featu
 export default function Registration(): JSX.Element {
   const router = useRouter();
   const handleSignInLink = (): void => {
-    router.navigate('/(auth)/login/login-screen');
+    router.navigate('/(auth)/login');
   };
   const { t } = useLocalization('auth');
   const { handleRegistration } = useAuth();

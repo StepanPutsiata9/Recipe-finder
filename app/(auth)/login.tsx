@@ -21,7 +21,7 @@ export default function Login(): JSX.Element {
   } = useAuthForm(true);
 
   const handleSignUpLink = (): void => {
-    router.navigate('/(auth)/registration/registration-screen');
+    router.navigate('/(auth)/registration');
   };
 
   const onSubmit = (data: { email: string; password: string }): void => {
