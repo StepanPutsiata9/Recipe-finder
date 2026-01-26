@@ -1,9 +1,9 @@
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
-import { loadRecipes as loadData, setActiveCategory } from '../store/recipes.slice';
+import { loadCategories, loadRecipes as loadData, setActiveCategory } from '../store/recipes.slice';
 
 export const useRecipes = () => {
-  const { activeCategory, recipesLoading, recipesErorr, recipes } = useAppSelector(
+  const { activeCategory, recipesLoading, recipesErorr, recipes, categories } = useAppSelector(
     (state) => state.recipes
   );
   const dispatch = useAppDispatch();
@@ -13,6 +13,10 @@ export const useRecipes = () => {
   const loadRecipes = (category: string): void => {
     dispatch(loadData(category));
   };
+  const initialLoadRecipes = (category: string): void => {
+    dispatch(loadCategories());
+    dispatch(loadData(category));
+  };
   return {
     activeCategory,
     handleCategoryChange,
@@ -20,5 +24,7 @@ export const useRecipes = () => {
     recipesLoading,
     recipesErorr,
     recipes,
+    initialLoadRecipes,
+    categories,
   };
 };

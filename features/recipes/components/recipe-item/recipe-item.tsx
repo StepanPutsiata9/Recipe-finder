@@ -19,7 +19,7 @@ interface IMealCard {
   onPress?: () => void;
 }
 
-export const MealCard = ({ meal, onPress, strCategory, strArea }: IMealCard): JSX.Element => {
+const MealCard = ({ meal, onPress, strCategory, strArea }: IMealCard): JSX.Element => {
   const { colors } = useTheme();
   const styles = useStyles();
 
@@ -56,3 +56,4 @@ export const MealCard = ({ meal, onPress, strCategory, strArea }: IMealCard): JS
     </TouchableOpacity>
   );
 };
+export default React.memo(MealCard);

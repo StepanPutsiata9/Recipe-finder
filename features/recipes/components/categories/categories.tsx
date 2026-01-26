@@ -4,11 +4,8 @@ import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { useLocalization } from '@/features/localization';
 
 import { useRecipes } from '../../hooks';
+import { ICategory } from '../../types';
 import { useStyles } from './categories.styles';
-
-interface ICategory {
-  strCategory: string;
-}
 
 interface ICategoriesProps {
   categories: ICategory[];

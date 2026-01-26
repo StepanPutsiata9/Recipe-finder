@@ -13,62 +13,19 @@ import {
 
 export default function Home(): JSX.Element {
   const styles = useStyles();
-  const categoriesData = [
-    {
-      strCategory: 'Beef',
-    },
-    {
-      strCategory: 'Breakfast',
-    },
-    {
-      strCategory: 'Chicken',
-    },
-    {
-      strCategory: 'Dessert',
-    },
-    {
-      strCategory: 'Goat',
-    },
-    {
-      strCategory: 'Lamb',
-    },
-    {
-      strCategory: 'Miscellaneous',
-    },
-    {
-      strCategory: 'Pasta',
-    },
-    {
-      strCategory: 'Pork',
-    },
-    {
-      strCategory: 'Seafood',
-    },
-    {
-      strCategory: 'Side',
-    },
-    {
-      strCategory: 'Starter',
-    },
-    {
-      strCategory: 'Vegan',
-    },
-    {
-      strCategory: 'Vegetarian',
-    },
-  ];
-  const { loadRecipes, recipesLoading, recipesErorr } = useRecipes();
+
+  const { initialLoadRecipes, recipesLoading, recipesErorr, categories } = useRecipes();
   useEffect(() => {
-    loadRecipes('Beef');
+    initialLoadRecipes('Beef');
   }, []);
   return (
     <SafeAreaView style={styles.container}>
       <Header />
+      <Categories categories={categories || []} />
       {recipesLoading && <LoadingContainer isLoading={recipesLoading} />}
       {recipesErorr && <ErrorContainer error={recipesErorr} />}
       {!recipesLoading && !recipesLoading && (
         <>
-          <Categories categories={categoriesData} />
           <RecipesList />
         </>
       )}
