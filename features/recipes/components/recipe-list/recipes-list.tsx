@@ -22,7 +22,6 @@ export const RecipesList = (): JSX.Element => {
         }}
         strArea={'World Famous'}
         strCategory={activeCategory}
-        onPress={() => {}}
       />
     ),
     [activeCategory]

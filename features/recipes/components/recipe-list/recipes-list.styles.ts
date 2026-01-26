@@ -19,7 +19,7 @@ export const useStyles = () => {
     },
     listContent: {
       paddingHorizontal: indets.m,
-      paddingBottom: indets.xl,
+      paddingBottom: 80,
     },
   });
 };
