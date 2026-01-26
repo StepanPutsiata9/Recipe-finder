@@ -1,14 +1,11 @@
 import { JSX } from 'react';
-import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import useStyles from '@/app/_styles/root-styles/tabs-styles/index.styles';
 import { Categories, Header, RecipesList } from '@/features/recipes';
-import { useTheme } from '@/features/theme';
-import { IColorsTheme } from '@/styles';
 
 export default function Home(): JSX.Element {
-  const { colors } = useTheme();
-  const styles = useStyles(colors);
+  const styles = useStyles();
   const categoriesData = [
     {
       strCategory: 'Beef',
@@ -62,11 +59,3 @@ export default function Home(): JSX.Element {
     </SafeAreaView>
   );
 }
-
-const useStyles = (colors: IColorsTheme) =>
-  StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: colors.background,
-    },
-  });

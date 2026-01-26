@@ -1,9 +1,8 @@
 import type { JSX } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
+import useStyles from '@/app/_styles/root-styles/tabs-styles/favorites.styles';
 import { useLocalization } from '@/features/localization';
-import { useTheme } from '@/features/theme';
-import { fontFamily, fontSize } from '@/styles';
 
 export default function Favorites(): JSX.Element {
   const styles = useStyles();
@@ -14,20 +13,3 @@ export default function Favorites(): JSX.Element {
     </View>
   );
 }
-
-const useStyles = () => {
-  const { colors } = useTheme();
-  return StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: colors.background,
-    },
-    text: {
-      color: colors.text.primary,
-      fontSize: fontSize.xxl,
-      fontFamily: fontFamily.medium,
-    },
-  });
-};

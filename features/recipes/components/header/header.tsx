@@ -16,9 +16,8 @@ export const Header = (): JSX.Element => {
   const router = useRouter();
   const { user, getUserEmail } = useAuth();
   const { t } = useLocalization('home');
-  const handleSearchButtonPressed = (): void => router.navigate('/(root)/search/search-screen');
-  const handleNotificationsButtonPressed = (): void =>
-    router.navigate('/(root)/notifications/notifications-screen');
+  const handleSearchButtonPressed = (): void => router.navigate('/(root)/search');
+  const handleNotificationsButtonPressed = (): void => router.navigate('/(root)/notifications');
   return (
     <View style={styles.container}>
       <View style={styles.greetView}>

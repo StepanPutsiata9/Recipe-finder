@@ -4,11 +4,10 @@ import { Controller } from 'react-hook-form';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import useStyles from '@/app/_styles/auth-styles/login.styles';
 import { useAuth, useAuthForm } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
 import { AuthBanner, Input, KeyboardAware, PrimaryButton } from '@/features/shared';
-
-import useStyles from './_login-screen.styles';
 
 export default function Login(): JSX.Element {
   const router = useRouter();
