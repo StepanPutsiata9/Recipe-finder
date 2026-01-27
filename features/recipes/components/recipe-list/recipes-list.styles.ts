@@ -1,20 +1,25 @@
 import { StyleSheet } from 'react-native';
 
 import { useTheme } from '@/features/theme';
-import { fontFamily, indets } from '@/styles';
+import { fontSize, indets } from '@/styles';
 
 export const useStyles = () => {
   const { colors } = useTheme();
+
   return StyleSheet.create({
     container: {
-      paddingHorizontal: indets.m,
-      marginBottom: indets.l,
+      flex: 1,
     },
     title: {
+      fontSize: fontSize.xl,
+      fontFamily: 'MontserratBold',
       color: colors.text.primary,
-      fontSize: indets.l,
-      fontFamily: fontFamily.bold,
-      marginBottom: indets.s,
+      marginBottom: indets.m,
+      paddingHorizontal: indets.m,
+    },
+    listContent: {
+      paddingHorizontal: indets.m,
+      paddingBottom: 80,
     },
   });
 };

@@ -3,25 +3,26 @@ import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 import { useLocalization } from '@/features/localization';
 
+import { useRecipes } from '../../hooks';
+import { ICategory } from '../../types';
 import { useStyles } from './categories.styles';
-
-interface ICategory {
-  strCategory: string;
-}
 
 interface ICategoriesProps {
   categories: ICategory[];
 }
 
 export const Categories = ({ categories }: ICategoriesProps): JSX.Element => {
-  const [activeCategory, setActiveCategory] = useState<string>('All');
+  const { activeCategory, handleCategoryChange, loadRecipes } = useRecipes();
+  const [selesctedCategory, setSelectedCategory] = useState<string>(activeCategory);
   const styles = useStyles();
   const { t } = useLocalization('home');
   const handleCategoryPress = (category: string): void => {
-    setActiveCategory(category);
+    if (category !== selesctedCategory) {
+      handleCategoryChange(category);
+      setSelectedCategory(category);
+      loadRecipes(category);
+    }
   };
-
-  const allCategories = [{ strCategory: 'All' }, ...categories];
 
   return (
     <View style={styles.container}>
@@ -32,7 +33,7 @@ export const Categories = ({ categories }: ICategoriesProps): JSX.Element => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        {allCategories.map((category) => {
+        {categories.map((category) => {
           const isActive = activeCategory === category.strCategory;
 
           return (

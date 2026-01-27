@@ -1,37 +1,54 @@
-import { JSX } from 'react';
-import { Text, View } from 'react-native';
+import React, { JSX, useCallback, useMemo } from 'react';
+import { FlatList, ListRenderItem, View } from 'react-native';
 
-import { useLocalization } from '@/features/localization';
-
-import { MealCard } from '../recipe-item/recipe-item';
+import { useRecipes } from '../../hooks';
+import { RecipeItem } from '../../types';
+import MealCard from '../recipe-item/recipe-item';
 import { useStyles } from './recipes-list.styles';
 
 export const RecipesList = (): JSX.Element => {
   const styles = useStyles();
-  const { t } = useLocalization('home');
+  const { activeCategory, recipes } = useRecipes();
+
+  const listData = useMemo(() => recipes || [], [recipes]);
+
+  const renderRecipeItem: ListRenderItem<RecipeItem> = useCallback(
+    ({ item }) => (
+      <MealCard
+        meal={{
+          idMeal: item.idMeal,
+          strMeal: item.strMeal,
+          strMealThumb: item.strMealThumb,
+        }}
+        strArea={'World Famous'}
+        strCategory={activeCategory}
+      />
+    ),
+    [activeCategory]
+  );
+
+  const keyExtractor = useCallback((item: RecipeItem) => item.idMeal, []);
+  const initialNumToRender = useMemo(() => {
+    const count = listData.length;
+    if (count < 5) return count;
+    if (count < 10) return 5;
+    return 10;
+  }, [listData.length]);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{t('recipes')}</Text>
-      <MealCard
-        meal={{
-          idMeal: '53262',
-          strMeal: 'Adana kebab',
-          strMealThumb: 'https://www.themealdb.com/images/media/meals/04axct1763793018.jpg',
-          strCategory: 'Lamb',
-          strArea: 'Belarus',
-        }}
-        onPress={() => {}}
-      />
-      <MealCard
-        meal={{
-          idMeal: '53263',
-          strMeal: 'Air Fryer Egg Rolls',
-          strMealThumb: 'https://www.themealdb.com/images/media/meals/grhn401765687086.jpg',
-          strCategory: 'Side',
-          strArea: 'Chinese',
-        }}
-        onPress={() => {}}
+      <FlatList
+        data={listData}
+        renderItem={renderRecipeItem}
+        keyExtractor={keyExtractor}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.listContent}
+        initialNumToRender={initialNumToRender}
+        maxToRenderPerBatch={10}
+        windowSize={7}
+        removeClippedSubviews={true}
+        updateCellsBatchingPeriod={50}
+        scrollEventThrottle={16}
       />
     </View>
   );

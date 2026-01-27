@@ -1,4 +1,5 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { useRouter } from 'expo-router';
 import React, { JSX } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 
@@ -11,19 +12,18 @@ interface IMealCard {
   meal: {
     idMeal: string;
     strMeal: string;
-    strCategory: string;
     strMealThumb: string;
-    strArea: string;
   };
-  onPress?: () => void;
+  strCategory: string;
+  strArea: string;
 }
 
-export const MealCard = ({ meal, onPress }: IMealCard): JSX.Element => {
+const MealCard = ({ meal, strCategory, strArea }: IMealCard): JSX.Element => {
   const { colors } = useTheme();
   const styles = useStyles();
-
+  const router = useRouter();
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress} activeOpacity={0.8}>
+    <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image source={{ uri: meal.strMealThumb }} style={styles.image} resizeMode="cover" />
       </View>
@@ -37,21 +37,30 @@ export const MealCard = ({ meal, onPress }: IMealCard): JSX.Element => {
           <View style={styles.detailsRow}>
             <View style={styles.detailTag}>
               <FeatherIcon name="map-pin" size={14} color={colors.primary} />
-              <Text style={styles.detailText}>{meal.strArea}</Text>
+              <Text style={styles.detailText}>{strArea}</Text>
             </View>
             <View style={styles.detailTag}>
-              <Text style={styles.categoryText}>{meal.strCategory}</Text>
+              <Text style={styles.categoryText}>{strCategory}</Text>
             </View>
           </View>
         </View>
-
-        <View style={styles.actionRow}>
+        <TouchableOpacity
+          style={styles.actionRow}
+          onPress={() => {
+            router.navigate({
+              pathname: `/(root)/recipe-info`,
+              params: { id: meal.idMeal },
+            });
+          }}
+          activeOpacity={0.9}
+        >
           <Text style={styles.viewText}>View recipe</Text>
           <View style={styles.arrowContainer}>
             <AntDesign name="arrow-right" size={14} color={colors.primary} />
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
+export default React.memo(MealCard);
