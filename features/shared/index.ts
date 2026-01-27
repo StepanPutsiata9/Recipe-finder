@@ -1,6 +1,7 @@
 export {
   AuthBanner,
   CustomTabBar,
+  HeaderBack,
   Input,
   KeyboardAware,
   LoadingModal,
