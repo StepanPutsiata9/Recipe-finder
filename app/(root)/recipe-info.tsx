@@ -10,6 +10,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import useStyles from '@/app/_styles/root-styles/recipe-info.styles';
+import { useLocalization } from '@/features/localization';
 import { ErrorContainer, LoadingContainer, RecipeDetail, useRecipeInfo } from '@/features/recipes';
 import { FeatherIcon, PrimaryButton } from '@/features/shared';
 import { useTheme } from '@/features/theme';
@@ -18,7 +19,7 @@ export default function RecipeDetailScreen(): JSX.Element {
   const { id } = useLocalSearchParams();
   const { colors } = useTheme();
   const styles = useStyles();
-
+  const { t } = useLocalization('recipeInfo');
   const [activeTab, setActiveTab] = useState<'ingredients' | 'instructions'>('ingredients');
   const [isFavorite, setIsFavorite] = useState(false);
   const { loadRecipeInfo, recipeLoading, recipe, recipeError } = useRecipeInfo();
@@ -160,7 +161,7 @@ export default function RecipeDetailScreen(): JSX.Element {
             onPress={() => handleTabChange('ingredients')}
           >
             <Text style={[styles.tabText, activeTab === 'ingredients' && styles.activeTabText]}>
-              Ингредиенты
+              {t('ingredients')}
             </Text>
           </TouchableOpacity>
 
@@ -169,14 +170,16 @@ export default function RecipeDetailScreen(): JSX.Element {
             onPress={() => handleTabChange('instructions')}
           >
             <Text style={[styles.tabText, activeTab === 'instructions' && styles.activeTabText]}>
-              Инструкции
+              {t('instructions')}
             </Text>
           </TouchableOpacity>
         </View>
 
         {activeTab === 'ingredients' ? (
           <View style={styles.ingredientsSection}>
-            <Text style={styles.sectionTitle}>Ингредиенты ({ingredients.length})</Text>
+            <Text style={styles.sectionTitle}>
+              {t('ingredients')} ({ingredients.length})
+            </Text>
 
             <View style={styles.ingredientsList}>
               {ingredients.map((item, index) => (
@@ -192,7 +195,7 @@ export default function RecipeDetailScreen(): JSX.Element {
           </View>
         ) : (
           <View style={styles.instructionsSection}>
-            <Text style={styles.sectionTitle}>Пошаговая инструкция</Text>
+            <Text style={styles.sectionTitle}>{t('stepInstructions')}</Text>
 
             <View style={styles.instructionsContent}>
               {recipe.strInstructions
@@ -210,11 +213,7 @@ export default function RecipeDetailScreen(): JSX.Element {
           </View>
         )}
         {recipe.strYoutube && (
-          <PrimaryButton
-            title="Смотреть видео рецепт"
-            onPress={handleOpenYoutube}
-            disabled={false}
-          />
+          <PrimaryButton title={t('watchVideo')} onPress={handleOpenYoutube} disabled={false} />
         )}
       </View>
     </Animated.ScrollView>
