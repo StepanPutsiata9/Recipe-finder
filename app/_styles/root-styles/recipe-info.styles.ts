@@ -130,8 +130,19 @@ const useStyles = () => {
       marginHorizontal: indets.l,
       marginBottom: indets.l,
       backgroundColor: colors.secondaryButtonBackground,
-      borderRadius: 12,
+      borderRadius: 30,
       padding: 4,
+      position: 'relative',
+    },
+    activeTabIndicator: {
+      position: 'absolute',
+      top: 4,
+      left: 4,
+      width: '48%',
+      height: '100%',
+      backgroundColor: colors.primary + '15',
+      borderRadius: 30,
+      zIndex: 0,
     },
     tab: {
       flex: 1,
@@ -141,9 +152,10 @@ const useStyles = () => {
       gap: indets.xs,
       paddingVertical: indets.m,
       borderRadius: 8,
+      zIndex: 1,
     },
     activeTab: {
-      backgroundColor: colors.primary + '15',
+      backgroundColor: 'transparent',
     },
     tabText: {
       fontSize: fontSize.m,
@@ -201,6 +213,7 @@ const useStyles = () => {
     },
     stepItem: {
       flexDirection: 'row',
+      alignItems: 'center',
       marginBottom: indets.l,
       gap: indets.m,
     },

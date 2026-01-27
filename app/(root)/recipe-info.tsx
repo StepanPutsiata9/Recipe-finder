@@ -1,4 +1,3 @@
-import { Feather, MaterialIcons } from '@expo/vector-icons';
 import { router, useLocalSearchParams } from 'expo-router';
 import { JSX, useEffect, useState } from 'react';
 import { ImageBackground, Linking, Text, TouchableOpacity, View } from 'react-native';
@@ -7,10 +6,11 @@ import Animated, {
   useAnimatedScrollHandler,
   useAnimatedStyle,
   useSharedValue,
+  withTiming,
 } from 'react-native-reanimated';
 
 import useStyles from '@/app/_styles/root-styles/recipe-info.styles';
-import { LoadingContainer, RecipeDetail, useRecipeInfo } from '@/features/recipes';
+import { ErrorContainer, LoadingContainer, RecipeDetail, useRecipeInfo } from '@/features/recipes';
 import { FeatherIcon, PrimaryButton } from '@/features/shared';
 import { useTheme } from '@/features/theme';
 
@@ -23,6 +23,7 @@ export default function RecipeDetailScreen(): JSX.Element {
   const [isFavorite, setIsFavorite] = useState(false);
   const { loadRecipeInfo, recipeLoading, recipe, recipeError } = useRecipeInfo();
   const scrollY = useSharedValue(0);
+  const tabAnimation = useSharedValue(0);
 
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event) => {
@@ -42,6 +43,22 @@ export default function RecipeDetailScreen(): JSX.Element {
       ],
     };
   });
+  const [tabContainerWidth, setTabContainerWidth] = useState(0);
+
+  const animatedTabStyle = useAnimatedStyle(() => {
+    const translateValue = tabContainerWidth / 2;
+    return {
+      transform: [
+        { translateX: withTiming(tabAnimation.value * translateValue, { duration: 300 }) },
+      ],
+    };
+  });
+
+  const handleTabChange = (tab: 'ingredients' | 'instructions') => {
+    setActiveTab(tab);
+    tabAnimation.value = tab === 'ingredients' ? 0 : 1;
+  };
+
   useEffect(() => {
     loadRecipeInfo(id as string);
   }, [id]);
@@ -78,15 +95,7 @@ export default function RecipeDetailScreen(): JSX.Element {
   }
 
   if (recipeError || !recipe) {
-    return (
-      <View style={styles.errorContainer}>
-        <Feather name="alert-circle" size={64} color={colors.error} />
-        <Text style={styles.errorText}>{recipeError || 'Рецепт не найден'}</Text>
-        <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-          <Text>Вернуться назад</Text>
-        </TouchableOpacity>
-      </View>
-    );
+    return <ErrorContainer error={recipeError} />;
   }
 
   return (
@@ -141,16 +150,15 @@ export default function RecipeDetailScreen(): JSX.Element {
           </View>
         </View>
 
-        <View style={styles.tabsContainer}>
+        <View
+          style={styles.tabsContainer}
+          onLayout={(event) => setTabContainerWidth(event.nativeEvent.layout.width)}
+        >
+          <Animated.View style={[styles.activeTabIndicator, animatedTabStyle]} />
           <TouchableOpacity
             style={[styles.tab, activeTab === 'ingredients' && styles.activeTab]}
-            onPress={() => setActiveTab('ingredients')}
+            onPress={() => handleTabChange('ingredients')}
           >
-            <MaterialIcons
-              name="kitchen"
-              size={20}
-              color={activeTab === 'ingredients' ? colors.primary : colors.text.secondary}
-            />
             <Text style={[styles.tabText, activeTab === 'ingredients' && styles.activeTabText]}>
               Ингредиенты
             </Text>
@@ -158,13 +166,8 @@ export default function RecipeDetailScreen(): JSX.Element {
 
           <TouchableOpacity
             style={[styles.tab, activeTab === 'instructions' && styles.activeTab]}
-            onPress={() => setActiveTab('instructions')}
+            onPress={() => handleTabChange('instructions')}
           >
-            <MaterialIcons
-              name="menu-book"
-              size={20}
-              color={activeTab === 'instructions' ? colors.primary : colors.text.secondary}
-            />
             <Text style={[styles.tabText, activeTab === 'instructions' && styles.activeTabText]}>
               Инструкции
             </Text>
