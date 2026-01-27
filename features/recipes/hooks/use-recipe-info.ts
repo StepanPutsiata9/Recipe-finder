@@ -1,12 +1,5 @@
 import { useState } from 'react';
 import { Linking } from 'react-native';
-import {
-  interpolate,
-  useAnimatedScrollHandler,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated';
 
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
@@ -38,48 +31,22 @@ export const useRecipeInfo = () => {
         });
       }
     }
+
     return ingredients;
   };
-  const scrollY = useSharedValue(0);
-  const tabAnimation = useSharedValue(0);
-  const [tabContainerWidth, setTabContainerWidth] = useState(0);
-  const scrollHandler = useAnimatedScrollHandler({
-    onScroll: (event) => {
-      scrollY.value = event.contentOffset.y;
-    },
-  });
-
-  const imageAnimationStyle = useAnimatedStyle(() => {
-    return {
-      transform: [
-        {
-          translateY: interpolate(scrollY.value, [-200, 0, 200], [-100, 0, 100]),
-        },
-        {
-          scale: interpolate(scrollY.value, [-200, 0, 200], [1.3, 1, 1]),
-        },
-      ],
-    };
-  });
-  const animatedTabStyle = useAnimatedStyle(() => {
-    return {
-      transform: [
-        { translateX: withTiming(tabAnimation.value * (tabContainerWidth / 2), { duration: 300 }) },
-      ],
-    };
-  });
+  const ingredients = recipe ? extractIngredients(recipe) : [];
+  const [isFavorite, setIsFavorite] = useState(false);
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+  };
   return {
     recipe,
     recipeError,
     recipeLoading,
     loadRecipeInfo,
-    extractIngredients,
-    scrollHandler,
-    imageAnimationStyle,
-    animatedTabStyle,
-    tabAnimation,
-    scrollY,
-    setTabContainerWidth,
+    ingredients,
     handleOpenYoutube,
+    toggleFavorite,
+    isFavorite,
   };
 };

@@ -38,6 +38,11 @@ export const useRecipeAnimations = () => {
       ],
     };
   });
+  const [activeTab, setActiveTab] = useState<'ingredients' | 'instructions'>('ingredients');
+  const handleTabChange = (tab: 'ingredients' | 'instructions') => {
+    setActiveTab(tab);
+    tabAnimation.value = tab === 'ingredients' ? 0 : 1;
+  };
   return {
     scrollHandler,
     imageAnimationStyle,
@@ -45,5 +50,7 @@ export const useRecipeAnimations = () => {
     tabAnimation,
     scrollY,
     setTabContainerWidth,
+    activeTab,
+    handleTabChange,
   };
 };

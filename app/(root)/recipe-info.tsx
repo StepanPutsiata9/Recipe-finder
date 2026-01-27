@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { JSX, useEffect, useState } from 'react';
+import { JSX, useEffect } from 'react';
 import { ImageBackground, Text, TouchableOpacity, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
@@ -19,38 +19,28 @@ export default function RecipeDetailScreen(): JSX.Element {
   const { colors } = useTheme();
   const styles = useStyles();
   const { t } = useLocalization('recipeInfo');
-  const [activeTab, setActiveTab] = useState<'ingredients' | 'instructions'>('ingredients');
-  const [isFavorite, setIsFavorite] = useState(false);
   const {
     loadRecipeInfo,
     recipeLoading,
     recipe,
     recipeError,
-    extractIngredients,
+    ingredients,
     handleOpenYoutube,
+    toggleFavorite,
+    isFavorite,
   } = useRecipeInfo();
   const {
-    tabAnimation,
     scrollHandler,
     imageAnimationStyle,
     animatedTabStyle,
     setTabContainerWidth,
+    activeTab,
+    handleTabChange,
   } = useRecipeAnimations();
-
-  const handleTabChange = (tab: 'ingredients' | 'instructions') => {
-    setActiveTab(tab);
-    tabAnimation.value = tab === 'ingredients' ? 0 : 1;
-  };
 
   useEffect(() => {
     loadRecipeInfo(id.toString());
   }, [id]);
-
-  const ingredients = recipe ? extractIngredients(recipe) : [];
-
-  const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
-  };
 
   if (recipeLoading) {
     return <LoadingContainer isLoading={recipeLoading} />;
