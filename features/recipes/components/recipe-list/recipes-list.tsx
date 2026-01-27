@@ -3,7 +3,7 @@ import { FlatList, ListRenderItem, View } from 'react-native';
 
 import { useRecipes } from '../../hooks';
 import { RecipeItem } from '../../types';
-import MealCard from '../recipe-item/recipe-item';
+import MealCard from './recipe-item/recipe-item';
 import { useStyles } from './recipes-list.styles';
 
 export const RecipesList = (): JSX.Element => {
