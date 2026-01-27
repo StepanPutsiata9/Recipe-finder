@@ -1,14 +1,7 @@
 import { Feather, MaterialIcons } from '@expo/vector-icons';
 import { router, useLocalSearchParams } from 'expo-router';
 import { JSX, useEffect, useState } from 'react';
-import {
-  ActivityIndicator,
-  ImageBackground,
-  Linking,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { ImageBackground, Linking, Text, TouchableOpacity, View } from 'react-native';
 import Animated, {
   interpolate,
   useAnimatedScrollHandler,
@@ -17,35 +10,18 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import useStyles from '@/app/_styles/root-styles/recipe-info.styles';
+import { LoadingContainer, RecipeDetail, useRecipeInfo } from '@/features/recipes';
 import { FeatherIcon, PrimaryButton } from '@/features/shared';
 import { useTheme } from '@/features/theme';
-
-interface RecipeDetail {
-  idMeal: string;
-  strMeal: string;
-  strMealThumb: string;
-  strCategory: string;
-  strArea: string;
-  strInstructions: string;
-  strYoutube?: string;
-  strTags?: string;
-  ingredients: {
-    ingredient: string;
-    measure: string;
-  }[];
-}
 
 export default function RecipeDetailScreen(): JSX.Element {
   const { id } = useLocalSearchParams();
   const { colors } = useTheme();
   const styles = useStyles();
 
-  const [recipe, setRecipe] = useState<RecipeDetail | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'ingredients' | 'instructions'>('ingredients');
   const [isFavorite, setIsFavorite] = useState(false);
-
+  const { loadRecipeInfo, recipeLoading, recipe, recipeError } = useRecipeInfo();
   const scrollY = useSharedValue(0);
 
   const scrollHandler = useAnimatedScrollHandler({
@@ -67,41 +43,10 @@ export default function RecipeDetailScreen(): JSX.Element {
     };
   });
   useEffect(() => {
-    fetchRecipe();
+    loadRecipeInfo(id as string);
   }, [id]);
 
-  const fetchRecipe = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
-      const data = await response.json();
-
-      if (data.meals?.[0]) {
-        const meal = data.meals[0];
-        const ingredients = extractIngredients(meal);
-        setRecipe({
-          idMeal: meal.idMeal,
-          strMeal: meal.strMeal,
-          strMealThumb: meal.strMealThumb,
-          strCategory: meal.strCategory,
-          strArea: meal.strArea,
-          strInstructions: meal.strInstructions,
-          strYoutube: meal.strYoutube,
-          strTags: meal.strTags,
-          ingredients,
-        });
-      } else {
-        setError('Рецепт не найден');
-      }
-    } catch (err) {
-      setError('Ошибка загрузки рецепта');
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const extractIngredients = (meal: any) => {
+  const extractIngredients = (meal: RecipeDetail) => {
     const ingredients = [];
     for (let i = 1; i <= 20; i++) {
       const ingredient = meal[`strIngredient${i}`];
@@ -116,6 +61,7 @@ export default function RecipeDetailScreen(): JSX.Element {
     }
     return ingredients;
   };
+  const ingredients = recipe ? extractIngredients(recipe) : [];
 
   const handleOpenYoutube = () => {
     if (recipe?.strYoutube) {
@@ -127,20 +73,15 @@ export default function RecipeDetailScreen(): JSX.Element {
     setIsFavorite(!isFavorite);
   };
 
-  if (loading) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color={colors.primary} />
-        <Text style={styles.loadingText}>Загружаем рецепт...</Text>
-      </View>
-    );
+  if (recipeLoading) {
+    return <LoadingContainer isLoading={recipeLoading} />;
   }
 
-  if (error || !recipe) {
+  if (recipeError || !recipe) {
     return (
       <View style={styles.errorContainer}>
         <Feather name="alert-circle" size={64} color={colors.error} />
-        <Text style={styles.errorText}>{error || 'Рецепт не найден'}</Text>
+        <Text style={styles.errorText}>{recipeError || 'Рецепт не найден'}</Text>
         <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
           <Text>Вернуться назад</Text>
         </TouchableOpacity>
@@ -232,10 +173,10 @@ export default function RecipeDetailScreen(): JSX.Element {
 
         {activeTab === 'ingredients' ? (
           <View style={styles.ingredientsSection}>
-            <Text style={styles.sectionTitle}>Ингредиенты ({recipe.ingredients.length})</Text>
+            <Text style={styles.sectionTitle}>Ингредиенты ({ingredients.length})</Text>
 
             <View style={styles.ingredientsList}>
-              {recipe.ingredients.map((item, index) => (
+              {ingredients.map((item, index) => (
                 <View key={index} style={styles.ingredientItem}>
                   <View style={styles.ingredientDot} />
                   <Text style={styles.ingredientText}>
