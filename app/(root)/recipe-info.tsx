@@ -1,17 +1,16 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import { JSX, useEffect, useState } from 'react';
-import { ImageBackground, Linking, Text, TouchableOpacity, View } from 'react-native';
-import Animated, {
-  interpolate,
-  useAnimatedScrollHandler,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated';
+import { ImageBackground, Text, TouchableOpacity, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 import useStyles from '@/app/_styles/root-styles/recipe-info.styles';
 import { useLocalization } from '@/features/localization';
-import { ErrorContainer, LoadingContainer, RecipeDetail, useRecipeInfo } from '@/features/recipes';
+import {
+  ErrorContainer,
+  LoadingContainer,
+  useRecipeAnimations,
+  useRecipeInfo,
+} from '@/features/recipes';
 import { FeatherIcon, PrimaryButton } from '@/features/shared';
 import { useTheme } from '@/features/theme';
 
@@ -22,38 +21,21 @@ export default function RecipeDetailScreen(): JSX.Element {
   const { t } = useLocalization('recipeInfo');
   const [activeTab, setActiveTab] = useState<'ingredients' | 'instructions'>('ingredients');
   const [isFavorite, setIsFavorite] = useState(false);
-  const { loadRecipeInfo, recipeLoading, recipe, recipeError } = useRecipeInfo();
-  const scrollY = useSharedValue(0);
-  const tabAnimation = useSharedValue(0);
-
-  const scrollHandler = useAnimatedScrollHandler({
-    onScroll: (event) => {
-      scrollY.value = event.contentOffset.y;
-    },
-  });
-
-  const imageAnimationStyle = useAnimatedStyle(() => {
-    return {
-      transform: [
-        {
-          translateY: interpolate(scrollY.value, [-200, 0, 200], [-100, 0, 100]),
-        },
-        {
-          scale: interpolate(scrollY.value, [-200, 0, 200], [1.3, 1, 1]),
-        },
-      ],
-    };
-  });
-  const [tabContainerWidth, setTabContainerWidth] = useState(0);
-
-  const animatedTabStyle = useAnimatedStyle(() => {
-    const translateValue = tabContainerWidth / 2;
-    return {
-      transform: [
-        { translateX: withTiming(tabAnimation.value * translateValue, { duration: 300 }) },
-      ],
-    };
-  });
+  const {
+    loadRecipeInfo,
+    recipeLoading,
+    recipe,
+    recipeError,
+    extractIngredients,
+    handleOpenYoutube,
+  } = useRecipeInfo();
+  const {
+    tabAnimation,
+    scrollHandler,
+    imageAnimationStyle,
+    animatedTabStyle,
+    setTabContainerWidth,
+  } = useRecipeAnimations();
 
   const handleTabChange = (tab: 'ingredients' | 'instructions') => {
     setActiveTab(tab);
@@ -61,31 +43,10 @@ export default function RecipeDetailScreen(): JSX.Element {
   };
 
   useEffect(() => {
-    loadRecipeInfo(id as string);
+    loadRecipeInfo(id.toString());
   }, [id]);
 
-  const extractIngredients = (meal: RecipeDetail) => {
-    const ingredients = [];
-    for (let i = 1; i <= 20; i++) {
-      const ingredient = meal[`strIngredient${i}`];
-      const measure = meal[`strMeasure${i}`];
-
-      if (ingredient && ingredient.trim()) {
-        ingredients.push({
-          ingredient: ingredient.trim(),
-          measure: measure?.trim() || '',
-        });
-      }
-    }
-    return ingredients;
-  };
   const ingredients = recipe ? extractIngredients(recipe) : [];
-
-  const handleOpenYoutube = () => {
-    if (recipe?.strYoutube) {
-      Linking.openURL(recipe.strYoutube);
-    }
-  };
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);

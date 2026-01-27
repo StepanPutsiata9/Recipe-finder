@@ -1,5 +1,6 @@
 {
   "greeting": "Hello",
   "categories": "Categories",
-  "recipes": "Recipes"
+  "recipes": "Recipes",
+  "viewRecipe": "View recipe"
 }
