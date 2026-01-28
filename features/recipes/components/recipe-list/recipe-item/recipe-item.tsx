@@ -3,6 +3,7 @@ import { useRouter } from 'expo-router';
 import React, { JSX } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 
+import { useLocalization } from '@/features/localization';
 import { FeatherIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
 
@@ -22,6 +23,7 @@ const MealCard = ({ meal, strCategory, strArea }: IMealCard): JSX.Element => {
   const { colors } = useTheme();
   const styles = useStyles();
   const router = useRouter();
+  const { t } = useLocalization('home');
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -54,7 +56,7 @@ const MealCard = ({ meal, strCategory, strArea }: IMealCard): JSX.Element => {
           }}
           activeOpacity={0.9}
         >
-          <Text style={styles.viewText}>View recipe</Text>
+          <Text style={styles.viewText}>{t('viewRecipe')}</Text>
           <View style={styles.arrowContainer}>
             <AntDesign name="arrow-right" size={14} color={colors.primary} />
           </View>

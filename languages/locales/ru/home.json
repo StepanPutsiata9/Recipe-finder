@@ -1,5 +1,6 @@
 {
   "greeting": "Привет",
   "categories": "Категории",
-  "recipes": "Рецепты"
+  "recipes": "Рецепты",
+  "viewRecipe": "Просмотреть рецепт"
 }

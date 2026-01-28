@@ -59,6 +59,7 @@ i18n
       'search',
       'notifications',
       'validation',
+      'recipeInfo',
     ],
     defaultNS: 'common',
   });
