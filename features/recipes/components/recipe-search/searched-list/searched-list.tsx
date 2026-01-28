@@ -35,7 +35,6 @@ export const SearchedRecipesList = (): JSX.Element => {
     if (count < 10) return 5;
     return 10;
   }, [listData.length]);
-
   return (
     <View style={styles.container}>
       <FlatList
@@ -49,7 +48,7 @@ export const SearchedRecipesList = (): JSX.Element => {
         removeClippedSubviews={true}
         updateCellsBatchingPeriod={50}
         scrollEventThrottle={16}
-        ListEmptyComponent={ListEmptyComponent}
+        ListEmptyComponent={<ListEmptyComponent />}
       />
     </View>
   );

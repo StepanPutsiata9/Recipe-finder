@@ -38,5 +38,12 @@ export const useStyles = () => {
       height: '100%',
       justifyContent: 'center',
     },
+    clearButton: {
+      position: 'absolute',
+      right: 10,
+      height: '100%',
+      justifyContent: 'center',
+      paddingHorizontal: 8,
+    },
   });
 };
