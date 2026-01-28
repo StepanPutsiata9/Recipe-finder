@@ -16,6 +16,7 @@ export const useStyles = () => {
       borderWidth: 1,
       borderColor: 'transparent',
       overflow: 'hidden',
+      marginBottom: indets.xl,
     },
     input: {
       flex: 1,

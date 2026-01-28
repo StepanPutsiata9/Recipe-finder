@@ -8,6 +8,7 @@ export {
   RecipeMainInfo,
   RecipeSearchInput,
   RecipesList,
+  SearchedRecipesList,
 } from './components';
 export { useRecipeAnimations, useRecipeInfo, useRecipes } from './hooks';
 export { RecipeDetail } from './types';

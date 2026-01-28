@@ -11,7 +11,7 @@ const useStyles = () => {
       alignItems: 'center',
       justifyContent: 'space-between',
       paddingVertical: indets.s,
-      marginBottom: 20,
+      marginBottom: indets.s,
     },
     backButton: {
       width: 40,

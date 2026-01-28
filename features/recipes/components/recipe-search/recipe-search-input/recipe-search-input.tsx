@@ -2,6 +2,7 @@ import React from 'react';
 import { TextInput, View } from 'react-native';
 
 import { useLocalization } from '@/features/localization';
+import { useSearchRecipes } from '@/features/recipes/hooks';
 import { FeatherIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
 
@@ -11,6 +12,7 @@ export const RecipeSearchInput = (): React.JSX.Element => {
   const styles = useStyles();
   const { colors } = useTheme();
   const { t } = useLocalization('search');
+  const { handleSearch } = useSearchRecipes();
   return (
     <View style={styles.inputContainer}>
       <View style={styles.icon}>
@@ -20,6 +22,8 @@ export const RecipeSearchInput = (): React.JSX.Element => {
         style={styles.input}
         placeholder={t('placeholder') + '...'}
         placeholderTextColor={colors.placeholder}
+        onChangeText={(query: string) => handleSearch(query)}
+        autoCapitalize="none"
       />
     </View>
   );

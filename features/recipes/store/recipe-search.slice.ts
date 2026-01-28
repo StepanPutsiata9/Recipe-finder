@@ -30,6 +30,9 @@ const recipeSearchSlice = createSlice({
     setError(state, action) {
       state.searchRecipesErorr = action.payload;
     },
+    clearSearchedRecipes(state) {
+      state.searchedRecipes = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -47,5 +50,5 @@ const recipeSearchSlice = createSlice({
   },
 });
 
-export const { setLoading, setError } = recipeSearchSlice.actions;
+export const { setLoading, setError, clearSearchedRecipes } = recipeSearchSlice.actions;
 export default recipeSearchSlice.reducer;

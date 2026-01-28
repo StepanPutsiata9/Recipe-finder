@@ -11,6 +11,8 @@ export interface RecipeItem {
   strMeal: string;
   strMealThumb: string;
   idMeal: string;
+  strCategory?: string;
+  strArea?: string;
 }
 
 export interface ICategory {
