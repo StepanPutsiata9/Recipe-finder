@@ -1,6 +1,5 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import React, { JSX } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 
@@ -26,47 +25,44 @@ export const MealCard = React.memo(({ meal, strCategory, strArea }: IMealCard): 
   const router = useRouter();
   const { t } = useLocalization('home');
   return (
-    <>
-      <StatusBar style="inverted" />
-      <View style={styles.container}>
-        <View style={styles.imageContainer}>
-          <Image source={{ uri: meal.strMealThumb }} style={styles.image} resizeMode="cover" />
-        </View>
+    <View style={styles.container}>
+      <View style={styles.imageContainer}>
+        <Image source={{ uri: meal.strMealThumb }} style={styles.image} resizeMode="cover" />
+      </View>
 
-        <View style={styles.infoContainer}>
-          <View style={styles.mainInfo}>
-            <Text style={styles.mealName} numberOfLines={1}>
-              {meal.strMeal}
-            </Text>
+      <View style={styles.infoContainer}>
+        <View style={styles.mainInfo}>
+          <Text style={styles.mealName} numberOfLines={1}>
+            {meal.strMeal}
+          </Text>
 
-            <View style={styles.detailsRow}>
-              <View style={styles.detailTag}>
-                <FeatherIcon name="map-pin" size={14} color={colors.primary} />
-                <Text style={styles.detailText}>{strArea}</Text>
-              </View>
-              <View style={styles.detailTag}>
-                <Text style={styles.categoryText}>{strCategory}</Text>
-              </View>
+          <View style={styles.detailsRow}>
+            <View style={styles.detailTag}>
+              <FeatherIcon name="map-pin" size={14} color={colors.primary} />
+              <Text style={styles.detailText}>{strArea}</Text>
+            </View>
+            <View style={styles.detailTag}>
+              <Text style={styles.categoryText}>{strCategory}</Text>
             </View>
           </View>
-          <TouchableOpacity
-            style={styles.actionRow}
-            onPress={() => {
-              router.navigate({
-                pathname: `/(root)/recipe-info`,
-                params: { id: meal.idMeal },
-              });
-            }}
-            activeOpacity={0.9}
-          >
-            <Text style={styles.viewText}>{t('viewRecipe')}</Text>
-            <View style={styles.arrowContainer}>
-              <AntDesign name="arrow-right" size={14} color={colors.primary} />
-            </View>
-          </TouchableOpacity>
         </View>
+        <TouchableOpacity
+          style={styles.actionRow}
+          onPress={() => {
+            router.navigate({
+              pathname: `/(root)/recipe-info`,
+              params: { id: meal.idMeal },
+            });
+          }}
+          activeOpacity={0.9}
+        >
+          <Text style={styles.viewText}>{t('viewRecipe')}</Text>
+          <View style={styles.arrowContainer}>
+            <AntDesign name="arrow-right" size={14} color={colors.primary} />
+          </View>
+        </TouchableOpacity>
       </View>
-    </>
+    </View>
   );
 });
 
