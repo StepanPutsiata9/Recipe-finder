@@ -1,16 +1,29 @@
 import LottieView from 'lottie-react-native';
 import { JSX } from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { animations } from '@/paths';
 
 import { useStyles } from './searched-list.styles';
 
-export const ListEmptyComponent = (): JSX.Element => {
+interface ListEmptyComponentProps {
+  hasSearched?: boolean;
+}
+
+export const ListEmptyComponent = ({
+  hasSearched = false,
+}: ListEmptyComponentProps): JSX.Element => {
   const styles = useStyles();
   return (
     <View style={styles.emptyContainer}>
-      <LottieView autoPlay style={styles.animation} source={animations.searchBanner} />
+      {hasSearched ? (
+        <Text style={styles.emptyText}>Ничего не найдено</Text>
+      ) : (
+        <>
+          <LottieView autoPlay style={styles.animation} source={animations.searchBanner} />
+          <Text style={styles.emptyText}>Попробуй что-нибудь найти</Text>
+        </>
+      )}
     </View>
   );
 };

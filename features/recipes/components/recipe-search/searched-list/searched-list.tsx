@@ -10,7 +10,7 @@ import { useStyles } from './searched-list.styles';
 
 export const SearchedRecipesList = (): JSX.Element => {
   const styles = useStyles();
-  const { searchedRecipes } = useSearchRecipes();
+  const { searchedRecipes, hasSearched } = useSearchRecipes();
   const listData = useMemo(() => searchedRecipes || [], [searchedRecipes]);
 
   const renderRecipeItem: ListRenderItem<RecipeItem> = useCallback(
@@ -48,7 +48,7 @@ export const SearchedRecipesList = (): JSX.Element => {
         removeClippedSubviews={true}
         updateCellsBatchingPeriod={50}
         scrollEventThrottle={16}
-        ListEmptyComponent={<ListEmptyComponent />}
+        ListEmptyComponent={<ListEmptyComponent hasSearched={hasSearched} />}
       />
     </View>
   );

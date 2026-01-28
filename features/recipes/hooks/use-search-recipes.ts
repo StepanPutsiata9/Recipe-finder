@@ -6,7 +6,7 @@ import { clearSearchedRecipes as clearData, seacrhRecipes } from '../store/recip
 
 export const useSearchRecipes = () => {
   const dispatch = useAppDispatch();
-  const { searchedRecipes, searchRecipesLoading, searchRecipesErorr } = useAppSelector(
+  const { searchedRecipes, searchRecipesLoading, searchRecipesErorr, hasSearched } = useAppSelector(
     (state) => state.searchRecipe
   );
   const debounceRef = useRef<number | null>(null);
@@ -36,5 +36,6 @@ export const useSearchRecipes = () => {
     searchRecipesErorr,
     handleSearch,
     clearSearchedRecipes,
+    hasSearched,
   };
 };

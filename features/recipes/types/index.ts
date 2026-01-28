@@ -45,4 +45,5 @@ export interface RecipeSearchState {
   searchedRecipes: RecipesList | null;
   searchRecipesLoading: boolean;
   searchRecipesErorr: string | null;
+  hasSearched: boolean;
 }

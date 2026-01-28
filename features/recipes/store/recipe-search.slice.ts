@@ -7,6 +7,7 @@ const initialState: RecipeSearchState = {
   searchedRecipes: null,
   searchRecipesLoading: false,
   searchRecipesErorr: null,
+  hasSearched: false,
 };
 export const seacrhRecipes = createAsyncThunk<RecipesList, string, { rejectValue: string }>(
   'recipe/seacrhRecipes',
@@ -32,6 +33,7 @@ const recipeSearchSlice = createSlice({
     },
     clearSearchedRecipes(state) {
       state.searchedRecipes = null;
+      state.hasSearched = false;
     },
   },
   extraReducers: (builder) => {
@@ -42,10 +44,12 @@ const recipeSearchSlice = createSlice({
       .addCase(seacrhRecipes.fulfilled, (state, action) => {
         state.searchedRecipes = action.payload;
         state.searchRecipesLoading = false;
+        state.hasSearched = true;
       })
       .addCase(seacrhRecipes.rejected, (state) => {
         state.searchedRecipes = null;
         state.searchRecipesLoading = false;
+        state.hasSearched = true;
       });
   },
 });

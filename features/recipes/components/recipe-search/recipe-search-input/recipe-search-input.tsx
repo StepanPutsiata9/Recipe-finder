@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { JSX, useState } from 'react';
 import { TextInput, TouchableOpacity, View } from 'react-native';
 
 import { useLocalization } from '@/features/localization';
@@ -8,7 +8,7 @@ import { useTheme } from '@/features/theme';
 
 import { useStyles } from './recipe-search-input.styles';
 
-export const RecipeSearchInput = (): React.JSX.Element => {
+export const RecipeSearchInput = (): JSX.Element => {
   const [inputValue, setInputValue] = useState('');
   const styles = useStyles();
   const { colors } = useTheme();
