@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { useTheme } from '@/features/theme';
-import { fontSize, indets } from '@/styles';
+import { fontFamily, fontSize, indets } from '@/styles';
 
 export const useStyles = () => {
   const { colors } = useTheme();
@@ -12,7 +12,7 @@ export const useStyles = () => {
     },
     title: {
       fontSize: fontSize.xl,
-      fontFamily: 'MontserratBold',
+      fontFamily: fontFamily.bold,
       color: colors.text.primary,
       marginBottom: indets.m,
       paddingHorizontal: indets.m,

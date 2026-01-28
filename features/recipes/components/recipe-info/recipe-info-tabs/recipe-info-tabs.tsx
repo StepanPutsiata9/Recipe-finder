@@ -3,8 +3,8 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { useLocalization } from '@/features/localization';
-import { useRecipeAnimations, useRecipeInfo } from '@/features/recipes';
 
+import { useRecipeAnimations, useRecipeInfo } from '../../../hooks';
 import useStyles from './recipe-info-tabs.styles';
 
 export function RecipeInfoTabs(): JSX.Element {

@@ -6,6 +6,7 @@ export {
   RecipeInfoHeader,
   RecipeInfoTabs,
   RecipeMainInfo,
+  RecipeSearchInput,
   RecipesList,
 } from './components';
 export { useRecipeAnimations, useRecipeInfo, useRecipes } from './hooks';

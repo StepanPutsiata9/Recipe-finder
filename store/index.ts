@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import authReducer from '@/features/auth/store/auth.slice';
 import localizationReducer from '@/features/localization/store/localization.slice';
 import recipeInfoReducer from '@/features/recipes/store/recipe-info.slice';
+import recipeSearchReducer from '@/features/recipes/store/recipe-search.slice';
 import recipesReducer from '@/features/recipes/store/recipes.slice';
 import themeReducer from '@/features/theme/store/theme.slice';
 
@@ -13,6 +14,7 @@ export const store = configureStore({
     auth: authReducer,
     recipes: recipesReducer,
     recipeInfo: recipeInfoReducer,
+    searchRecipe: recipeSearchReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

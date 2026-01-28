@@ -38,3 +38,9 @@ export interface RecipeInfoState {
   recipeLoading: boolean;
   recipeError: string | null;
 }
+
+export interface RecipeSearchState {
+  searchedRecipes: RecipesList | null;
+  searchRecipesLoading: boolean;
+  searchRecipesErorr: string | null;
+}
