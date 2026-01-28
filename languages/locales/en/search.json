@@ -1,4 +1,6 @@
 {
   "search": "Search",
-  "placeholder": "Search for recipes"
+  "placeholder": "Search for recipes",
+  "emptyText": "No data found",
+  "tryToSearch": "Try to search something"
 }
