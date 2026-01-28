@@ -1,7 +1,7 @@
 import { IColorsTheme, ILoadingColors } from './colors.types';
 
 export const loadingColors: ILoadingColors = {
-  background: '#f9beac',
+  background: '#fe7248',
   text: '#fff',
 };
 export const darkTheme: IColorsTheme = {
