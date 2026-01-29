@@ -1,6 +1,7 @@
 export {
   Categories,
   ErrorContainer,
+  FavoritesRecipesList,
   Header,
   LoadingContainer,
   RecipeInfoHeader,
@@ -10,5 +11,5 @@ export {
   RecipesList,
   SearchedRecipesList,
 } from './components';
-export { useRecipeAnimations, useRecipeInfo, useRecipes } from './hooks';
+export { useFavoritesRecipes, useRecipeAnimations, useRecipeInfo, useRecipes } from './hooks';
 export { RecipeDetail } from './types';

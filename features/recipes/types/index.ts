@@ -35,6 +35,7 @@ export interface RecipeDetail {
   [key: `strIngredient${number}`]: string | undefined;
   [key: `strMeasure${number}`]: string | undefined;
 }
+
 export interface RecipeInfoState {
   recipe: RecipeDetail | null;
   recipeLoading: boolean;
@@ -46,4 +47,10 @@ export interface RecipeSearchState {
   searchRecipesLoading: boolean;
   searchRecipesErorr: string | null;
   hasSearched: boolean;
+}
+
+export interface FavoritesRecipesState {
+  favoritesRecipes: RecipesList | null;
+  favoritesRecipesLoading: boolean;
+  favoritesRecipesErorr: string | null;
 }

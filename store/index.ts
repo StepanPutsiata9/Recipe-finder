@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import authReducer from '@/features/auth/store/auth.slice';
 import localizationReducer from '@/features/localization/store/localization.slice';
+import favoritesRecipesReducer from '@/features/recipes/store/recipe-favorites.slice';
 import recipeInfoReducer from '@/features/recipes/store/recipe-info.slice';
 import recipeSearchReducer from '@/features/recipes/store/recipe-search.slice';
 import recipesReducer from '@/features/recipes/store/recipes.slice';
@@ -15,6 +16,7 @@ export const store = configureStore({
     recipes: recipesReducer,
     recipeInfo: recipeInfoReducer,
     searchRecipe: recipeSearchReducer,
+    favoritesRecipes: favoritesRecipesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

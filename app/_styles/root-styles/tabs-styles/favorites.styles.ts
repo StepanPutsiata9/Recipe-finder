@@ -1,15 +1,14 @@
 import { StyleSheet } from 'react-native';
 
 import { useTheme } from '@/features/theme';
-import { fontFamily, fontSize } from '@/styles';
+import { fontFamily, fontSize, indets } from '@/styles';
 
 const useStyles = () => {
   const { colors } = useTheme();
   return StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
+      paddingHorizontal: indets.m,
       backgroundColor: colors.background,
     },
     text: {
