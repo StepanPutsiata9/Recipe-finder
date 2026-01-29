@@ -15,6 +15,7 @@ const useStyles = () => {
       color: colors.text.primary,
       fontSize: fontSize.xxl,
       fontFamily: fontFamily.medium,
+      marginBottom: indets.l,
     },
   });
 };

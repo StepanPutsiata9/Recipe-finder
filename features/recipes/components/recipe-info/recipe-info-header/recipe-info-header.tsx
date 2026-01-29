@@ -1,20 +1,28 @@
 import { useRouter } from 'expo-router';
-import { JSX } from 'react';
+import { JSX, useState } from 'react';
 import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { FeatherIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
 
-import { useRecipeAnimations, useRecipeInfo } from '../../../hooks';
+import { useFavoritesRecipes, useRecipeAnimations, useRecipeInfo } from '../../../hooks';
 import useStyles from './recipe-info-header.styles';
 
 export const RecipeInfoHeader = (): JSX.Element => {
   const styles = useStyles();
   const router = useRouter();
-  const { recipe, toggleFavorite, isFavorite } = useRecipeInfo();
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const { toggleFavoriteRecipe } = useFavoritesRecipes();
+  const { recipe } = useRecipeInfo();
   const { imageAnimationStyle } = useRecipeAnimations();
   const { colors } = useTheme();
+  const toggleFavorite = () => {
+    if (!recipe) return;
+    setIsFavorite(!isFavorite);
+    toggleFavoriteRecipe(recipe);
+  };
   return (
     <Animated.View style={[styles.header, imageAnimationStyle]}>
       <ImageBackground

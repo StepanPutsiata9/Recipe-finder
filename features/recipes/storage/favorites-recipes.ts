@@ -4,7 +4,7 @@ import { RecipeDetail } from '../types';
 
 const FAVORITES_KEY = 'favorites_recipes';
 
-export const toggleFavoriteRecipe = async (recipe: RecipeDetail): Promise<void> => {
+export const toggleFavoriteRecipe = async (recipe: RecipeDetail): Promise<boolean> => {
   const favorites = await getFavoriteRecipes();
   const isExists = favorites.some((item) => item.idMeal === recipe.idMeal);
 
@@ -13,6 +13,7 @@ export const toggleFavoriteRecipe = async (recipe: RecipeDetail): Promise<void> 
     : [...favorites, recipe];
 
   await AsyncStorage.setItem(FAVORITES_KEY, JSON.stringify(updatedFavorites));
+  return isExists;
 };
 
 export const getFavoriteRecipes = async (): Promise<RecipeDetail[]> => {
