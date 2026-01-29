@@ -1,3 +1,4 @@
+import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { JSX, useEffect } from 'react';
@@ -12,11 +13,17 @@ export const AppNavigationStack = (): JSX.Element => {
   const { isDark } = useTheme();
   const { user, isLoading } = useAuth();
   const { isAppInitialized, initializeApp } = useInitializeApp();
+  const [loaded, error] = useFonts({
+    Montserrat: require('@/assets/fonts/Montserrat.ttf'),
+    MontserratBold: require('@/assets/fonts/MontserratBold.ttf'),
+    MontserratRegular: require('@/assets/fonts/MontserratRegular.ttf'),
+  });
+
   useEffect(() => {
     initializeApp();
   }, []);
 
-  if (!isAppInitialized) {
+  if (!isAppInitialized || (!loaded && !error)) {
     return <LoadingScreen />;
   }
   return (
