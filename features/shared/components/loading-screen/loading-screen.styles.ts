@@ -10,11 +10,6 @@ export const useStyles = () => {
       alignItems: 'center',
       backgroundColor: loadingColors.background,
     },
-    animation: { width: 200, height: 200 },
-    // text: {
-    //   fontSize: fontSize.l,
-    //   color: loadingColors.text,
-    //   fontFamily: fontFamily.bold,
-    // },
+    animation: { width: 150, height: 150 },
   });
 };

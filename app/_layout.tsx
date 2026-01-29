@@ -9,12 +9,13 @@ import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { Provider } from 'react-redux';
 
 import { AppNavigationStack } from '@/features/initialize-app';
+import { LoadingScreen } from '@/features/shared';
 import i18next from '@/languages';
 import { store } from '@/store';
 
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout(): JSX.Element | null {
+export default function RootLayout(): JSX.Element {
   const [loaded, error] = useFonts({
     Montserrat: require('@/assets/fonts/Montserrat.ttf'),
     MontserratBold: require('@/assets/fonts/MontserratBold.ttf'),
@@ -28,7 +29,7 @@ export default function RootLayout(): JSX.Element | null {
   }, [loaded, error]);
 
   if (!loaded && !error) {
-    return null;
+    return <LoadingScreen />;
   }
 
   return (
