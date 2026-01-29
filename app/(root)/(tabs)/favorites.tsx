@@ -1,4 +1,4 @@
-import type { JSX } from 'react';
+import { type JSX, useEffect } from 'react';
 import { Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -10,7 +10,11 @@ import { useFavoritesRecipes } from '@/features/recipes/hooks';
 export default function Favorites(): JSX.Element {
   const styles = useStyles();
   const { t } = useLocalization('favorites');
-  const { favoritesRecipesLoading, favoritesRecipesErorr } = useFavoritesRecipes();
+  const { favoritesRecipesLoading, favoritesRecipesErorr, loadFavoritesRecipes } =
+    useFavoritesRecipes();
+  useEffect(() => {
+    loadFavoritesRecipes();
+  }, []);
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>{t('favorites')}</Text>

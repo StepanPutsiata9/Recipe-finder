@@ -7,11 +7,11 @@ export const useFavoritesRecipes = () => {
     (state) => state.favoritesRecipes
   );
   const dispatch = useAppDispatch();
-  const loadRecipes = (): void => {
+  const loadFavoritesRecipes = (): void => {
     dispatch(loadData());
   };
   return {
-    loadRecipes,
+    loadFavoritesRecipes,
     favoritesRecipesLoading,
     favoritesRecipesErorr,
     favoritesRecipes,
