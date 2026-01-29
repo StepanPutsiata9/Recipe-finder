@@ -19,7 +19,7 @@ interface IMealCard {
   strArea: string;
 }
 
-const MealCard = ({ meal, strCategory, strArea }: IMealCard): JSX.Element => {
+export const MealCard = React.memo(({ meal, strCategory, strArea }: IMealCard): JSX.Element => {
   const { colors } = useTheme();
   const styles = useStyles();
   const router = useRouter();
@@ -64,5 +64,6 @@ const MealCard = ({ meal, strCategory, strArea }: IMealCard): JSX.Element => {
       </View>
     </View>
   );
-};
-export default React.memo(MealCard);
+});
+
+MealCard.displayName = 'MealCard';

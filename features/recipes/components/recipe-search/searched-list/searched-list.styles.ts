@@ -1,19 +1,22 @@
 import { StyleSheet } from 'react-native';
 
 import { useTheme } from '@/features/theme';
+import { fontFamily, fontSize } from '@/styles';
 
 export const useStyles = () => {
   const { colors } = useTheme();
   return StyleSheet.create({
     container: {
-      backgroundColor: colors.background,
       flex: 1,
-      justifyContent: 'center',
+    },
+    emptyContainer: {
       alignItems: 'center',
     },
-    animation: {
-      width: 100,
-      height: 100,
+    emptyText: {
+      fontFamily: fontFamily.regular,
+      color: colors.text.primary,
+      fontSize: fontSize.l,
     },
+    animation: { width: 350, height: 400 },
   });
 };

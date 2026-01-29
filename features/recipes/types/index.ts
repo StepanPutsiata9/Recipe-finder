@@ -11,6 +11,8 @@ export interface RecipeItem {
   strMeal: string;
   strMealThumb: string;
   idMeal: string;
+  strCategory?: string;
+  strArea?: string;
 }
 
 export interface ICategory {
@@ -37,4 +39,11 @@ export interface RecipeInfoState {
   recipe: RecipeDetail | null;
   recipeLoading: boolean;
   recipeError: string | null;
+}
+
+export interface RecipeSearchState {
+  searchedRecipes: RecipesList | null;
+  searchRecipesLoading: boolean;
+  searchRecipesErorr: string | null;
+  hasSearched: boolean;
 }

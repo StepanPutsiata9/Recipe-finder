@@ -1,16 +1,17 @@
 import React, { JSX, useCallback, useMemo } from 'react';
 import { FlatList, ListRenderItem, View } from 'react-native';
 
-import { useRecipes } from '../../hooks';
-import { RecipeItem } from '../../types';
-import { MealCard } from './recipe-item/recipe-item';
-import { useStyles } from './recipes-list.styles';
+import { useSearchRecipes } from '@/features/recipes/hooks';
+import { RecipeItem } from '@/features/recipes/types';
 
-export const RecipesList = (): JSX.Element => {
+import { MealCard } from '../../recipe-list';
+import { ListEmptyComponent } from './list-empty-component';
+import { useStyles } from './searched-list.styles';
+
+export const SearchedRecipesList = (): JSX.Element => {
   const styles = useStyles();
-  const { activeCategory, recipes } = useRecipes();
-
-  const listData = useMemo(() => recipes || [], [recipes]);
+  const { searchedRecipes, hasSearched } = useSearchRecipes();
+  const listData = useMemo(() => searchedRecipes || [], [searchedRecipes]);
 
   const renderRecipeItem: ListRenderItem<RecipeItem> = useCallback(
     ({ item }) => (
@@ -20,11 +21,11 @@ export const RecipesList = (): JSX.Element => {
           strMeal: item.strMeal,
           strMealThumb: item.strMealThumb,
         }}
-        strArea={'World Famous'}
-        strCategory={activeCategory}
+        strArea={item?.strArea || 'World Famous'}
+        strCategory={item?.strCategory || 'unknown'}
       />
     ),
-    [activeCategory]
+    []
   );
 
   const keyExtractor = useCallback((item: RecipeItem) => item.idMeal, []);
@@ -34,7 +35,6 @@ export const RecipesList = (): JSX.Element => {
     if (count < 10) return 5;
     return 10;
   }, [listData.length]);
-
   return (
     <View style={styles.container}>
       <FlatList
@@ -42,13 +42,13 @@ export const RecipesList = (): JSX.Element => {
         renderItem={renderRecipeItem}
         keyExtractor={keyExtractor}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.listContent}
         initialNumToRender={initialNumToRender}
         maxToRenderPerBatch={10}
         windowSize={7}
         removeClippedSubviews={true}
         updateCellsBatchingPeriod={50}
         scrollEventThrottle={16}
+        ListEmptyComponent={<ListEmptyComponent hasSearched={hasSearched} />}
       />
     </View>
   );

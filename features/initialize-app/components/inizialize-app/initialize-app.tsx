@@ -17,12 +17,7 @@ export const AppNavigationStack = (): JSX.Element => {
   }, []);
 
   if (!isAppInitialized) {
-    return (
-      <>
-        <StatusBar style="dark" />
-        <LoadingScreen />
-      </>
-    );
+    return <LoadingScreen />;
   }
   return (
     <>

@@ -1,10 +1,10 @@
 import { JSX } from 'react';
 import { Text, View } from 'react-native';
 
-import { useRecipeInfo } from '@/features/recipes';
 import { FeatherIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
 
+import { useRecipeInfo } from '../../../hooks';
 import useStyles from './recipe-info-main.styles';
 
 export function RecipeMainInfo(): JSX.Element {

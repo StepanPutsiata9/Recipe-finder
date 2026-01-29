@@ -10,8 +10,8 @@ const useStyles = () => {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      paddingHorizontal: indets.m,
       paddingVertical: indets.s,
+      marginBottom: indets.s,
     },
     backButton: {
       width: 40,

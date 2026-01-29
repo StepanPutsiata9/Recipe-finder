@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { fontFamily, fontSize, loadingColors } from '@/styles';
+import { loadingColors } from '@/styles';
 
 export const useStyles = () => {
   return StyleSheet.create({
@@ -10,11 +10,6 @@ export const useStyles = () => {
       alignItems: 'center',
       backgroundColor: loadingColors.background,
     },
-    animation: { width: 200, height: 200 },
-    text: {
-      fontSize: fontSize.l,
-      color: loadingColors.text,
-      fontFamily: fontFamily.bold,
-    },
+    animation: { width: 150, height: 150 },
   });
 };

@@ -3,10 +3,10 @@ import { JSX } from 'react';
 import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import { useRecipeAnimations, useRecipeInfo } from '@/features/recipes';
 import { FeatherIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
 
+import { useRecipeAnimations, useRecipeInfo } from '../../../hooks';
 import useStyles from './recipe-info-header.styles';
 
 export const RecipeInfoHeader = (): JSX.Element => {
