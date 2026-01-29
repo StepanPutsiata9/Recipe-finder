@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { getFavoriteRecipes } from '../storage';
+import { getRecipes } from '../services';
 import { FavoritesRecipesState, RecipesList } from '../types';
 
 const initialState: FavoritesRecipesState = {
@@ -12,7 +12,7 @@ export const loadFavoritesRecipes = createAsyncThunk<RecipesList, void>(
   'recipe-favorites/loadFavoritesRecipes',
   async (_, { rejectWithValue }) => {
     try {
-      const favoritesRecipes = await getFavoriteRecipes();
+      const favoritesRecipes = await getRecipes('beef');
       return favoritesRecipes;
     } catch (error) {
       return rejectWithValue(error instanceof Error ? error.message : 'Unknown error');
