@@ -38,6 +38,7 @@ export const FavoritesRecipesList = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <FlatList
+        contentContainerStyle={styles.list}
         data={listData}
         renderItem={renderRecipeItem}
         keyExtractor={keyExtractor}

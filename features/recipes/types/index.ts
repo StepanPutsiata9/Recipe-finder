@@ -52,5 +52,6 @@ export interface RecipeSearchState {
 export interface FavoritesRecipesState {
   favoritesRecipes: RecipesList | null;
   favoritesRecipesLoading: boolean;
+  isFavoriteCheckingLoading: boolean;
   favoritesRecipesErorr: string | null;
 }

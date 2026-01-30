@@ -6,6 +6,7 @@ import { FavoritesRecipesState, RecipeDetail, RecipesList } from '../types';
 const initialState: FavoritesRecipesState = {
   favoritesRecipes: null,
   favoritesRecipesLoading: false,
+  isFavoriteCheckingLoading: false,
   favoritesRecipesErorr: null,
 };
 export const loadFavoritesRecipes = createAsyncThunk<RecipesList, void>(
@@ -19,6 +20,7 @@ export const loadFavoritesRecipes = createAsyncThunk<RecipesList, void>(
     }
   }
 );
+
 export const toggleRecipe = createAsyncThunk<RecipesList, RecipeDetail>(
   'recipe-favorites/toggleRecipe',
   async (recipe: RecipeDetail, { rejectWithValue }) => {
@@ -31,12 +33,16 @@ export const toggleRecipe = createAsyncThunk<RecipesList, RecipeDetail>(
     }
   }
 );
+
 const favoritesRecipesSlice = createSlice({
   name: 'recipe-favorites',
   initialState,
   reducers: {
     setLoading(state, action) {
       state.favoritesRecipesLoading = action.payload;
+    },
+    setIsFavoriteLoading(state, action) {
+      state.isFavoriteCheckingLoading = action.payload;
     },
     setError(state, action) {
       state.favoritesRecipesErorr = action.payload;
@@ -70,5 +76,5 @@ const favoritesRecipesSlice = createSlice({
   },
 });
 
-export const { setLoading, setError } = favoritesRecipesSlice.actions;
+export const { setLoading, setError, setIsFavoriteLoading } = favoritesRecipesSlice.actions;
 export default favoritesRecipesSlice.reducer;

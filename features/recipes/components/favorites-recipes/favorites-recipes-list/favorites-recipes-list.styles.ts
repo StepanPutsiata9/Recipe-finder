@@ -18,5 +18,8 @@ export const useStyles = () => {
       color: colors.text.primary,
       fontSize: fontSize.l,
     },
+    list: {
+      paddingBottom: 80,
+    },
   });
 };
