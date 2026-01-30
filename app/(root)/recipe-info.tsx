@@ -22,7 +22,6 @@ export default function RecipeDetailScreen(): JSX.Element {
   const { t } = useLocalization('recipeInfo');
   const { loadRecipeInfo, recipeLoading, recipe, recipeError, handleOpenYoutube } = useRecipeInfo();
   const { scrollHandler } = useRecipeAnimations();
-
   useEffect(() => {
     loadRecipeInfo(id.toString());
   }, [id]);

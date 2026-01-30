@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Linking } from 'react-native';
 
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -35,10 +34,7 @@ export const useRecipeInfo = () => {
     return ingredients;
   };
   const ingredients = recipe ? extractIngredients(recipe) : [];
-  const [isFavorite, setIsFavorite] = useState(false);
-  const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
-  };
+
   return {
     recipe,
     recipeError,
@@ -46,7 +42,5 @@ export const useRecipeInfo = () => {
     loadRecipeInfo,
     ingredients,
     handleOpenYoutube,
-    toggleFavorite,
-    isFavorite,
   };
 };

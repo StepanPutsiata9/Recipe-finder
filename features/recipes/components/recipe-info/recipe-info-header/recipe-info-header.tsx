@@ -1,20 +1,40 @@
 import { useRouter } from 'expo-router';
-import { JSX } from 'react';
+import { JSX, useEffect } from 'react';
 import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { FeatherIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
 
-import { useRecipeAnimations, useRecipeInfo } from '../../../hooks';
+import { useFavoritesRecipes, useRecipeAnimations, useRecipeInfo } from '../../../hooks';
 import useStyles from './recipe-info-header.styles';
 
 export const RecipeInfoHeader = (): JSX.Element => {
   const styles = useStyles();
   const router = useRouter();
-  const { recipe, toggleFavorite, isFavorite } = useRecipeInfo();
+  const {
+    toggleFavoriteRecipe,
+    isFavoriteValue,
+    checkIsFavorite,
+    setIsFavoriteValue,
+    isFavoriteCheckingLoading,
+  } = useFavoritesRecipes();
+
+  const { recipe } = useRecipeInfo();
   const { imageAnimationStyle } = useRecipeAnimations();
   const { colors } = useTheme();
+
+  useEffect(() => {
+    if (recipe?.idMeal) {
+      checkIsFavorite(recipe.idMeal);
+    }
+  }, [recipe?.idMeal]);
+
+  const toggleFavorite = () => {
+    if (!recipe) return;
+    toggleFavoriteRecipe(recipe);
+    setIsFavoriteValue(!isFavoriteValue);
+  };
   return (
     <Animated.View style={[styles.header, imageAnimationStyle]}>
       <ImageBackground
@@ -28,11 +48,13 @@ export const RecipeInfoHeader = (): JSX.Element => {
           <FeatherIcon name="chevron-left" size={28} color={colors.activeCategory} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.actionButton} onPress={toggleFavorite}>
-          <FeatherIcon
-            name={isFavorite ? 'heart' : 'heart'}
-            size={24}
-            color={isFavorite ? colors.error : colors.activeCategory}
-          />
+          {!isFavoriteCheckingLoading && (
+            <FeatherIcon
+              name={isFavoriteValue ? 'heart' : 'heart'}
+              size={24}
+              color={isFavoriteValue ? colors.error : colors.activeCategory}
+            />
+          )}
         </TouchableOpacity>
       </View>
     </Animated.View>
