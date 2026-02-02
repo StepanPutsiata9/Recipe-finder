@@ -2,12 +2,14 @@ import * as ImagePicker from 'expo-image-picker';
 import { useCallback } from 'react';
 import { Alert } from 'react-native';
 
+import { useLocalization } from '@/features/localization';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
-import { setAva, setLoading } from '../store/avatar.slice';
+import { loadAvatar as loadData, setAva, setLoading } from '../store/avatar.slice';
 
-export const useImagePicker = () => {
+export const useAvatar = () => {
   const dispatch = useAppDispatch();
+  const { t } = useLocalization('settings');
   const { avatarLoading, avatar } = useAppSelector((state) => state.avatar);
 
   const pickImageFromGallery = useCallback(async () => {
@@ -15,8 +17,8 @@ export const useImagePicker = () => {
     try {
       const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
       if (status !== 'granted') {
-        Alert.alert('Нужно разрешение для доступа к галерее');
-        return null;
+        Alert.alert(t('accesGallery'));
+        return;
       }
 
       const result = await ImagePicker.launchImageLibraryAsync({
@@ -25,13 +27,10 @@ export const useImagePicker = () => {
       });
 
       if (!result.canceled && result.assets[0]) {
-        console.log(result.assets[0].uri);
         dispatch(setAva(result.assets[0].uri));
       }
-      return null;
     } catch {
-      const errorMsg = 'Не удалось выбрать фото';
-      Alert.alert('Ошибка', errorMsg);
+      Alert.alert(t('error'), t('failedToSelectPhoto'));
     } finally {
       dispatch(setLoading(false));
     }
@@ -42,8 +41,8 @@ export const useImagePicker = () => {
     try {
       const { status } = await ImagePicker.requestCameraPermissionsAsync();
       if (status !== 'granted') {
-        Alert.alert('Нужно разрешение для использования камеры');
-        return null;
+        Alert.alert(t('accesCamera'));
+        return;
       }
 
       const result = await ImagePicker.launchCameraAsync({
@@ -54,18 +53,20 @@ export const useImagePicker = () => {
         dispatch(setAva(result.assets[0].uri));
       }
     } catch {
-      const errorMsg = 'Не удалось сделать фото';
-      Alert.alert('Ошибка', errorMsg);
-      return null;
+      Alert.alert(t('error'), t('failedToTakePhoto'));
     } finally {
       dispatch(setLoading(false));
     }
   }, []);
 
+  const loadAvatar = () => {
+    dispatch(loadData());
+  };
   return {
     pickImageFromGallery,
     takePhotoWithCamera,
     avatarLoading,
     avatar,
+    loadAvatar,
   };
 };

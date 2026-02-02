@@ -6,6 +6,7 @@ import { JSX, useEffect } from 'react';
 import { useAuth } from '@/features/auth';
 import { LoadingModal, LoadingScreen } from '@/features/shared';
 import { useTheme } from '@/features/theme';
+import { useAvatar } from '@/features/user-avatar';
 
 import { useInitializeApp } from '../../hooks';
 
@@ -13,6 +14,7 @@ export const AppNavigationStack = (): JSX.Element => {
   const { isDark } = useTheme();
   const { user, isLoading } = useAuth();
   const { isAppInitialized, initializeApp } = useInitializeApp();
+  const { avatarLoading } = useAvatar();
   const [loaded, error] = useFonts({
     Montserrat: require('@/assets/fonts/Montserrat.ttf'),
     MontserratBold: require('@/assets/fonts/MontserratBold.ttf'),
@@ -29,7 +31,7 @@ export const AppNavigationStack = (): JSX.Element => {
   return (
     <>
       <StatusBar style={isDark ? 'light' : 'dark'} />
-      <LoadingModal visible={isLoading} />
+      <LoadingModal visible={isLoading || avatarLoading} />
       <Stack
         screenOptions={{
           headerShown: false,

@@ -5,7 +5,7 @@ import { useLocalization } from '@/features/localization';
 import { IoniconsIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
 
-import { useBottomSheet, useImagePicker } from '../../hooks';
+import { useAvatar, useBottomSheet } from '../../hooks';
 import { AvatarBottomSheet } from '../avatar-bottom-sheet/avatar-bottom-sheet';
 import { useStyles } from './change-avatar-button.styles';
 
@@ -14,7 +14,7 @@ export const ChangeAvatarButton = (): JSX.Element => {
   const styles = useStyles();
   const { bottomSheetRef, isOpen, handleOpen, handleClose, handleSheetChanges } = useBottomSheet();
   const { t } = useLocalization('settings');
-  const { pickImageFromGallery, takePhotoWithCamera, avatar } = useImagePicker();
+  const { pickImageFromGallery, takePhotoWithCamera, avatar } = useAvatar();
 
   return (
     <>

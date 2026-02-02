@@ -30,6 +30,11 @@ export const useStyles = () => {
       fontFamily: fontFamily.bold,
       color: colors.text.primary,
     },
+    avatar: {
+      width: 50,
+      height: 50,
+      borderRadius: 50,
+    },
     avatarPlaceholder: {
       width: 50,
       height: 50,
