@@ -7,6 +7,7 @@ import recipeInfoReducer from '@/features/recipes/store/recipe-info.slice';
 import recipeSearchReducer from '@/features/recipes/store/recipe-search.slice';
 import recipesReducer from '@/features/recipes/store/recipes.slice';
 import themeReducer from '@/features/theme/store/theme.slice';
+import avatarReducer from '@/features/user-avatar/store/avatar.slice';
 
 export const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ export const store = configureStore({
     recipeInfo: recipeInfoReducer,
     searchRecipe: recipeSearchReducer,
     favoritesRecipes: favoritesRecipesReducer,
+    avatar: avatarReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

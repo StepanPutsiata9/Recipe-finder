@@ -8,5 +8,10 @@
   "chooseFromGallery": "Выбрать из галереи",
   "takePhoto": "Сделать фото",
   "signOut": "Выйти",
-  "cancel": "Отмена"
+  "cancel": "Отмена",
+  "error": "Ошибка",
+  "accesGallery": "Нужно разрешение для доступа к галерее",
+  "failedToSelectPhoto": "Не удалось выбрать фото",
+  "accesCamera": "Нужно разрешение для использования камеры",
+  "failedToTakePhoto": "Не удалось сделать фото"
 }

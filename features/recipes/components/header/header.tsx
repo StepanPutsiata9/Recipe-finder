@@ -1,18 +1,20 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useRouter } from 'expo-router';
 import { JSX } from 'react';
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 import { useAuth } from '@/features/auth';
 import { useLocalization } from '@/features/localization';
 import { FeatherIcon, IoniconsIcon } from '@/features/shared';
 import { useTheme } from '@/features/theme';
+import { useAvatar } from '@/features/user-avatar';
 
 import { useStyles } from './header.styles';
 
 export const Header = (): JSX.Element => {
   const { colors } = useTheme();
   const styles = useStyles();
+  const { avatar } = useAvatar();
   const router = useRouter();
   const { user, getUserEmail } = useAuth();
   const { t } = useLocalization('home');
@@ -21,9 +23,14 @@ export const Header = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <View style={styles.greetView}>
-        <View style={styles.avatarPlaceholder}>
-          <MaterialIcons name="person" size={38} color={colors.primary} />
-        </View>
+        {avatar ? (
+          <Image source={{ uri: avatar }} style={styles.avatar} />
+        ) : (
+          <View style={styles.avatarPlaceholder}>
+            <MaterialIcons name="person" size={38} color={colors.primary} />
+          </View>
+        )}
+
         <View>
           <View>
             <Text style={styles.helloText}>{t('greeting')}</Text>

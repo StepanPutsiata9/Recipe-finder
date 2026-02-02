@@ -12,7 +12,7 @@ import { useStyles } from './avatar-bottom-sheet.styles';
 
 interface IAvatarBottomSheetProps {
   isOpen: boolean;
-  currentAvatar?: string;
+  currentAvatar: string | null;
   onClose: () => void;
   onPickFromGallery: () => void;
   onTakePhoto: () => void;

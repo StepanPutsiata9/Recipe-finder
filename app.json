@@ -45,6 +45,16 @@
         }
       ],
       [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Allow Recipe finder to access your camera",
+          "photosPermission": "The app accesses your photos to let you share them with your friends.",
+          "microphonePermission": "Allow Recipe finder to access your microphone",
+          "recordAudioAndroid": true
+        }
+      ],
+
+      [
         "expo-build-properties",
         {
           "ios": {
