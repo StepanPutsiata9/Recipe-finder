@@ -16,8 +16,10 @@ export const setAva = createAsyncThunk(
       if (avatar) {
         await storeAvatar(avatar);
         const userAva = await getAvatar();
+        console.log(userAva, 'user_ava');
         return userAva;
       }
+      return null;
     } catch (error) {
       return rejectWithValue(error instanceof Error ? error.message : 'Unknown error');
     }
@@ -38,7 +40,11 @@ const avatarSlice = createSlice({
       state.avatar = null;
     },
   },
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder.addCase(setAva.fulfilled, (state, action) => {
+      state.avatar = action.payload;
+    });
+  },
 });
 
 export const { setLoading, setError, clearAvatar } = avatarSlice.actions;
