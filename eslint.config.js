@@ -1,10 +1,37 @@
-// https://docs.expo.dev/guides/using-eslint/
 const { defineConfig } = require('eslint/config');
 const expoConfig = require('eslint-config-expo/flat');
+const typescriptPlugin = require('@typescript-eslint/eslint-plugin');
+const reactPlugin = require('eslint-plugin-react');
+const reactNativePlugin = require('eslint-plugin-react-native');
+const simpleImportSortPlugin = require('eslint-plugin-simple-import-sort');
 
 module.exports = defineConfig([
   expoConfig,
   {
-    ignores: ['dist/*'],
+    ignores: ['dist/*', 'node_modules/*', 'build/*', '.expo/*'],
+  },
+  {
+    files: ['**/*.{js,jsx,ts,tsx}'],
+    plugins: {
+      '@typescript-eslint': typescriptPlugin,
+      react: reactPlugin,
+      'react-native': reactNativePlugin,
+      'simple-import-sort': simpleImportSortPlugin,
+    },
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'error',
+      'react-hooks/exhaustive-deps': 'off',
+      'react/jsx-uses-react': 'off',
+      'react/react-in-jsx-scope': 'off',
+
+      'react-native/no-inline-styles': 'warn',
+
+      'no-unused-vars': 'off',
+
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
+
+      'import/newline-after-import': ['error', { count: 1 }],
+    },
   },
 ]);

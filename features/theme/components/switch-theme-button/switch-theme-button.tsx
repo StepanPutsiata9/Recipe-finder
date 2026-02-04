@@ -1,0 +1,38 @@
+import type { JSX } from 'react';
+import React, { useMemo } from 'react';
+import { Switch, Text, View } from 'react-native';
+
+import { useLocalization } from '@/features/localization/hooks';
+import { FeatherIcon } from '@/features/shared/utils';
+import { useTheme } from '@/features/theme/hooks';
+import { fontSize, indets } from '@/styles';
+
+import { createStyles } from './switch-theme-button.styles';
+
+export const SwitchThemeButton = (): JSX.Element => {
+  const { isDark, handleToggleTheme, colors } = useTheme();
+  const { t } = useLocalization('settings');
+  const styles = useMemo(() => createStyles(colors, indets, fontSize), [colors]);
+  return (
+    <View style={styles.container}>
+      <View style={styles.iconTextContainer}>
+        <FeatherIcon
+          name={isDark ? 'moon' : 'sun'}
+          size={20}
+          color={isDark ? colors.secondaryButtonBorder : colors.primary}
+        />
+        <Text style={styles.text}>{isDark ? t('darkMode') : t('lightMode')}</Text>
+      </View>
+
+      <View style={styles.switchWrapper}>
+        <Switch
+          value={isDark}
+          onValueChange={handleToggleTheme}
+          trackColor={{ false: colors.trackFalse, true: colors.trackTrue }}
+          thumbColor={colors.switchColors.thumbColor}
+          ios_backgroundColor={colors.switchColors.ios_backgroundColor}
+        />
+      </View>
+    </View>
+  );
+};

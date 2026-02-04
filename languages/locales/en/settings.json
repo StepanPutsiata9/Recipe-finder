@@ -1,0 +1,17 @@
+{
+  "settings": "Settings",
+  "darkMode": "Dark mode",
+  "lightMode": "Light mode",
+  "language": "Language",
+  "chooseLanguage": "Choose Language",
+  "changeAvatar": "Change Avatar",
+  "chooseFromGallery": "Choose from gallery",
+  "takePhoto": "Take Photo",
+  "signOut": "Sign Out",
+  "cancel": "Cancel",
+  "error": "Error",
+  "accesGallery": "Permission is required to access the gallery.",
+  "failedToSelectPhoto": "Failed to select photo",
+  "accesCamera": "Permission is required to use the camera.",
+  "failedToTakePhoto": "Failed to take photo"
+}
